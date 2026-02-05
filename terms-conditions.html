@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Terms & Conditions | SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFCDD2;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F5F5F5;
+            --text-dark: #212121;
+            --text-gray: #616161;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::before {
+            width: 100%;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            min-height: 40vh;
+            background: linear-gradient(rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 0.9)),
+                url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-wrapper h2 {
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-wrapper p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .content-wrapper ul {
+            list-style: disc;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper ul li {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .content-wrapper ol {
+            list-style: decimal;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper ol li {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .last-updated {
+            background: var(--light-gray);
+            padding: 15px 20px;
+            border-left: 4px solid var(--primary-red);
+            margin-bottom: 30px;
+            font-style: italic;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #1a1a1a;
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #999;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            max-width: 300px;
+            font-size: 0.95rem;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-red);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-img {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 100px;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                gap: 20px;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="main-header">
+        <div class="navbar container">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI Logo" class="logo-img" onerror="this.style.display='none';">
+                SITE-EMAR <span>2026</span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="organizing-committee.html">Committee</a></li>
+                <li class="nav-item"><a href="registration.html">Registration</a></li>
+                <li class="nav-item"><a href="schedule.html">Schedule</a></li>
+                <li class="nav-item"><a href="speakers.html">Speakers</a></li>
+                <li class="nav-item"><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-item"><a href="venue.html">Venue</a></li>
+                <li class="nav-item"><a href="awards.html">Awards</a></li>
+                <li class="nav-item"><a href="contact-us.html">Contact</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Terms & Conditions</h1>
+            <p>Please read these terms carefully before participating</p>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="last-updated">
+                    <strong>Last Updated:</strong> January 30, 2026
+                </div>
+
+                <p>
+                    Welcome to SITE-EMAR 2026 (International Conference on Smart Innovative Techniques and Emerging
+                    Trends in Engineering Materials for Advanced Research). By registering for and participating in this
+                    conference, you agree to comply with and be bound by the following terms and conditions.
+                </p>
+
+                <h2>1. Acceptance of Terms</h2>
+                <p>
+                    By accessing our website, registering for the conference, submitting a paper, or attending any
+                    conference activities, you acknowledge that you have read, understood, and agree to be bound by
+                    these Terms and Conditions, as well as our Privacy Policy.
+                </p>
+
+                <h2>2. Conference Registration</h2>
+
+                <h3>2.1 Registration Requirements</h3>
+                <ul>
+                    <li>All participants must complete the official registration form with accurate and complete
+                        information</li>
+                    <li>Registration is subject to availability and acceptance by the organizing committee</li>
+                    <li>One registration per person is required for conference access</li>
+                    <li>Group registrations must provide details for all participants</li>
+                </ul>
+
+                <h3>2.2 Registration Fees</h3>
+                <ul>
+                    <li>Registration fees are non-refundable except as outlined in Section 4</li>
+                    <li>Early bird discounts are valid only until the specified deadline</li>
+                    <li>Student registrations require valid proof of enrollment</li>
+                    <li>All fees are in Indian Rupees (INR) unless otherwise specified</li>
+                    <li>Additional charges may apply for workshops, banquets, or special sessions</li>
+                </ul>
+
+                <h3>2.3 Payment Terms</h3>
+                <ul>
+                    <li>Payment must be received in full before the registration deadline</li>
+                    <li>Accepted payment methods include online transfer, credit/debit cards, and demand drafts</li>
+                    <li>Confirmation will be sent upon successful payment verification</li>
+                    <li>Incomplete payments will result in registration cancellation</li>
+                </ul>
+
+                <h2>3. Paper Submission and Publication</h2>
+
+                <h3>3.1 Submission Guidelines</h3>
+                <ul>
+                    <li>All submissions must be original work not previously published elsewhere</li>
+                    <li>Papers must follow the conference template and formatting guidelines</li>
+                    <li>Plagiarism will result in immediate rejection and may lead to legal action</li>
+                    <li>All authors must be listed in the submission</li>
+                    <li>The corresponding author is responsible for all communication</li>
+                </ul>
+
+                <h3>3.2 Peer Review Process</h3>
+                <ul>
+                    <li>All submissions undergo double-blind peer review</li>
+                    <li>Review decisions are final and non-negotiable</li>
+                    <li>Authors may be required to revise and resubmit papers</li>
+                    <li>The organizing committee reserves the right to reject any submission</li>
+                </ul>
+
+                <h3>3.3 Publication Rights</h3>
+                <ul>
+                    <li>Accepted papers will be published in conference proceedings</li>
+                    <li>Authors retain copyright but grant the conference a license to publish and distribute</li>
+                    <li>Selected papers may be recommended for publication in partner journals</li>
+                    <li>Authors are responsible for obtaining permissions for copyrighted materials used in papers</li>
+                </ul>
+
+                <h3>3.4 Presentation Requirements</h3>
+                <ul>
+                    <li>At least one author of an accepted paper must register and present</li>
+                    <li>Failure to present may result in exclusion from proceedings</li>
+                    <li>Presentations must adhere to allocated time slots</li>
+                    <li>Presentation materials must be submitted before the deadline</li>
+                </ul>
+
+                <h2>4. Cancellation and Refund Policy</h2>
+
+                <h3>4.1 Participant Cancellations</h3>
+                <ol>
+                    <li><strong>More than 60 days before the conference:</strong> 75% refund (25% processing fee)</li>
+                    <li><strong>30-60 days before the conference:</strong> 50% refund</li>
+                    <li><strong>Less than 30 days before the conference:</strong> No refund</li>
+                    <li><strong>No-show:</strong> No refund</li>
+                </ol>
+
+                <h3>4.2 Conference Cancellation</h3>
+                <p>
+                    If the conference is cancelled or postponed due to circumstances beyond our control (force majeure),
+                    participants will have the following options:
+                </p>
+                <ul>
+                    <li>Transfer registration to the rescheduled date</li>
+                    <li>Receive a full refund of registration fees (minus transaction charges)</li>
+                    <li>We are not liable for any travel, accommodation, or other expenses incurred</li>
+                </ul>
+
+                <h2>5. Code of Conduct</h2>
+
+                <h3>5.1 Professional Behavior</h3>
+                <p>All participants are expected to:</p>
+                <ul>
+                    <li>Treat all attendees, speakers, and staff with respect and professionalism</li>
+                    <li>Refrain from harassment, discrimination, or inappropriate behavior</li>
+                    <li>Engage in constructive and respectful discourse during sessions</li>
+                    <li>Respect intellectual property rights and confidentiality</li>
+                </ul>
+
+                <h3>5.2 Prohibited Activities</h3>
+                <ul>
+                    <li>Unauthorized recording or photography of presentations</li>
+                    <li>Distribution of promotional materials without permission</li>
+                    <li>Disruptive behavior during sessions or events</li>
+                    <li>Misrepresentation of credentials or affiliation</li>
+                </ul>
+
+                <h3>5.3 Consequences of Violations</h3>
+                <p>
+                    Violation of the code of conduct may result in:
+                </p>
+                <ul>
+                    <li>Warning from the organizing committee</li>
+                    <li>Expulsion from the conference without refund</li>
+                    <li>Prohibition from future conferences</li>
+                    <li>Legal action if applicable</li>
+                </ul>
+
+                <h2>6. Intellectual Property Rights</h2>
+
+                <h3>6.1 Conference Materials</h3>
+                <ul>
+                    <li>All conference materials, including logos, designs, and content, are protected by copyright</li>
+                    <li>Unauthorized use, reproduction, or distribution is prohibited</li>
+                    <li>Participants may use conference materials for personal, non-commercial purposes only</li>
+                </ul>
+
+                <h3>6.2 Presentation Content</h3>
+                <ul>
+                    <li>Presenters retain ownership of their work but grant the conference recording and distribution
+                        rights</li>
+                    <li>Conference proceedings may be made available online for educational purposes</li>
+                    <li>Presenters must obtain necessary permissions for third-party materials</li>
+                </ul>
+
+                <h2>7. Liability and Disclaimers</h2>
+
+                <h3>7.1 Limited Liability</h3>
+                <p>
+                    Sasi Institute of Technology & Engineering and the organizing committee are not liable for:
+                </p>
+                <ul>
+                    <li>Personal injury or property loss during the conference</li>
+                    <li>Theft or damage to personal belongings</li>
+                    <li>Travel delays, cancellations, or related expenses</li>
+                    <li>Accommodation issues or disputes with third-party vendors</li>
+                    <li>Technical difficulties affecting presentations or sessions</li>
+                </ul>
+
+                <h3>7.2 Insurance</h3>
+                <p>
+                    Participants are encouraged to obtain personal travel and health insurance. The conference does not
+                    provide insurance coverage for attendees.
+                </p>
+
+                <h3>7.3 Health and Safety</h3>
+                <ul>
+                    <li>Participants must comply with all health and safety regulations</li>
+                    <li>The conference may require health declarations or vaccination proof</li>
+                    <li>Participants with health conditions should inform the organizers in advance</li>
+                </ul>
+
+                <h2>8. Privacy and Data Protection</h2>
+                <p>
+                    Your personal information is handled in accordance with our Privacy Policy. By registering, you
+                    consent to the collection, use, and storage of your data as described in the Privacy Policy. We may
+                    share your information with conference partners, sponsors, and service providers as necessary.
+                </p>
+
+                <h2>9. Photography and Recording</h2>
+                <ul>
+                    <li>The conference may photograph, record, or film sessions for promotional and archival purposes
+                    </li>
+                    <li>By attending, you consent to being photographed or recorded</li>
+                    <li>Images and recordings may be used in conference materials, websites, and publications</li>
+                    <li>If you do not wish to be photographed, please inform the organizing committee</li>
+                </ul>
+
+                <h2>10. Accommodation and Travel</h2>
+                <ul>
+                    <li>Participants are responsible for their own travel and accommodation arrangements</li>
+                    <li>The conference may provide accommodation recommendations but does not guarantee availability
+                    </li>
+                    <li>Disputes with hotels or travel providers are between the participant and the supplier</li>
+                    <li>Visa invitation letters will be provided only to registered participants</li>
+                </ul>
+
+                <h2>11. Force Majeure</h2>
+                <p>
+                    The organizing committee is not liable for failure to perform obligations due to circumstances
+                    beyond
+                    reasonable control, including but not limited to:
+                </p>
+                <ul>
+                    <li>Natural disasters, pandemics, or public health emergencies</li>
+                    <li>War, terrorism, or civil unrest</li>
+                    <li>Government restrictions or regulations</li>
+                    <li>Labor disputes or strikes</li>
+                    <li>Technical failures or power outages</li>
+                </ul>
+
+                <h2>12. Changes to Conference Program</h2>
+                <p>
+                    The organizing committee reserves the right to:
+                </p>
+                <ul>
+                    <li>Modify the conference schedule, speakers, or program</li>
+                    <li>Cancel or reschedule sessions if necessary</li>
+                    <li>Make substitutions for speakers or venues</li>
+                    <li>Reasonable efforts will be made to notify participants of significant changes</li>
+                </ul>
+
+                <h2>13. Governing Law and Jurisdiction</h2>
+                <p>
+                    These Terms and Conditions are governed by the laws of India. Any disputes arising from the
+                    conference or these terms shall be subject to the exclusive jurisdiction of the courts in
+                    Tadepalligudem, Andhra Pradesh, India.
+                </p>
+
+                <h2>14. Amendments</h2>
+                <p>
+                    The organizing committee reserves the right to amend these Terms and Conditions at any time.
+                    Significant changes will be communicated to registered participants via email. Continued
+                    participation after amendments constitutes acceptance of the revised terms.
+                </p>
+
+                <h2>15. Contact Information</h2>
+                <p>
+                    For questions or concerns regarding these Terms and Conditions, please contact:
+                </p>
+                <p>
+                    <strong>SITE-EMAR 2026 Conference Committee</strong><br>
+                    Sasi Institute of Technology & Engineering<br>
+                    Tadepalligudem - 534101, Andhra Pradesh, India<br>
+                    Email: drsrinivas@sasi.ac.in<br>
+                            convener.siteemar2026@sasi.ac.in
+                    Phone: +91 9440576225
+                </p>
+
+                <h2>16. Severability</h2>
+                <p>
+                    If any provision of these Terms and Conditions is found to be unenforceable or invalid, the
+                    remaining provisions will continue in full force and effect.
+                </p>
+
+                <p style="margin-top: 40px; padding-top: 30px; border-top: 2px solid var(--light-gray);">
+                    <strong>Acknowledgment:</strong> By registering for SITE-EMAR 2026, you acknowledge that you have
+                    read, understood, and agree to be bound by these Terms and Conditions. If you do not agree with any
+                    part of these terms, please do not register for or participate in the conference.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SITE-EMAR 2026</h2>
+                    <p class="footer-text">
+                        International Conference on Smart Innovative Techniques and Emerging Trends in Engineering
+                        Materials for Advanced Research.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/school/sasi-institute-of-technology-engineering/"
+                            class="social-icon" title="LinkedIn" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/sasiengineeringcollege" class="social-icon" title="Instagram"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/sasi.ac.in" class="social-icon" title="Facebook"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SasiInstituteofTechnology" class="social-icon" title="YouTube"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="schedule.html">Program Schedule</a></li>
+                        <li><a href="speakers.html">Keynote Speakers</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                        <li><a href="awards.html">Awards</a></li>
+                        <li><a href="organizing-committee.html">Committee</a></li>
+                        <li><a href="memories.html">Memories</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Sasi Institute of Technology & Engineering, Tadepalligudem - 534101
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            +91 9440576225
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            drsrinivas@sasi.ac.in
+                            convener.siteemar2026@sasi.ac.in
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 SITE-EMAR. All Rights Reserved. Hosted by Sasi Institute of Technology & Engineering,
+                Tadepalligudem.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Sticky Navbar
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

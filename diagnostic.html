@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Category Diagnostic</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+</head>
+
+<body>
+    <h1>Category Diagnostic</h1>
+    <div id="results">Testing categories...</div>
+    <script>
+        async function testCategories() {
+            const categories = ['scholar', 'expert', 'student', 'professional', 'researcher', 'scientist', 'author', 'industrialist', 'research_scholar', 'industry_expert'];
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            for (const cat of categories) {
+                try {
+                    // Try to insert a dummy user with this category
+                    // We use a fake email but a valid auth_id if possible, or just skip auth for this test if RLS allows
+                    const { error } = await supabaseClient
+                        .from('users')
+                        .insert([{
+                            email: `test_${cat}_${Date.now()}@example.com`,
+                            full_name: 'Diagnostic Test',
+                            category: cat,
+                            registration_fee: 0,
+                            currency: 'INR'
+                        }]);
+
+                    if (error) {
+                        resultsDiv.innerHTML += `<div>❌ ${cat}: ${error.message}</div>`;
+                    } else {
+                        resultsDiv.innerHTML += `<div style="color: green;">✅ ${cat}: WORKS!</div>`;
+                    }
+                } catch (err) {
+                    resultsDiv.innerHTML += `<div>⚠️ ${cat}: ${err.message}</div>`;
+                }
+            }
+        }
+        testCategories();
+    </script>
+</body>
+
+</html>

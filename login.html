@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES (MATCHING REGISTRATION.HTML)
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFEBEE;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --medium-gray: #E0E0E0;
+            --text-dark: #212121;
+            --text-gray: #616161;
+            --success-green: #2E7D32;
+            --error-red: #C62828;
+
+            /* Shadows & Effects */
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-red: 0 8px 16px rgba(211, 47, 47, 0.25);
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+            --trans-fast: 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            /* Match the Hero section from Registration */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            max-width: 450px;
+            width: 100%;
+            animation: slideUp 0.5s ease-out;
+            border-top: 5px solid var(--primary-red);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            padding: 40px 30px 20px;
+            text-align: center;
+        }
+
+        .login-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-header p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .login-body {
+            padding: 20px 30px 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        /* Match Registration form-control */
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--trans-fast);
+            background: var(--off-white);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-red);
+            background: var(--white);
+            box-shadow: 0 0 0 4px var(--light-red);
+        }
+
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-wrapper .form-control {
+            padding-right: 45px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-red);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--trans-fast);
+            box-shadow: var(--shadow-red);
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--medium-gray);
+        }
+
+        .divider span {
+            background: var(--white);
+            padding: 0 15px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--trans-fast);
+        }
+
+        .btn-register:hover {
+            background: var(--light-red);
+        }
+
+        .alert {
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .alert.error {
+            background: var(--light-red);
+            color: var(--error-red);
+            border: 1px solid #ffcdd2;
+        }
+
+        .alert.success {
+            background: #E8F5E9;
+            color: var(--success-green);
+            border: 1px solid #C8E6C9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>SITE-EMAR 2026</h1>
+            <p>Sign in to your account</p>
+        </div>
+
+        <div class="login-body">
+            <div class="alert error" id="errorAlert"></div>
+            <div class="alert success" id="successAlert"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                        placeholder="e.g., john@university.edu" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter password" required>
+                        <span class="password-toggle" onclick="togglePassword()">
+                            <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">Login</button>
+            </form>
+
+            <div class="divider">
+                <span>New here?</span>
+            </div>
+
+            <button class="btn-register" onclick="window.location.href='registration.html'">
+                Create Registration
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const eye = document.getElementById('eyeIcon');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                eye.innerHTML = `
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                `;
+            } else {
+                input.type = 'password';
+                eye.innerHTML = `
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                `;
+            }
+        }
+
+        // Show alert message
+        function showAlert(message, type) {
+            const errorAlert = document.getElementById('errorAlert');
+            const successAlert = document.getElementById('successAlert');
+
+            // Hide both first
+            errorAlert.style.display = 'none';
+            successAlert.style.display = 'none';
+
+            const alert = type === 'error' ? errorAlert : successAlert;
+            alert.textContent = message;
+            alert.style.display = 'block';
+
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+
+        // Handle login form submission with Supabase
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const loginBtn = document.getElementById('loginBtn');
+
+            // Disable button during login
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Logging in...';
+
+            try {
+                console.log('🔄 Attempting login for:', email);
+                // Use the auth module to login
+                const result = await window.auth.login(email, password);
+
+                if (result.success) {
+                    showAlert('Login successful! Redirecting...', 'success');
+
+                    // Redirect based on user type
+                    console.log('✅ Login successful, isAdmin:', !!result.isAdmin);
+                    const category = result.user?.category || '';
+
+                    setTimeout(() => {
+                        if (result.isAdmin) {
+                            window.location.href = 'admin.html';
+                        } else if (category && (category.startsWith('listener') || category === 'listener')) {
+                            // Listeners stay on home/index with a message
+                            showAlert('Welcome! As a listener, you can browse the conference details.', 'success');
+                            setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+                        } else {
+                            window.location.href = 'papersubmission.html';
+                        }
+                    }, 1000);
+                } else {
+                    showAlert(result.message || 'Invalid email or password', 'error');
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = 'Login';
+                }
+            } catch (error) {
+                console.error('❌ Login execution error:', error);
+                showAlert('Login failed. Please try again.', 'error');
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login';
+            }
+        });
+
+        // Check if user is already logged in
+        window.addEventListener('load', async function () {
+            console.log('🔄 Checking existing session...');
+            try {
+                const session = await window.auth.getCurrentSession();
+                if (session) {
+                    console.log('✅ Active session found, checking role...');
+                    const adminRecord = await window.auth.isAdmin();
+                    if (adminRecord) {
+                        console.log('👨‍💼 Admin session detected');
+                        window.location.href = 'admin.html';
+                    } else {
+                        const userRecord = await window.auth.getCurrentUserRecord();
+                        const category = userRecord?.category || '';
+                        console.log('👤 User session detected, category:', category);
+
+                        if (category && (category.startsWith('listener') || category === 'listener')) {
+                            window.location.href = 'index.html';
+                        } else {
+                            window.location.href = 'papersubmission.html';
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('❌ Session check error:', error);
+            }
+        });
+    </script>
+
+    <!-- ============================================= -->
+    <!-- Supabase Backend Integration -->
+    <!-- ============================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="utils.js"></script>
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

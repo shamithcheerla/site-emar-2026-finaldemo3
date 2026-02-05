@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Venue & How to Reach | SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES (RED & WHITE THEME)
+           ========================================= */
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFEBEE;
+            --hover-red: #EF5350;
+            --accent-red: #FF1744;
+
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F0F0F0;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #424242;
+            --text-dark: #212121;
+            --text-light: #616161;
+            --black: #000000;
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --shadow-red: 0 10px 25px rgba(211, 47, 47, 0.25);
+            --glass: rgba(255, 255, 255, 0.95);
+
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+
+            --trans-fast: 0.3s ease;
+            --trans-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* =========================================
+           2. RESET & GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--trans-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-red {
+            color: var(--primary-red);
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .bg-white {
+            background: var(--white);
+        }
+
+        .bg-light {
+            background: var(--light-gray);
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .mb-40 {
+            margin-bottom: 40px;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mt-40 {
+            margin-top: 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 15px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* =========================================
+           3. ANIMATIONS
+           ========================================= */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* =========================================
+           4. NAVIGATION
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--trans-fast);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary-red);
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            width: 100%;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--primary-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* =========================================
+           5. HERO SECTION
+           ========================================= */
+        .venue-hero {
+            min-height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+                url("lib.jpg");
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .hero-badge {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-info-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-info-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-info-item svg {
+            flex-shrink: 0;
+        }
+
+        .hero-info-text {
+            text-align: left;
+        }
+
+        .hero-info-text .label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .hero-info-text .value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* =========================================
+           6. QUICK NAV TABS (Sticky)
+           ========================================= */
+        .quick-nav {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 80px;
+            z-index: 90;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .quick-nav-inner {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .quick-nav-btn {
+            padding: 10px 25px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--trans-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dark);
+        }
+
+        .quick-nav-btn:hover {
+            background: var(--light-red);
+            color: var(--primary-red);
+        }
+
+        .quick-nav-btn.active {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        /* =========================================
+           7. ABOUT CAMPUS SECTION
+           ========================================= */
+        .campus-section {
+            background: var(--white);
+        }
+
+        .campus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .campus-text h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .campus-text h2 span {
+            color: var(--primary-red);
+        }
+
+        .campus-text p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .campus-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: var(--off-white);
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-red);
+            transition: var(--trans-fast);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-red);
+        }
+
+        .stat-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* =========================================
+           8. GALLERY
+           ========================================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           9. MAP SECTION
+           ========================================= */
+        .map-section {
+            position: relative;
+            height: 450px;
+            background: #ddd;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            max-width: 320px;
+            z-index: 10;
+        }
+
+        .map-overlay h3 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .map-overlay p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .map-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-red);
+            color: var(--white);
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: var(--trans-fast);
+        }
+
+        .map-btn:hover {
+            background: var(--dark-red);
+        }
+
+        /* =========================================
+           10. TRANSPORT TABS SECTION
+           ========================================= */
+        .transport-section {
+            background: var(--light-gray);
+        }
+
+        .transport-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .transport-tab {
+            padding: 15px 30px;
+            background: var(--white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--trans-fast);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .transport-tab:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .transport-tab.active {
+            background: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+        }
+
+        .transport-tab.active svg {
+            stroke: var(--white);
+        }
+
+        .transport-content {
+            display: none;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .transport-content.active {
+            display: block;
+        }
+
+        .transport-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .transport-content h3 svg {
+            stroke: var(--primary-red);
+        }
+
+        .transport-content>p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .info-card {
+            background: var(--off-white);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-red);
+        }
+
+        .info-card h4 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .schedule-table th {
+            background: var(--primary-red);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .schedule-table tr:hover {
+            background: var(--light-red);
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .local-transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .local-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--trans-fast);
+            border-top: 4px solid transparent;
+        }
+
+        .local-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--primary-red);
+        }
+
+        .local-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .local-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .local-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .fare-badge {
+            background: var(--light-red);
+            color: var(--primary-red);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        /* =========================================
+           11. FARE ESTIMATOR
+           ========================================= */
+        .estimator-section {
+            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
+            color: var(--white);
+        }
+
+        .estimator-box {
+            background: var(--white);
+            color: var(--text-dark);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .estimator-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--trans-fast);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-red);
+        }
+
+        .calc-btn {
+            background: var(--primary-red);
+            color: var(--white);
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--trans-fast);
+        }
+
+        .calc-btn:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 25px;
+            background: var(--light-red);
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-label {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .result-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-red);
+        }
+
+        .result-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+
+        /* =========================================
+           12. ACCOMMODATION SECTION
+           ========================================= */
+        .accommodation-section {
+            background: var(--white);
+        }
+
+        .hotel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .hotel-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--trans-fast);
+            border: 1px solid var(--medium-gray);
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hotel-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hotel-rating {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FFD700;
+            color: var(--text-dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .hotel-info {
+            padding: 25px;
+        }
+
+        .hotel-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .hotel-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .amenities {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .amenity {
+            background: var(--light-red);
+            color: var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .hotel-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .book-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--primary-red);
+            background: transparent;
+            color: var(--primary-red);
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--trans-fast);
+        }
+
+        .book-btn:hover {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        /* =========================================
+           13. ATTRACTIONS SECTION
+           ========================================= */
+        .attractions-section {
+            background: var(--light-gray);
+        }
+
+        .attraction-card {
+            display: flex;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--trans-fast);
+        }
+
+        .attraction-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .attraction-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .attraction-img {
+            width: 35%;
+            object-fit: cover;
+            min-height: 250px;
+        }
+
+        .attraction-info {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .attraction-info h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .attraction-info p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .attraction-link {
+            color: var(--primary-red);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .attraction-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           14. CTA SECTIONS
+           ========================================= */
+        .cta-box {
+            background: var(--dark-red);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .cta-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .cta-box p {
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background: var(--white);
+            color: var(--primary-red);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--trans-fast);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .download-cta {
+            background: var(--off-white);
+            padding: 35px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 40px;
+            border: 2px dashed var(--medium-gray);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .download-btn {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: var(--trans-fast);
+        }
+
+        .download-btn:hover {
+            background: var(--primary-red);
+        }
+
+        /* =========================================
+           15. FOOTER STYLES
+           ========================================= */
+        .site-footer {
+            background: #1a1a1a;
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #999;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            max-width: 300px;
+            font-size: 0.95rem;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-red);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+
+
+        /* =========================================
+           16. RESPONSIVE STYLES
+           ========================================= */
+        @media (max-width: 1024px) {
+            .campus-grid {
+                gap: 40px;
+            }
+
+            .map-overlay {
+                position: relative;
+                top: auto;
+                left: auto;
+                max-width: 100%;
+                margin: 20px;
+                border-radius: 12px;
+            }
+
+            .map-section {
+                display: flex;
+                flex-direction: column-reverse;
+                height: auto;
+            }
+
+            .map-section iframe {
+                height: 350px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* MOBILE NAVIGATION - Logo hidden, only text, 3 bar menu on right */
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .logo-img {
+                display: none !important;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 75%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 100px;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                gap: 15px;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-info-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .campus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                height: 180px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .transport-tabs {
+                gap: 10px;
+            }
+
+            .transport-tab {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .transport-content {
+                padding: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .attraction-card {
+                flex-direction: column;
+            }
+
+            .attraction-img {
+                width: 100%;
+                height: 200px;
+                min-height: auto;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .download-cta {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-contact li {
+                justify-content: center;
+            }
+
+            .quick-nav-inner {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 15px;
+            }
+
+            .quick-nav-btn {
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .quick-nav {
+                top: 70px;
+            }
+
+            .venue-hero {
+                margin-top: 70px;
+                min-height: 60vh;
+            }
+
+            .navbar {
+                height: 70px;
+            }
+
+            .schedule-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            .hotel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .estimator-box {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Extra small devices */
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo span {
+                font-size: 1.2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 6px 15px;
+            }
+
+            .hero-info-item {
+                padding: 12px 18px;
+            }
+
+            .hero-info-text .value {
+                font-size: 0.9rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .campus-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .campus-text h2 {
+                font-size: 1.6rem;
+            }
+
+            .stat-num {
+                font-size: 1.6rem;
+            }
+
+            .local-transport-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-price {
+                font-size: 2rem;
+            }
+
+            .transport-tab {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+
+            .transport-tab svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .transport-content {
+                padding: 20px 15px;
+            }
+
+            .transport-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .info-card {
+                padding: 20px 15px;
+            }
+
+            .info-card h4 {
+                font-size: 1rem;
+            }
+
+            .cta-box {
+                padding: 25px 20px;
+            }
+
+            .cta-box h3 {
+                font-size: 1.2rem;
+            }
+
+            .cta-btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .download-cta {
+                padding: 25px 20px;
+            }
+
+            .download-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .footer {
+                padding: 60px 0 25px;
+            }
+
+            .footer-brand h2 {
+                font-size: 1.5rem;
+            }
+
+            .navbar {
+                height: 60px;
+            }
+
+            .venue-hero {
+                margin-top: 60px;
+                min-height: 55vh;
+            }
+
+            .quick-nav {
+                top: 60px;
+            }
+
+            .quick-nav-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+
+            .map-overlay {
+                padding: 20px;
+                margin: 15px;
+            }
+
+            .map-overlay h3 {
+                font-size: 1.1rem;
+            }
+
+            .hotel-info {
+                padding: 20px;
+            }
+
+            .hotel-name {
+                font-size: 1.1rem;
+            }
+
+            .attraction-info {
+                padding: 20px;
+            }
+
+            .attraction-info h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* =========================================
+           MEMORIES SECTIONS (Imported)
+           ========================================= */
+        .filter-section {
+            background: var(--white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .filters-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-right: 10px;
+            align-self: center;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid var(--medium-gray);
+            background: var(--off-white);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-tag {
+            background: var(--primary-red);
+            color: var(--white);
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .gallery-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .gallery-year {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Timeline styles adjustment for Venue page compatibility */
+        .history-section {
+            background: var(--off-white);
+        }
+
+        .year-badge {
+            color: var(--white);
+            background: var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-img {
+            max-height: 85vh;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: var(--white);
+            text-align: center;
+            margin-top: 15px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-red);
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ HEADER / NAVIGATION ============ -->
+    <header id="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI Logo" class="logo-img" onerror="this.style.display='none';">
+                SITE-EMAR <span>2026</span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="organizing-committee.html">Committee</a></li>
+                <li class="nav-item"><a href="registration.html">Registration</a></li>
+                <li class="nav-item"><a href="schedule.html">Schedule</a></li>
+                <li class="nav-item"><a href="speakers.html">Speakers</a></li>
+                <li class="nav-item"><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-item active" onclick="window.scrollTo(0,0)">Venue</li>
+                <li class="nav-item"><a href="awards.html">Awards</a></li>
+                <li class="nav-item"><a href="contact-us.html">Contact</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="venue-hero">
+        <div class="hero-content">
+            <div class="hero-badge">Conference Venue</div>
+            <h1>Sasi Institute of Technology & Engineering</h1>
+            <p>Venue: Sri Burugupalli Rataiah Central Auditorium.</p>
+
+            <div class="hero-info-row">
+                <div class="hero-info-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <div class="hero-info-text">
+                        <div class="label">Location</div>
+                        <div class="value">Tadepalligudem, AP</div>
+                    </div>
+                </div>
+                <div class="hero-info-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <div class="hero-info-text">
+                        <div class="label">Date</div>
+                        <div class="value">July 24-25, 2026</div>
+                    </div>
+                </div>
+                <div class="hero-info-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    <div class="hero-info-text">
+                        <div class="label">Weather</div>
+                        <div class="value">28°C ⛅</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ QUICK NAVIGATION ============ -->
+    <nav class="quick-nav">
+        <div class="container">
+            <div class="quick-nav-inner">
+                <a href="#campus" class="quick-nav-btn active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Campus
+                </a>
+                <a href="#map" class="quick-nav-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                        <line x1="8" y1="2" x2="8" y2="18"></line>
+                        <line x1="16" y1="6" x2="16" y2="22"></line>
+                    </svg>
+                    Map
+                </a>
+                <a href="#travel" class="quick-nav-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+                    </svg>
+                    How to Reach
+                </a>
+                <a href="#hotels" class="quick-nav-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"></path>
+                    </svg>
+                    Hotels
+                </a>
+                <a href="#attractions" class="quick-nav-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                    Attractions
+                </a>
+                <a href="#memories" class="quick-nav-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                        </path>
+                    </svg>
+                    Memories
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ CAMPUS SECTION ============ -->
+    <section id="campus" class="section-padding campus-section">
+        <div class="container">
+            <div class="campus-grid">
+                <div class="campus-text">
+                    <h2>World-Class <span>Infrastructure</span></h2>
+                    <p>
+                        Established in 2002, Sasi Institute of Technology & Engineering (SITE) has emerged as a center
+                        of excellence in technical education. The campus spans over 28 acres of environmentally friendly
+                        landscape, fostering a serene atmosphere conducive to learning and innovation.
+                    </p>
+                    <p>
+                        The conference will be held at the <strong>Sri Burugupalli Rataiah Central Auditorium</strong>,
+                        a state-of-the-art
+                        facility equipped with Dolby surround sound, central air-conditioning, and a seating capacity of
+                        1200 delegates. High-speed WiFi, live streaming capabilities, and modern presentation equipment
+                        ensure a seamless conference experience.
+                    </p>
+
+                    <div class="campus-stats">
+                        <div class="stat-box">
+                            <div class="stat-num">28</div>
+                            <div class="stat-desc">Acres Campus</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">1.2K</div>
+                            <div class="stat-desc">Auditorium Seats</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">50+</div>
+                            <div class="stat-desc">Advanced Labs</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">5</div>
+                            <div class="stat-desc">Hostel Blocks</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campus-gallery">
+                    <img src="lib.jpg" alt="Library"
+                        style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MAP SECTION ============ -->
+    <section id="map" class="map-section">
+        <div class="map-overlay">
+            <h3>📍 Venue Location</h3>
+            <p><strong>Sasi Institute of Technology & Engineering</strong></p>
+            <p>Tadepalligudem – 534101<br>West Godavari District<br>Andhra Pradesh, India</p>
+            <a href="https://maps.google.com/?q=Sasi+Institute+of+Technology+Engineering" target="_blank"
+                class="map-btn">
+                Get Directions →
+            </a>
+        </div>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.842790937748!2d81.52841491486663!3d16.852445624328547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37b3b3a3a3a3a3%3A0x3a37b3b3a3a3a3a3!2sSasi%20Institute%20of%20Technology%20%26%20Engineering!5e0!3m2!1sen!2sin!4v1629876543210!5m2!1sen!2sin"
+            allowfullscreen="" loading="lazy">
+        </iframe>
+    </section>
+
+    <!-- ============ HOW TO REACH SECTION ============ -->
+    <section id="travel" class="section-padding transport-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How to Reach</h2>
+                <p class="section-subtitle">Tadepalligudem is well connected by Rail, Road, and Air. Choose your
+                    preferred mode of transport below.</p>
+            </div>
+
+            <div class="transport-tabs">
+                <div class="transport-tab active" onclick="switchTransport('air', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+                    </svg>
+                    By Air
+                </div>
+                <div class="transport-tab" onclick="switchTransport('train', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                        <circle cx="7" cy="15" r="2" />
+                        <circle cx="17" cy="15" r="2" />
+                    </svg>
+                    By Train
+                </div>
+                <div class="transport-tab" onclick="switchTransport('road', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    By Road
+                </div>
+                <div class="transport-tab" onclick="switchTransport('local', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                    Local
+                </div>
+            </div>
+
+            <!-- BY AIR -->
+            <div id="air" class="transport-content active">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+                    </svg>
+                    Arriving by Flight
+                </h3>
+                <p>The nearest airports are Rajahmundry (RJA) and Vijayawada (VGA). International delegates are advised
+                    to fly into Hyderabad (HYD) or Chennai (MAA) and take a connecting flight.</p>
+
+                <div class="info-card">
+                    <h4>✈️ Option 1: Rajahmundry Airport (RJA)</h4>
+                    <p><strong>Distance:</strong> 50 km (approx. 1 hour drive)<br>Recommended for delegates coming from
+                        Hyderabad, Bangalore, or Chennai. Direct flights available via IndiGo.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>✈️ Option 2: Vijayawada International Airport (VGA)</h4>
+                    <p><strong>Distance:</strong> 95 km (approx. 2 hours drive)<br>Best for international delegates or
+                        those connecting from Delhi/Mumbai.</p>
+                </div>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Airport</th>
+                            <th>Code</th>
+                            <th>Distance</th>
+                            <th>Travel Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rajahmundry Airport</td>
+                            <td>RJA</td>
+                            <td>50 km</td>
+                            <td>1 hr</td>
+                        </tr>
+                        <tr>
+                            <td>Vijayawada International</td>
+                            <td>VGA</td>
+                            <td>95 km</td>
+                            <td>2 hrs</td>
+                        </tr>
+                        <tr>
+                            <td>Visakhapatnam International</td>
+                            <td>VTZ</td>
+                            <td>240 km</td>
+                            <td>4.5 hrs</td>
+                        </tr>
+                        <tr>
+                            <td>Hyderabad (Rajiv Gandhi)</td>
+                            <td>HYD</td>
+                            <td>380 km</td>
+                            <td>6 hrs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- BY TRAIN -->
+            <div id="train" class="transport-content">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                        <circle cx="7" cy="15" r="2" />
+                        <circle cx="17" cy="15" r="2" />
+                    </svg>
+                    Arriving by Train
+                </h3>
+                <p>Tadepalligudem (TDD) is a major railway station on the Howrah-Chennai main line. It is well connected
+                    to major cities like Hyderabad, Vijayawada, Visakhapatnam, Chennai, and Bangalore. The station is
+                    only 4km from the college campus.</p>
+
+                <div class="info-card">
+                    <h4>🚂 Station Information</h4>
+                    <p><strong>Station Code:</strong> TDD<br><strong>Distance to Campus:</strong> 4 km (10 mins by
+                        Auto/Cab)</p>
+                </div>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Train Name</th>
+                            <th>Number</th>
+                            <th>Origin</th>
+                            <th>Arrival</th>
+                            <th>Frequency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Godavari Express</td>
+                            <td>12728</td>
+                            <td>Hyderabad</td>
+                            <td>02:15 AM</td>
+                            <td>Daily</td>
+                        </tr>
+                        <tr>
+                            <td>Janmabhoomi Express</td>
+                            <td>12806</td>
+                            <td>Secunderabad</td>
+                            <td>01:30 PM</td>
+                            <td>Daily</td>
+                        </tr>
+                        <tr>
+                            <td>Coromandel Express</td>
+                            <td>12842</td>
+                            <td>Chennai</td>
+                            <td>03:45 PM</td>
+                            <td>Daily</td>
+                        </tr>
+                        <tr>
+                            <td>Ratnachal Express</td>
+                            <td>12718</td>
+                            <td>Visakhapatnam</td>
+                            <td>05:20 PM</td>
+                            <td>Daily</td>
+                        </tr>
+                        <tr>
+                            <td>Konark Express</td>
+                            <td>11020</td>
+                            <td>Bhubaneswar</td>
+                            <td>06:10 AM</td>
+                            <td>Daily</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- BY ROAD -->
+            <div id="road" class="transport-content">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    Arriving by Road
+                </h3>
+                <p>The college is located on the National Highway 16 (NH-16), connecting Kolkata and Chennai. APSRTC
+                    buses run frequently from all major towns in Andhra Pradesh and Telangana.</p>
+
+                <div class="info-card">
+                    <h4>🚌 APSRTC Bus Services</h4>
+                    <p>Regular bus services are available from:</p>
+                    <ul style="list-style: disc; padding-left: 25px; margin-top: 10px; color: var(--text-light);">
+                        <li><strong>Vijayawada:</strong> Every 15 mins (Non-stop/Express)</li>
+                        <li><strong>Eluru:</strong> Every 10 mins</li>
+                        <li><strong>Rajahmundry:</strong> Every 20 mins</li>
+                        <li><strong>Hyderabad:</strong> Overnight sleeper buses available</li>
+                    </ul>
+                </div>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Distance</th>
+                            <th>Travel Time</th>
+                            <th>Route</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Eluru</td>
+                            <td>45 km</td>
+                            <td>50 mins</td>
+                            <td>NH-16</td>
+                        </tr>
+                        <tr>
+                            <td>Vijayawada</td>
+                            <td>110 km</td>
+                            <td>2 hrs</td>
+                            <td>NH-16</td>
+                        </tr>
+                        <tr>
+                            <td>Rajahmundry</td>
+                            <td>50 km</td>
+                            <td>1 hr</td>
+                            <td>NH-16</td>
+                        </tr>
+                        <tr>
+                            <td>Hyderabad</td>
+                            <td>380 km</td>
+                            <td>6 hrs</td>
+                            <td>NH-65 + NH-16</td>
+                        </tr>
+                        <tr>
+                            <td>Chennai</td>
+                            <td>520 km</td>
+                            <td>8 hrs</td>
+                            <td>NH-16</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- LOCAL TRANSPORT -->
+            <div id="local" class="transport-content">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                    Local Transport Guide
+                </h3>
+                <p>Getting around Tadepalligudem is convenient with multiple options available.</p>
+
+                <div class="local-transport-grid">
+                    <div class="local-card">
+                        <span class="local-icon">🛺</span>
+                        <h4>Auto Rickshaw</h4>
+                        <p>Readily available at Railway Station and Bus Stand</p>
+                        <div class="fare-badge">₹150 - ₹200 to Campus</div>
+                    </div>
+                    <div class="local-card">
+                        <span class="local-icon">🚌</span>
+                        <h4>College Shuttle</h4>
+                        <p>Complimentary shuttle for delegates from designated hotels</p>
+                        <div class="fare-badge">Free for Delegates</div>
+                    </div>
+                    <div class="local-card">
+                        <span class="local-icon">🚕</span>
+                        <h4>Call Taxi / Cab</h4>
+                        <p>Private cabs available for booking via reception</p>
+                        <div class="fare-badge">₹400 - ₹600 approx</div>
+                    </div>
+                    <div class="local-card">
+                        <span class="local-icon">🚗</span>
+                        <h4>Self-Drive Rental</h4>
+                        <p>Available from Rajahmundry and Vijayawada airports</p>
+                        <div class="fare-badge">₹1500/day onwards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FARE ESTIMATOR ============ -->
+
+
+    <!-- ============ ACCOMMODATION ============ -->
+    <section id="hotels" class="section-padding accommodation-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Accommodation</h2>
+                <p class="section-subtitle">We have partnered with local hotels to provide discounted rates for
+                    conference delegates. Use code <strong class="text-red">SITE2026</strong> when booking.</p>
+            </div>
+
+            <div class="hotel-grid">
+                <div class="hotel-card">
+                    <div class="hotel-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                        <div class="hotel-rating">4.5 ★</div>
+                    </div>
+                    <div class="hotel-info">
+                        <h3 class="hotel-name">Hotel S.V. Grand</h3>
+                        <div class="hotel-meta">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            2.5 km from Venue
+                        </div>
+                        <div class="amenities">
+                            <span class="amenity">WiFi</span>
+                            <span class="amenity">AC</span>
+                            <span class="amenity">Breakfast</span>
+                        </div>
+                        <p class="hotel-desc">Premium rooms with city view. Complimentary shuttle service to conference
+                            venue available for delegates.</p>
+                        <a href="#" class="book-btn">Book Now (₹2,500/night)</a>
+                    </div>
+                </div>
+
+                <div class="hotel-card">
+                    <div class="hotel-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                        <div class="hotel-rating">4.0 ★</div>
+                    </div>
+                    <div class="hotel-info">
+                        <h3 class="hotel-name">Jayalakshmi Residency</h3>
+                        <div class="hotel-meta">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            3.0 km from Venue
+                        </div>
+                        <div class="amenities">
+                            <span class="amenity">WiFi</span>
+                            <span class="amenity">Parking</span>
+                        </div>
+                        <p class="hotel-desc">Budget-friendly option near the railway station. Clean and comfortable
+                            rooms with excellent service.</p>
+                        <a href="#" class="book-btn">Book Now (₹1,500/night)</a>
+                    </div>
+                </div>
+
+                <div class="hotel-card">
+                    <div class="hotel-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1596436889106-be35e843f974?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                        <div class="hotel-rating">4.8 ★</div>
+                    </div>
+                    <div class="hotel-info">
+                        <h3 class="hotel-name">Shelton Rajamahendri (5★)</h3>
+                        <div class="hotel-meta">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            45 km (Rajahmundry)
+                        </div>
+                        <div class="amenities">
+                            <span class="amenity">Pool</span>
+                            <span class="amenity">Spa</span>
+                            <span class="amenity">Luxury</span>
+                        </div>
+                        <p class="hotel-desc">For delegates preferring luxury. Located in Rajahmundry city, approx. 1
+                            hour drive to the venue.</p>
+                        <a href="#" class="book-btn">Book Now (₹5,500/night)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Taxi CTA
+            <div class="cta-box mt-40">
+                <div>
+                    <h3>🚕 Need a Cab?</h3>
+                    <p>Book a safe and reliable taxi from Airport or Railway Station to the venue.</p>
+                </div>
+                <a href="tel:+919876543210" class="cta-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    Call Taxi: +91 98765 43210
+                </a>
+            </div> -->
+
+
+        </div>
+    </section>
+
+    <!-- ============ ATTRACTIONS ============ -->
+    <section id="attractions" class="section-padding attractions-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nearby Attractions</h2>
+                <p class="section-subtitle">Explore the cultural and natural heritage around Tadepalligudem during your
+                    visit.</p>
+            </div>
+
+            <div class="attraction-card">
+                <img src="data:image/jpeg;base64,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"
+                    alt="Dwaraka Tirumala" class="attraction-img">
+                <div class="attraction-info">
+                    <h3>Dwaraka Tirumala (Chinna Tirupati)</h3>
+                    <p>Located 40km from Tadepalligudem, this is a famous ancient holy shrine of Lord Venkateswara. It
+                        is often referred to as 'Chinna Tirupati' (Mini Tirupati) and attracts devotees from all over
+                        South India. A perfect place for spiritual rejuvenation before or after the conference.</p>
+
+                </div>
+            </div>
+
+            <div class="attraction-card">
+                <img src="data:image/jpeg;base64,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"
+                    alt="Papikondalu" class="attraction-img">
+                <div class="attraction-info">
+                    <h3>Papikondalu Hill Range</h3>
+                    <p>A scenic gorge on the Godavari river, located about 80km away. Famous for boat cruises through
+                        the winding river with majestic hills on either side. Ideal for a one-day nature trip
+                        post-conference. Overnight houseboat stays are also available.</p>
+
+                </div>
+            </div>
+
+            <div class="attraction-card">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxASEBUQEBEWFhUVFxUWFRUVFRYVFRUVFhUWFhUVFRYYHSggGBolHRUVITEiJSkrLi4uFx8zODMtNygtLysBCgoKDg0OFxAQGy4lHyItLS0tLS0yLS0tLS0tLzAtLS0tLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0vLf/AABEIAKgBKwMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAABAgADBAUGB//EAEAQAAEDAgMDCgMGBQMFAQAAAAEAAhEDIQQSMUFRYQUGEyJxgZGhsfAywdEjQlJikuEUFVOC8TNDciSio7LSFv/EABkBAQEBAQEBAAAAAAAAAAAAAAABAgMEBf/EAC0RAQACAQIEBQMDBQAAAAAAAAABEQIDIRITQVEiYZGx8DGBodHh8QQUQnHB/9oADAMBAAIRAxEAPwDuBOEoTBfZfNMEwShEKBgiEAmCioioiEERURQRSFEUERUUQRFBFBFFFEEUUUQRBFRAIQTIIUVBOggVBMgqFQTIFApQKJQKIUhKUxQKoQhKQnKUoKyqnaq4qp2qqUvCYJQmCypwiEoTBRTIhBEIohMlCKAooIoCigiFBEVFEsRRFRBFFFEEUUUQRRRRBEEUFREFEEEQRQQBBFBAClKKCAFKUxSlEKUpTFKVQpVTtVaVU7VLFwTBKEQoHCYJAmCKYJglCKgYIhAIhS1EJkqKAhFBEICigoi0KKCiAqIKICogogKiCiCIIoIiIIoIAgiglhUCmSlWwECigUASlEpSqgFKUSgUClVO1VpVTtUFoTBICmBUDBOFWE4UU4RShFAwTBKEVFoyiCKAooKIpkUqIUBRSooCohKiAqIKICogpKCKIKSqIgVEEEUKEqJYiUopSiIgVEpVEKUpkpSyilKUxSlVClVu1RdUbvHiEkzcXG8aJMlLAUwVYKcFRDhMCkBRBUVYCmBVYKYFFOCikBTBRTJkiKB1AUsooGRSypKBlEJQlQOokDgnyO/CfApM0tIoq31WgSSB2kD1KyV+V8Oz4qrAdImbnQWnVZnUxjqsYZdm6VFxX86cEBJxDDqeqZJAsY33ss7ueOEmGue64actJxEnSDtHFTmYrwS9EgvKu570LRRq6um0aX2ju+iwVOfen2Jg3MuZIjZAdqYFvzHbpJ1YWNOXuZQXz/8A/e1iAehpt60Hrl0AxAjKTmMm3Ed2J/PPFkGDSEOGYim4kA6CwAm5Nj3JzfI5fm+lGoN48VM1pgxpod+X1XynGc48eelJrPbkvAZOWbAdZ0gmwgDYq3V8W95DnvBbTL3j7Nga2AC9zmhwEiXW+YCxzcukfPRrl4931J2OpixeO8ga22kbkn8xpfiA02z2/DNxqvlYwWJc2nDqpD3dQOquzPvBsG9VoMDXUiNqsw/N+pVxBaQAYh1Q9I5olpDw0BwJIMtIOsGLLPM1J7NcGHm+i1ecGHaCXVGiN5InxaNl1gxfO7DNiKrTN/u6bIh114ehyA44cvyNEOEUshLjYl0uLoLssFtoOYSVf/IQHUy14IqNYTUaym0Nc9xFPKcsZXwGgkEyRKk55z/ktYR0ejrc+cN8AqQ7vABBkiS2DMRr4rn4nnyzNGZ1rgCIdG49WZWOjyJ16wL6oEVnUsvVe9rCWmQ0dZzHZSRtDrLI3kQR0bSekJaA+XAXJIBYDBmHEyDZjuCxlOU7cUtRX14YbcTz6cWktpv3BpDhIO0OzEE7O9U1Od+KJBbQIcbw4NbB0sTTGyNv1WbFYNhfRom1TM9rxcNc0OaHZp0JcXiY0bvutzeRcO2oHGmBSDHEjKCHua4A6/ezPytnSDMqRjf1n8yvHMfSPxDm4nnXjZythjTMy/LcwXjM2oBqVWeXsYfhqDLs6822Xz3Xaocita4Ash73BjWNDQGZw15eLQ0MYHEtIvEXm/U5M5CptpBrmwQXCOq62Yxci9oVjRxtJ1cnpgUwKwfxzdgcbTps02lA8oHZTdpNyB817Zyh5Ixl0QU0rlnHvgEUxfe7TtgWVb8fVmIYOJzQey91idSG40pdkFMCuCcVXJINRrI2ZAZ7JVDatfNFSs5vZl79NE5kLy5enBRc6Nbdq8k+nUJGerUyTrn2bDHGyDuTmPPVeTAuXOJuTAiOzzU5hy5eqOMpjWo0drmj1KpfyvhxrWZ3HN/6yvN4TB0BaqBPDNESYTV+TmkFzAwC+W0mw2zxWZ1FjTdp3OXCj/cJ7GO+YCoq87MOPhD3f2tb5ly59DKyG5G8baSZ8YRqU2Vi4gEBoygANve8ztGqk6ixg0HnbqRh3GJ1cB4kA71SOdVc2bhdd7n7+AHFTD02MaXOkwZGgJExu2gDwCtq8pUosNg2iYtt/wCLh4ncs8drwUxVudON0FFrdI6mafh/EfzD9QWStyxyg9shwA3taxs6HbM7P1cQuzhsrw6o7NMvAiIFqmaD2yf7G7gqHYOnJOUgF5gToMzYA7MpA/4N3rM5x1a4J6MNJ3KVQA/xD7xEOGn9o0g+QT0+RMU8AvrPvBILn2zNOsOgmAO8q0YlrJ+ABoNpBENZQ46dRo7HLYOWLwC3Y0Tlmc3QtJ39bOfAbUuCnm8fySW1C1ziXQCSY2CIBeTeXMbfee0V4HkZr3OFvs3BhgN+JrQcoLTN3ODe7Vd97hVNRwIh2eDqQ1/UaTNxlIB/vTUQadSo8Ntn6WADbo2hj2kAQSLR3nis81rluNR5HuBm/pzBdo58PIExZ3ViI4A3XSp82aJkPMky0gkm4M1RO2BYd61spHMGkGwp07AxNN5r0zppfxCqbjo+06J9hWr5Qx89d2U0/h11O+YSM4lJwmGVvN/ChsFrjAZTcSPibUJFJ07CLCd4Vh5HowW5TLnCg4wP9VrA5tYgHq627G95fWs85axgUNGPkyQWwIvBIcdxD1TiHlpqdSr1arRZtT43NLSZiMgGYZtBlYdinF5tUswvN8H4WAMcA0S34ag6L7QjaIbOy9PXrWy4fBVGdM91Ik0adMuAj7SuWNb1LfAMknttouthcS8UxUaKjm0g7qsaTmzOLQWiJJGXSNCTcEJGYetTNVuV7w0Nddjj0jOq74ohz83Sy0X+0NtFMc9oMsN5UUuRiKgY9uZtKn01S9q1d3SBovsbmeb72J8LyM9zaLKgE1ia2KdIkiWubRG9stpt3Qx29aKVV5MZXy+n1XOaQMuWCKhPw1PgMHa0phjyA2oKdSMxY1uXrMlzTLgTZnxXGyFY1Mfn+ycJM+qQwu6Roc6oadKRIYA4guPHN1v0hbX06eR7WuvSDbuJ6pa0nrO2yCZP5iuDWrlrq4NAublIaIEVCBDspzfelo0/25UZj6radNpovfmP2kGmCckkF0vtmcQTfY4bVYzxv52ScMq+d3ZcxgdRqNdGYBml3ANLmHtAzjseeCoo4WjOIw7jNOC4jTIx8lzc24PzuG6eAWJmJqdLBYYpACm/NTykNYS6OtMudlH9oWB1at0LnimQ92QPb0lIOd1nOc4OzaAEATuA0VjONvsk4z7uhXrTg21S/wC1pvllSAC6oJa8kbi3pA7hmO5crk6q6pWoVACPtspbqAwhzi5x35mtA7HbyqcXVeMg6MdGGvdk6WnFMkvyiAesfhNvwgbStvJlVjTkw7A85x17DIGucBLZktBeTroTZcrjiiY6OleGYnq5fOPq4+k/M8Zm1HPcbtBm2Rs6taKcgROUbyvQYkNFbDSBk6MgxpmD6eRvEEgjiYCxuwBfUyGhl6E1HtrZ2uFYvJL5/DmJmLwq6GEqmg9rqRblzMpsc9ktaTmpuY4G5YQ0DT4Qd5Woy/4k4x7u3hHf9XVzRfLk7Axhd33HdC5lCtXIJY0vaXPLX9UAtL3FscIgDgAslXp3UWOdS+1L5c0PYC3qBji0l4kOaCImRn/KuvybXq9E3OxjHdaWGozq9YwLO3QtzlGcVLHDOM7N4wY/rt1n4DrBE/D2JBgDaMRTsSfgPd9xVh3FNmXp5Xn7fo88a3l7/qD8BUykDEUpJOrbETafs7WlDEYJ+YRWplozWgSPw/cCeeKIKzyfP8Q1z/L3ZKuGq9ZzqtMwxuX4M2bbHVCzUKrnVSKj5GRpEsHxmJ0bb0XVUhajTr+EnVv+XNeahqUmCoC17ngtOSMrSQATFtNq1Yug9jnCm8Mhj3HKWZTlbO0GexXmmNwSuoNP3R4LPLnbePRebG+0+peQMPVq0G1HgPJzXJaDAcQNI3Ln8rmsyjUfSrPaGua0AZQLiSNJXRZhmCwAHZZJVwbHAhwkG5uVJ08ridvQjVxqY39XRwmDqGmxzqeYljSSQZJyidNFyn0K3TOa1z2Qx7iGwD1YiQQdJ81oZTgQCRHEqt9CTOZ0wRrsOqmWnltVLjqY7/VRzRNerTqOqF9WHloLpP3Wujq9q7rqDst6R/7pXGwOGNEFtNxAJk7bwBt7AtX8RW/qFajGY7Mznj5smNwpbUcW1KrfsnuOVwjM3LBIIMAS7xWTmbiKjm1Omc+pleIzEmJbJ9dFtqdKS45/iY5hi1na6diz8jsq4YObTfZxBOouBGw8Fy0sM4iOKHTVzwmZ4XoBWZ+AhR9WmREEbtnzXP8A5niNZ83fVN/OcTvP6yuteUfPs5XHefn3c84P7e9SoM1MudDxd4yAG4ja7xXF5mVKjsRUFeo54yyQ4iM2Zug+7tEC19N3a/jarahe1sSxzLO3xw/KuXzb6bDVXPizm5TEHaCNRbRebRxzjHGMoenWzwnKeGXshUpfgb4NU6Sl/Tb+lqwfz9+0H9LT8kRzhdu/8bPovV9o9f2ea47z6fu203UT9xv6R9Fk5Ro0zkIAbL2NMADqk9nH3ZA8v3kxxmk2/kslTlwOdD2tDQ4EFrACTe8gSNi5a8zy8tunzo66PDzI36/Orm47ktgGKcypUDmNmmGuEZi11yAL3DVweY1AHFvY4ktLHOcDHWOZont6zvEr0WJ5Sb0eJAg52iLdaYcOqYsbri8zcQKeJc90f6bmjM02Jew7RwK46PFw4X2ddaceLKu76B9kNGN/SAjNPc3wCxjlan+Gn770f5nTP3Kfn8ivZv2eXw92zOz8vgFA9nDyWX+ZM/pU933v/pI3GUx/tN1n4n/NyeLt7Hh7+7d0rd48kDWG8eKwuxVP+mB3u+qU4pn4B4n6p4u3svg7+5OV8KyqWT+NodBglt9vCT4rylDkCk7GQS5rOvOR+R0hzsswOC9YazXQA28gyA46d5XPaGsrgka5thHH5r52rll/c4xXZ79PHGf6eZvu+Y8sUnCrUOd7sj3tYXOLiGte4N6xuvqnNqi1uGpPdBe+nTzE6/DNztNySf2XzXl5rc9TIZl9QmxsSSSPEx3L6VyViaIoUgWG1Ng1H4R+VenRmbmYh5tWIqLl1A8aCPe5BzlhOIpxAnvgn0VL6zCV6Ly7S41j3XApgqgUwK6OKyUVXmRDlFWSjKrlEFLU8olyrlEqWHBQc5KCgYUtaWgpC66CV3cpanaQiSqmabESUso2YKsFDYT80rff7LNrS2EcqrRSylTqZvdV06bpMoF19fUKrDP16079D6LPE1TT0aXo0WuO9HMVbSlXR8NqorNFu1aC4+x6Kmob6bVjKdmsY3Z8nVKowLAS6Lrbnser5QqsM/U5I4j52Uj6Rus/WV5oCTbYk6BtreZVufUwoDMe4WkUdAN3gSmNERoR77UzkTolpQCmM0SfEqMbY3P6igWybfv2JLxY+X0WrSoLXmG3dqPvFc/CVHOriXOOti4lasW90C1u/VYcA6Ks3sDp74LyZRetGT1YzWjMPN8o0zneA4gFzjAJA1Oxe55MpDomAyeo3bwC8li2TUN9Z4TJO9eqwdUBouLNA13BdtGamXHUi4htNNvspDTGz1SMrA3RbUEL0ccuPBDSHJg5Uh3FHMujmvDkcypDkQ5RV0qByrDkQ5BaHI5lVKMqKsDlC5V5kVC1gclPvX6pQVCpS2Zptt80xKraUSeHmlFoeHzSt7/A/VQnh53SzwUpbOCj70KX3qhHsKUWpc25/f6pabD7n6n5K0tPskpA38vgffos01Yn3Y281Mu734I9w8ffop69/wDhWi1T549yoqEki207507Voyn639hU1LC4HAOcJ8ljKGsZ3VkHKde+fqqcICARFp0DT/grQ5py3b3b+Gqrw9IQbAST7ibKUtrDUiQJ7xHgi2xmY8EA0AEepJ8yqy52YRkiNuvcULWOdtJ9EZt7Cpz6XHiYQfWIGhN9QLbEF4df3qq+kAB232b+NktSsAfSAT6KkV9dkdpMeCqK8aZAnTjx7lhwMZ9lp4SdAFuxUwPrv3LHhoDr7jJAu3iNi4Tj47doy8FOdWDxWmSSdZ1EdvFeiw7rQdYE7526Lg1GsFSQ/LOtiZHfYLqUn8LQIM3I3rphs55NgI0M+YnzUJ4FYmVbExOts0lw7SrG1d2nb9F0tinTDkwes4qJukXpedoDk2dZw8pg9RV+ZNmWcPTB5QXApw9Z85UFUqK0EoZ1SHlRBoDkQSqQVHPUF2ZElZ8ydrkDlyBPE+/VL7soD7/dRbEmNR3qE7f8KAcErghaHf7+gSsy6yfGw8EHOG30mJTtqHT12qUtq2lpNvEC3jomMb++5PnojnkwmJ2R5pRap5G3uk/JKabZuD4R5p32Owd0pM0zqe2QPBSYWJBwbFx5n5KptJp0G2/u6vz2gwOAuPBUioDoJ4kEBSoLlHEAQR9T4KoRMCb9um45grbi/oI85SsxEkgg94MeOilNWpFMDZPCZ7SbXRe4ZdB2H/CtLju9+CXNugdn+FKLI1zjoB4fMJCDtA12CD5FWExJJPr6LNUrOmzjG7IZ8bQhZcSTlj19b6rJQzZrkdkRPCVteHZZv2GBHisrYc7S+kxYd8hYmN24nZkIeH/6ZJ2HYBv1+S20qZOru0a34b1n6B+bqxPEAjtF1reHQDOmsRfuViEmSPokbTtgAm3mEjaQIHxeP7pTN5c3wFvEItcdgHh9FdkdAVPf+U4eoovQ4GFREVeKiiBhUR6X3KKiAGp7kIh90VFARUumD/fsqKIompF/n9EGv96eaiiBm1OKOdFRADU4+hRzbY8bKKIIKimfioogBJ2edkkjbE+KiigfpES6yiiBS4bvJKXt3eqiiCGoPf7qGoIuoopa0hePYVfS+7fMoqJa0VzxsN+wJGkDaEFFLWkm/wASD624+aiik5VBEKnVbTE+J9JSmsdsjds9QookTNWvVnfiKkgW8I+ajhUJ+7xvPhf5IKJRZXj8w7gfVU5vzeR+qiiyr//Z"
+                    alt="Godavari River" class="attraction-img">
+                <div class="attraction-info">
+                    <h3>Godavari River Front, Rajahmundry</h3>
+                    <p>Experience the serene beauty of the Godavari river at the famous Pushkar Ghat in Rajahmundry. The
+                        river front is especially vibrant during sunset. Just 50km from the venue, it offers a peaceful
+                        retreat with temples, boat rides, and local cuisine.</p>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- ============ MEMORIES (GALLERY & TIMELINE) ============ -->
+    <section id="memories" class="section-padding" style="background: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Memories</h2>
+                <p class="section-subtitle">A glimpse of SASI-ITE 2025, where researchers, academicians, and industry
+                    experts collaborate on AI for sustainability, innovation, and green technology.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-container mb-40">
+                <div class="filter-group">
+                    <span class="filter-label">Year:</span>
+                    <button class="filter-btn active" data-filter="year" data-value="all">All</button>
+                    <button class="filter-btn" data-filter="year" data-value="2025">2025</button>
+                    <button class="filter-btn" data-filter="year" data-value="2023">2023</button>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Type:</span>
+                    <button class="filter-btn active" data-filter="cat" data-value="all">All</button>
+                    <button class="filter-btn" data-filter="cat" data-value="conference">Conference</button>
+                    <button class="filter-btn" data-filter="cat" data-value="national-conference">National
+                        Conference</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-item" data-year="2023" data-cat="national-conference">
+                    <img src="memory6.jpeg" alt="FIRST-2023 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">National Conference</span>
+                        <div class="gallery-title">FIRST-2023 Conference</div>
+                        <div class="gallery-year">2023 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2023" data-cat="national-conference">
+                    <img src="memory8.jpeg" alt="FIRST-2023 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">National Conference</span>
+                        <div class="gallery-title">FIRST-2023 Conference</div>
+                        <div class="gallery-year">2023 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory1.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory2.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory3.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory4.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory5.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+
+                <div class="no-results" id="no-results"
+                    style="display:none; grid-column:1/-1; text-align:center; padding:50px;">
+                    <h3>No photos found for this combination.</h3>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- Lightbox Markup -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Zoomed Image" class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+
+    </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SITE-EMAR 2026</h2>
+                    <p class="footer-text">
+                        International Conference on Smart Innovative Techniques and Emerging Trends in Engineering
+                        Materials for Advanced Research.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/school/sasi-institute-of-technology-engineering/"
+                            class="social-icon" title="LinkedIn" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/sasiengineeringcollege" class="social-icon" title="Instagram"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/sasi.ac.in" class="social-icon" title="Facebook"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SasiInstituteofTechnology" class="social-icon" title="YouTube"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="schedule.html">Program Schedule</a></li>
+                        <li><a href="speakers.html">Keynote Speakers</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                        <li><a href="awards.html">Awards</a></li>
+                        <li><a href="organizing-committee.html">Committee</a></li>
+                        <li><a href="memories.html">Memories</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Sasi Institute of Technology & Engineering, Tadepalligudem - 534101
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            +91 9440576225
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            drsrinivas@sasi.ac.in
+                            convener.siteemar2026@sasi.ac.in
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ============ JAVASCRIPT ============ -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            const bars = menuBtn.querySelectorAll('.bar');
+            if (navLinks.classList.contains('open')) {
+                bars[0].style.transform = "rotate(-45deg) translate(-5px, 6px)";
+                bars[1].style.opacity = "0";
+                bars[2].style.transform = "rotate(45deg) translate(-5px, -6px)";
+            } else {
+                bars[0].style.transform = "none";
+                bars[1].style.opacity = "1";
+                bars[2].style.transform = "none";
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    const bars = menuBtn.querySelectorAll('.bar');
+                    bars[0].style.transform = "none";
+                    bars[1].style.opacity = "1";
+                    bars[2].style.transform = "none";
+                }
+            }
+        });
+
+        // Close menu when clicking a nav item
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    const bars = menuBtn.querySelectorAll('.bar');
+                    bars[0].style.transform = "none";
+                    bars[1].style.opacity = "1";
+                    bars[2].style.transform = "none";
+                }
+            });
+        });
+
+        // 2. Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 3. Transport Tab Switching
+        function switchTransport(tabId, clickedBtn) {
+            document.querySelectorAll('.transport-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelectorAll('.transport-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            clickedBtn.classList.add('active');
+        }
+
+        // 4. Quick Nav Active State
+        const quickNavBtns = document.querySelectorAll('.quick-nav-btn');
+        quickNavBtns.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                quickNavBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 5. Fare Calculator Logic
+        const fareData = {
+            'hyd': { 'train_sl': 350, 'train_ac': 900, 'bus': 600, 'flight': 3500, 'cab': 6000 },
+            'vja': { 'train_sl': 100, 'train_ac': 400, 'bus': 150, 'flight': 0, 'cab': 2500 },
+            'viz': { 'train_sl': 200, 'train_ac': 600, 'bus': 400, 'flight': 2500, 'cab': 4500 },
+            'che': { 'train_sl': 450, 'train_ac': 1200, 'bus': 900, 'flight': 4500, 'cab': 9000 },
+            'ban': { 'train_sl': 500, 'train_ac': 1400, 'bus': 1200, 'flight': 4000, 'cab': 11000 }
+        };
+
+        function calculateFare(e) {
+            e.preventDefault();
+            const origin = document.getElementById('origin').value;
+            const mode = document.getElementById('mode').value;
+
+            const cost = fareData[origin][mode];
+            const resultBox = document.getElementById('resultBox');
+            const priceDisplay = document.getElementById('priceDisplay');
+
+            resultBox.classList.add('show');
+
+            if (cost === 0) {
+                priceDisplay.innerText = "N/A (No Direct)";
+                priceDisplay.style.fontSize = "1.5rem";
+            } else {
+                priceDisplay.innerText = "₹" + cost.toLocaleString();
+                priceDisplay.style.fontSize = "2.5rem";
+            }
+        }
+
+        // 6. Scroll Animation Observer
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.hotel-card, .attraction-card, .stat-box, .local-card, .info-card').forEach((el, index) => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+            animateOnScroll.observe(el);
+        });
+
+        // 7. Smooth Scroll for Quick Nav
+        document.querySelectorAll('.quick-nav-btn').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    const headerOffset = 150;
+                    const elementPosition = targetEl.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 8. Gallery Item Hover Effect Enhancement
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.querySelector('.gallery-caption').style.transform = 'translateY(0)';
+            });
+            item.addEventListener('mouseleave', function () {
+                this.querySelector('.gallery-caption').style.transform = 'translateY(100%)';
+            });
+        });
+
+        // 9. Timeline Animation
+        const timelineCards = document.querySelectorAll('.timeline-card');
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        timelineCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            timelineObserver.observe(card);
+        });
+
+        // 10. Gallery Filtering Logic
+        const yearBtns = document.querySelectorAll('[data-filter="year"]');
+        const catBtns = document.querySelectorAll('[data-filter="cat"]');
+        const items = document.querySelectorAll('.gallery-item');
+        const noResults = document.getElementById('no-results');
+
+        let activeYear = 'all';
+        let activeCat = 'all';
+
+        function filterItems() {
+            let hasResults = false;
+            items.forEach(item => {
+                const itemYear = item.getAttribute('data-year');
+                const itemCat = item.getAttribute('data-cat');
+                const matchYear = activeYear === 'all' || activeYear === itemYear;
+                const matchCat = activeCat === 'all' || activeCat === itemCat;
+                if (matchYear && matchCat) {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            if (noResults) noResults.style.display = hasResults ? 'none' : 'block';
+        }
+
+        yearBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                yearBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeYear = btn.getAttribute('data-value');
+                filterItems();
+            });
+        });
+
+        catBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeCat = btn.getAttribute('data-value');
+                filterItems();
+            });
+        });
+
+        // 11. Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCap = document.getElementById('lightbox-caption');
+        const closeBtn = document.getElementById('lightbox-close');
+
+        if (lightbox) {
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    const title = item.querySelector('.gallery-title') ? item.querySelector('.gallery-title').innerText : '';
+                    lightboxImg.src = img.src;
+                    lightboxCap.innerText = title;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            };
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

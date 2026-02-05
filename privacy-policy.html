@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Privacy Policy | SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFCDD2;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F5F5F5;
+            --text-dark: #212121;
+            --text-gray: #616161;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::before {
+            width: 100%;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            min-height: 40vh;
+            background: linear-gradient(rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 0.9)),
+                url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-wrapper h2 {
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-wrapper p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .content-wrapper ul {
+            list-style: disc;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper ul li {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .last-updated {
+            background: var(--light-gray);
+            padding: 15px 20px;
+            border-left: 4px solid var(--primary-red);
+            margin-bottom: 30px;
+            font-style: italic;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #1a1a1a;
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #999;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            max-width: 300px;
+            font-size: 0.95rem;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-red);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-img {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 100px;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                gap: 20px;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="main-header">
+        <div class="navbar container">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI Logo" class="logo-img" onerror="this.style.display='none';">
+                SITE-EMAR <span>2026</span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="organizing-committee.html">Committee</a></li>
+                <li class="nav-item"><a href="registration.html">Registration</a></li>
+                <li class="nav-item"><a href="schedule.html">Schedule</a></li>
+                <li class="nav-item"><a href="speakers.html">Speakers</a></li>
+                <li class="nav-item"><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-item"><a href="venue.html">Venue</a></li>
+                <li class="nav-item"><a href="awards.html">Awards</a></li>
+                <li class="nav-item"><a href="contact-us.html">Contact</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us</p>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="last-updated">
+                    <strong>Last Updated:</strong> January 30, 2026
+                </div>
+
+                <p>
+                    Sasi Institute of Technology & Engineering ("we," "us," or "our") is committed to protecting the
+                    privacy and security of your personal information. This Privacy Policy describes how we collect,
+                    use, and protect information when you visit our SITE-EMAR 2026 conference website and register for
+                    the event.
+                </p>
+
+                <h2>1. Information We Collect</h2>
+
+                <h3>Personal Information</h3>
+                <p>When you register for SITE-EMAR 2026, we may collect the following personal information:</p>
+                <ul>
+                    <li>Full name and title</li>
+                    <li>Email address and phone number</li>
+                    <li>Institutional affiliation and designation</li>
+                    <li>Professional credentials and qualifications</li>
+                    <li>Paper submission details (if applicable)</li>
+                    <li>Dietary preferences and accessibility requirements</li>
+                    <li>Payment information for registration fees</li>
+                </ul>
+
+                <h3>Automatically Collected Information</h3>
+                <p>We may automatically collect certain technical information when you visit our website:</p>
+                <ul>
+                    <li>IP address and browser type</li>
+                    <li>Device information and operating system</li>
+                    <li>Pages visited and time spent on our website</li>
+                    <li>Referring website addresses</li>
+                    <li>Cookies and similar tracking technologies</li>
+                </ul>
+
+                <h2>2. How We Use Your Information</h2>
+                <p>We use the collected information for the following purposes:</p>
+                <ul>
+                    <li>Processing conference registrations and managing attendee records</li>
+                    <li>Communicating important conference updates, schedule changes, and announcements</li>
+                    <li>Facilitating paper submissions, reviews, and publication processes</li>
+                    <li>Arranging accommodation, catering, and special accessibility requirements</li>
+                    <li>Issuing certificates of participation and attendance</li>
+                    <li>Conducting surveys and gathering feedback to improve future events</li>
+                    <li>Complying with legal and regulatory obligations</li>
+                    <li>Preventing fraud and ensuring website security</li>
+                </ul>
+
+                <h2>3. Information Sharing and Disclosure</h2>
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share your
+                    information in the following limited circumstances:</p>
+                <ul>
+                    <li><strong>Conference Partners:</strong> With keynote speakers, session chairs, and organizing
+                        committee members for conference coordination</li>
+                    <li><strong>Service Providers:</strong> With trusted third-party vendors who assist with payment
+                        processing, email communications, and event management</li>
+                    <li><strong>Publication Partners:</strong> With journal publishers and indexing services for
+                        accepted papers (with author consent)</li>
+                    <li><strong>Legal Requirements:</strong> When required by law, court order, or government
+                        regulations</li>
+                    <li><strong>Institutional Requirements:</strong> With your affiliated institution for verification
+                        purposes (with consent)</li>
+                </ul>
+
+                <h2>4. Data Security</h2>
+                <p>
+                    We implement appropriate technical and organizational security measures to protect your personal
+                    information against unauthorized access, alteration, disclosure, or destruction. These measures
+                    include:
+                </p>
+                <ul>
+                    <li>Secure Socket Layer (SSL) encryption for data transmission</li>
+                    <li>Regular security assessments and vulnerability testing</li>
+                    <li>Restricted access to personal information on a need-to-know basis</li>
+                    <li>Employee training on data protection and privacy practices</li>
+                    <li>Secure backup systems and disaster recovery procedures</li>
+                </ul>
+
+                <h2>5. Your Rights and Choices</h2>
+                <p>You have the following rights regarding your personal information:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
+                    <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                    <li><strong>Deletion:</strong> Request deletion of your personal data (subject to legal
+                        requirements)</li>
+                    <li><strong>Opt-Out:</strong> Unsubscribe from promotional emails at any time</li>
+                    <li><strong>Data Portability:</strong> Request your data in a structured, commonly used format</li>
+                    <li><strong>Withdraw Consent:</strong> Withdraw previously given consent for data processing</li>
+                </ul>
+
+                <h2>6. Cookies and Tracking Technologies</h2>
+                <p>
+                    Our website uses cookies and similar technologies to enhance your browsing experience. You can
+                    control cookie settings through your browser preferences. Disabling cookies may affect website
+                    functionality.
+                </p>
+
+                <h2>7. Third-Party Links</h2>
+                <p>
+                    Our website may contain links to third-party websites. We are not responsible for the privacy
+                    practices of these external sites. We encourage you to review their privacy policies before
+                    providing any personal information.
+                </p>
+
+                <h2>8. Children's Privacy</h2>
+                <p>
+                    Our conference is intended for professionals and researchers. We do not knowingly collect personal
+                    information from individuals under 18 years of age without parental consent.
+                </p>
+
+                <h2>9. Data Retention</h2>
+                <p>
+                    We retain your personal information for as long as necessary to fulfill the purposes outlined in
+                    this policy, comply with legal obligations, and maintain records for archival purposes. Conference
+                    registration data is typically retained for 5 years after the event.
+                </p>
+
+                <h2>10. International Data Transfers</h2>
+                <p>
+                    Your information may be transferred to and processed in countries other than your country of
+                    residence. We ensure appropriate safeguards are in place to protect your information in accordance
+                    with applicable data protection laws.
+                </p>
+
+                <h2>11. Changes to This Privacy Policy</h2>
+                <p>
+                    We may update this Privacy Policy periodically to reflect changes in our practices or legal
+                    requirements. We will notify you of significant changes by posting the updated policy on our website
+                    with a revised "Last Updated" date.
+                </p>
+
+                <h2>12. Contact Us</h2>
+                <p>
+                    If you have any questions, concerns, or requests regarding this Privacy Policy or our data
+                    practices, please contact us:
+                </p>
+                <p>
+                    <strong>SITE-EMAR 2026 Conference Committee</strong><br>
+                    Sasi Institute of Technology & Engineering<br>
+                    Tadepalligudem - 534101, Andhra Pradesh, India<br>
+                    Email: drsrinivas@sasi.ac.in<br>
+                            convener.siteemar2026@sasi.ac.in
+                    Phone: +91 9440576225
+                </p>
+
+                <p style="margin-top: 40px; padding-top: 30px; border-top: 2px solid var(--light-gray);">
+                    By using our website and registering for SITE-EMAR 2026, you acknowledge that you have read,
+                    understood, and agree to be bound by this Privacy Policy.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SITE-EMAR 2026</h2>
+                    <p class="footer-text">
+                        International Conference on Smart Innovative Techniques and Emerging Trends in Engineering
+                        Materials for Advanced Research.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/school/sasi-institute-of-technology-engineering/"
+                            class="social-icon" title="LinkedIn" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/sasiengineeringcollege" class="social-icon" title="Instagram"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/sasi.ac.in" class="social-icon" title="Facebook"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SasiInstituteofTechnology" class="social-icon" title="YouTube"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="schedule.html">Program Schedule</a></li>
+                        <li><a href="speakers.html">Keynote Speakers</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                        <li><a href="awards.html">Awards</a></li>
+                        <li><a href="organizing-committee.html">Committee</a></li>
+                        <li><a href="memories.html">Memories</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Sasi Institute of Technology & Engineering, Tadepalligudem - 534101
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            +91 9440576225
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            drsrinivas@sasi.ac.in
+                            convener.siteemar2026@sasi.ac.in
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 SITE-EMAR. All Rights Reserved. Hosted by Sasi Institute of Technology & Engineering,
+                Tadepalligudem.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Sticky Navbar
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

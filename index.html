@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SITE-EMAR 2026 | International Conference</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES & THEME SETUP (RED/WHITE)
+           ========================================= */
+        :root {
+            /* Primary Brand Colors - RED THEME */
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFCDD2;
+            --accent-red: #FF5252;
+
+            /* Neutrals */
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F5F5F5;
+            --border-gray: #E0E0E0;
+            --text-dark: #212121;
+            --text-gray: #616161;
+            --black: #000000;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-red: 0 10px 20px rgba(211, 47, 47, 0.3);
+
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+
+            /* Transitions */
+            --transition-fast: 0.3s ease;
+            --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* =========================================
+           2. RESET & GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            overflow-x: hidden;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-red {
+            color: var(--primary-red);
+        }
+
+        .bg-light {
+            background-color: var(--off-white);
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 10px auto 0;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .section-title:hover::after {
+            width: 100%;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            font-family: var(--font-body);
+        }
+
+        /* =========================================
+           3. NAVIGATION
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            width: 100%;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* =========================================
+           4. HERO SECTION (UPDATED)
+           ========================================= */
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('sasiclg.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            padding: 120px 20px 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 20px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero-badge {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: "Poppins", sans-serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #fff;
+            text-align: center;
+            margin: 0 auto 18px;
+            max-width: 950px;
+            letter-spacing: 0.4px;
+            text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.55);
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--off-white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--white);
+            border: 2px solid var(--primary-red);
+            box-shadow: var(--shadow-red);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-red);
+            border-color: var(--dark-red);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        /* =========================================
+           5. COUNTERS SECTION
+           ========================================= */
+        .counters-section {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 60px 0;
+            position: relative;
+            margin-top: -50px;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .counter-item {
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .counter-item:last-child {
+            border-right: none;
+        }
+
+        .counter-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           6. SCOPE & VISION (ALTERNATING LAYOUT)
+           ========================================= */
+        .scope-section {
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .scope-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .scope-intro p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .scope-block {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scope-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scope-block:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .scope-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .scope-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .scope-image img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.5s ease;
+        }
+
+        .scope-block:hover .scope-image img {
+            transform: scale(1.03);
+        }
+
+        .scope-image::before {
+            display: none;
+        }
+
+        .scope-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .scope-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .scope-content h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .scope-content h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-red);
+            margin-top: 10px;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .scope-block:hover .scope-content h3::after {
+            width: 100px;
+        }
+
+        .scope-content p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .scope-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .scope-tag {
+            background: var(--light-red);
+            color: var(--dark-red);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* =========================================
+           7. TIMELINE
+           ========================================= */
+        .timeline-section {
+            background: var(--light-gray);
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-red);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-card {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--white);
+            border: 4px solid var(--primary-red);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--white);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--white);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--white);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--white) transparent transparent;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .content-box {
+            padding: 20px 30px;
+            background-color: var(--white);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .date-label {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* =========================================
+           8. ORGANIZERS & EDITORS (UPDATED WITH IMAGES)
+           ========================================= */
+        .editors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .editor-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-top: 5px solid var(--primary-red);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .editor-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--primary-red);
+            overflow: hidden;
+        }
+
+        .editor-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .editor-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .editor-role {
+            font-size: 0.9rem;
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .editor-info {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .editor-contact {
+            background: var(--off-white);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .contact-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* =========================================
+           9. TESTIMONIALS SLIDER
+           ========================================= */
+        .testimonials-section {
+            background: var(--white);
+            color: var(--text-dark);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .image-box {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        .image-box img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: 0.5s ease-in-out;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .image-box img.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 99;
+        }
+
+        .content-box-testimonial {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .quote {
+            font-size: 1.1rem;
+            line-height: 1.7rem;
+            color: #444;
+            margin-top: 25px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: 0.4s ease;
+            font-family: var(--font-body);
+            font-style: italic;
+        }
+
+        .quote.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .designation {
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .btns {
+            display: flex;
+            gap: 15px;
+            padding-top: 30px;
+            justify-content: flex-start;
+        }
+
+        .btns button {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-red);
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s ease;
+            color: var(--primary-red);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btns button:hover {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        /* =========================================
+           10. SPONSORS GRID
+           ========================================= */
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .sponsor-hex {
+            width: 140px;
+            height: 160px;
+            background: var(--white);
+            margin: 0 auto;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sponsor-hex:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sponsor-img {
+            max-width: 70%;
+            max-height: 50%;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .sponsor-hex:hover .sponsor-img {
+            filter: grayscale(0%);
+        }
+
+        /* =========================================
+           11. VENUE & MAP
+           ========================================= */
+        .venue-wrapper {
+            position: relative;
+            min-height: 500px;
+            background: #eee;
+            overflow: hidden;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 500px;
+            border: 0;
+        }
+
+        .venue-card {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 350px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            z-index: 5;
+        }
+
+        .venue-info h4 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .venue-detail {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            align-items: flex-start;
+        }
+
+        .venue-detail svg {
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* =========================================
+           12. ETHICS STATEMENT
+           ========================================= */
+        .ethics-box {
+            background: #FFEBEE;
+            border: 1px solid #FFCDD2;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+
+        .ethics-title {
+            color: var(--dark-red);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .ethics-box p {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           13. CTA SECTION
+           ========================================= */
+        .cta-section {
+            background: var(--dark-red);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+
+
+        /* =========================================
+           15. ANIMATIONS
+           ========================================= */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           16. RESPONSIVE MEDIA QUERIES
+           ========================================= */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .scope-block {
+                gap: 40px;
+            }
+
+            .scope-image img {
+                height: 300px;
+            }
+
+            .timeline-container::after {
+                left: 31px;
+            }
+
+            .timeline-card {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-card::after {
+                left: 21px;
+            }
+
+            .left::before,
+            .right::before {
+                left: 60px;
+                border: medium solid var(--white);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--white) transparent transparent;
+            }
+
+            .left::after,
+            .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .venue-card {
+                position: relative;
+                width: 100%;
+                right: auto;
+                top: auto;
+                margin: 20px;
+                border-radius: 10px;
+            }
+
+            .venue-wrapper {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonial-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .image-box {
+                height: 260px;
+            }
+
+            .content-box-testimonial {
+                text-align: center;
+            }
+
+            .btns {
+                justify-content: center;
+            }
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVE (max-width: 768px)
+           ========================================= */
+        @media (max-width: 768px) {
+
+            /* Hero Section Mobile Fixes */
+            .hero {
+                min-height: 100vh;
+                padding: 100px 15px 60px;
+                background-attachment: scroll;
+            }
+
+            .hero-content {
+                padding: 10px;
+                max-width: 100%;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 6px 15px;
+                margin-bottom: 15px;
+            }
+
+            .hero-title {
+                font-size: 1.5rem !important;
+                line-height: 1.4;
+                margin-bottom: 20px;
+                text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7);
+                color: #fff !important;
+            }
+
+            .hero-title br {
+                display: none;
+            }
+
+            .hero-meta {
+                font-size: 0.85rem;
+                gap: 15px;
+                margin: 15px 0 25px;
+                flex-direction: column;
+            }
+
+            .hero-meta span {
+                font-size: 0.85rem;
+            }
+
+            .hero-meta svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .hero-btn-group {
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 25px;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.95rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .btn-primary {
+                background: var(--primary-red) !important;
+                color: var(--white) !important;
+                border: 2px solid var(--primary-red) !important;
+            }
+
+            .btn-outline {
+                background: transparent !important;
+                color: var(--white) !important;
+                border: 2px solid var(--white) !important;
+            }
+
+            /* Marquee Mobile */
+            .marquee-container {
+                font-size: 0.8rem;
+                padding: 8px 0;
+            }
+
+            /* Navigation Mobile */
+            .navbar {
+                padding: 12px 15px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                padding: 15px;
+            }
+
+            .nav-links li {
+                margin: 8px 0;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            /* Section Headings Mobile */
+            .section-mini-title {
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* Theme List Mobile */
+            .theme-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .theme-item {
+                font-size: 0.85rem;
+                padding: 12px;
+            }
+
+            /* Footer Mobile */
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px;
+            }
+        }
+
+        /* Extra Small Devices (max-width: 480px) */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.3rem !important;
+            }
+
+            .hero-meta {
+                font-size: 0.75rem;
+            }
+
+            .btn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+
+
+        /* Conferenece Themes List - Updated Grid */
+        .theme-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .theme-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 15px;
+            background: var(--off-white);
+            border-radius: 8px;
+            transition: var(--transition-fast);
+            border-left: 4px solid var(--primary-red);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .theme-item:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .theme-icon {
+            color: var(--primary-red);
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Important Dates - Horizontal Cards */
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .date-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--primary-red);
+            transition: var(--transition-fast);
+        }
+
+        .date-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .date-card .date {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .date-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .date-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* Speaker Grid Styles */
+        .speaker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .speaker-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            border-bottom: 5px solid transparent;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-bottom-color: var(--primary-red);
+        }
+
+        .speaker-img-wrapper {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .speaker-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .speaker-card:hover .speaker-img {
+            transform: scale(1.1);
+        }
+
+        .flag-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 30px;
+            border-radius: 4px;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            padding: 2px;
+            z-index: 2;
+        }
+
+        .speaker-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .speaker-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .speaker-title {
+            font-size: 0.9rem;
+            color: var(--primary-red);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .speaker-aff {
+            font-size: 0.9rem;
+            color: #757575;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .topic-badge {
+            display: inline-block;
+            background: #EEEEEE;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #424242;
+        }
+
+        /* =========================================
+           17. INFINITE SCROLLER
+           ========================================= */
+        .marquee-container {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            overflow: hidden;
+            white-space: nowrap;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 12px 0;
+            margin-bottom: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 2;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .marquee-content span {
+            display: inline-block;
+            padding-right: 50px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI Logo" class="logo-img" onerror="this.style.display='none';">
+                SITE-EMAR <span>2026</span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li class="nav-item active" onclick="window.scrollTo(0,0)">Home</li>
+                <li class="nav-item"><a href="organizing-committee.html">Committee</a></li>
+                <li class="nav-item"><a href="registration.html">Registration</a></li>
+                <li class="nav-item"><a href="schedule.html">Schedule</a></li>
+                <li class="nav-item"><a href="speakers.html">Speakers</a></li>
+                <li class="nav-item"><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-item"><a href="venue.html">Venue</a></li>
+                <li class="nav-item"><a href="awards.html">Awards</a></li>
+                <li class="nav-item"><a href="contact-us.html">Contact</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Infinite Scroller -->
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span>💐 Paper Submission: May 31, 2026 &nbsp;&nbsp;💐&nbsp;&nbsp; Notification: June 15, 2026
+                        &nbsp;&nbsp;💐&nbsp;&nbsp; Registration: June 30, 2026 &nbsp;&nbsp;💐&nbsp;&nbsp; Conference:
+                        July 24-25, 2026 &nbsp;&nbsp;💐&nbsp;&nbsp; Accepted manuscripts will be published in Scopus
+                        indexed proceedings. &nbsp;&nbsp;💐&nbsp;&nbsp; BEST THREE PAPERS/POSTER ARE AWARED WITH CASH
+                        PRIZE</span>
+                    <span>💐 Paper Submission: May 31, 2026 &nbsp;&nbsp;💐&nbsp;&nbsp; Notification: June 15, 2026
+                        &nbsp;&nbsp;💐&nbsp;&nbsp; Registration: June 30, 2026 &nbsp;&nbsp;💐&nbsp;&nbsp; Conference:
+                        July 24-25, 2026 &nbsp;&nbsp;💐&nbsp;&nbsp; Accepted manuscripts will be published in Scopus
+                        indexed proceedings. &nbsp;&nbsp;💐&nbsp;&nbsp; BEST THREE PAPERS/POSTER ARE AWARED WITH CASH
+                        PRIZE</span>
+                </div>
+            </div>
+
+            <div class="hero-badge">International Conference</div>
+            <h1 class="hero-title">
+                Smart Innovative Techniques and Emerging trends in <br>
+                Engineering Materials for Advanced Research (SITE-EMAR)
+            </h1>
+
+            <div class="hero-meta">
+                <span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    July 24-25, 2026
+                </span>
+                <span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Multidisciplinary
+                </span>
+                <span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Tadepalligudem, India
+                </span>
+            </div>
+
+            <div class="hero-btn-group">
+                <a href="registration.html" class="btn btn-primary">
+                    Register Now
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#scope" class="btn btn-outline">
+                    View Topics
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 16 16 12 12 8"></polyline>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="counters-section">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <span class="counter-number" data-target="500">0</span>
+                    <span class="counter-label">Participants</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="100">0</span>
+                    <span class="counter-label">Papers</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="9">0</span>
+                    <span class="counter-label">Keynote Speakers</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="25">0</span>
+                    <span class="counter-label">Countries</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="scope" class="section-padding scope-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Conference Vision</h2>
+            </div>
+
+            <div class="scope-intro">
+                <p>
+                    Engineering materials are central to modern science and technology, enabling advances in
+                    electronics, energy storage, sensing, healthcare, and sustainable systems. Emerging trends include
+                    low-dimensional materials, multifunctional oxides, and quantum materials, with a focus on AI-driven
+                    discovery and renewable energy. The conference highlights magnetic nanoparticles, nanocomposites,
+                    and core–shell systems, emphasizing advanced synthesis methods and biocompatible functionalization
+                    for biomedical and microwave applications. Overall, it provides a strong platform for young
+                    researchers by bridging fundamental research with high-tech applications.
+                </p>
+            </div>
+
+            <h3 class="text-center"
+                style="font-size: 2rem; margin: 40px 0 30px; color: var(--text-dark); font-weight: 700;">Conference
+                Themes</h3>
+
+            <div class="scope-block visible">
+                <!-- Themes now on Left -->
+                <div class="scope-content">
+                    <ul class="theme-list">
+                        <li class="theme-item"><span class="theme-icon">➤</span> Nanomagnetic materials</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Quantum dots and materials</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Ferrites</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Ferroelectrics</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Piezoelectrics</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Advanced semiconducting materials</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Solar cells</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Composite materials</li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Applications of AI in Advanced research
+                        </li>
+                        <li class="theme-item"><span class="theme-icon">➤</span> Theoretical computations</li>
+                    </ul>
+                </div>
+                <!-- Image on Right -->
+                <div class="scope-image">
+                    <img src="siteemar.jpeg" alt="site-emar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== KEYNOTE SPEAKERS ========== -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-40">
+                <h2 class="section-title">Keynote Speakers</h2>
+                <p class="section-subtitle">Distinguished experts sharing their insights.</p>
+            </div>
+
+            <div class="speaker-grid">
+                <!-- Speaker 1 -->
+                <a href="speakers.html" class="speaker-card">
+                    <div class="speaker-img-wrapper">
+                        <img src="alex.jpg" alt="Prof. Alex Trukhanov" class="speaker-img">
+                        <div class="flag-badge">
+                            <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="900" height="600" fill="#cc0000" />
+                                <rect y="400" width="900" height="200" fill="#009900" />
+                                <rect width="150" height="600" fill="#fff" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name">Prof. Alex Trukhanov</h3>
+                        <div class="speaker-title">NAS of Belarus</div>
+                        <div class="speaker-aff">Belarus</div>
+                        <span class="topic-badge">International</span>
+                    </div>
+                </a>
+
+                <!-- Speaker 2 -->
+                <a href="speakers.html" class="speaker-card">
+                    <div class="speaker-img-wrapper">
+                        <img src="naidu.jpg" alt="Prof. Naidu V. Seetal" class="speaker-img">
+                        <div class="flag-badge">
+                            <svg viewBox="0 0 1235 650" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="1235" height="650" fill="#b22234" />
+                                <rect width="1235" height="50" y="50" fill="#fff" />
+                                <rect width="1235" height="50" y="150" fill="#fff" />
+                                <rect width="1235" height="50" y="250" fill="#fff" />
+                                <rect width="1235" height="50" y="350" fill="#fff" />
+                                <rect width="1235" height="50" y="450" fill="#fff" />
+                                <rect width="1235" height="50" y="550" fill="#fff" />
+                                <rect width="494" height="350" fill="#3c3b6e" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name">Prof. Naidu V. Seetal</h3>
+                        <div class="speaker-title">Grambling State Univ.</div>
+                        <div class="speaker-aff">USA</div>
+                        <span class="topic-badge">International</span>
+                    </div>
+                </a>
+
+                <!-- Speaker 3 -->
+                <a href="speakers.html" class="speaker-card">
+                    <div class="speaker-img-wrapper">
+                        <img src="madhu.jpg" alt="Dr. Madhav Prasad Ghimire" class="speaker-img">
+                        <div class="flag-badge">
+                            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="0,0 80,40 25,40 80,100 0,100" fill="#DC143C" />
+                                <polygon points="0,0 80,40 25,40 80,100 0,100" fill="none" stroke="#003893"
+                                    stroke-width="5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name">Dr. Madhav Prasad Ghimire</h3>
+                        <div class="speaker-title">Tribhuvan University</div>
+                        <div class="speaker-aff">Nepal</div>
+                        <span class="topic-badge">International</span>
+                    </div>
+                </a>
+
+                <!-- Speaker 4 -->
+                <a href="speakers.html" class="speaker-card">
+                    <div class="speaker-img-wrapper">
+                        <img src="promod.jpeg" alt="Dr. Pramod Kumar" class="speaker-img">
+                        <div class="flag-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+                                <rect width="900" height="200" fill="#FF9933" />
+                                <rect y="200" width="900" height="200" fill="#FFFFFF" />
+                                <rect y="400" width="900" height="200" fill="#138808" />
+                                <circle cx="450" cy="300" r="80" fill="none" stroke="#000080" stroke-width="15" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name">Dr. Pramod Kumar</h3>
+                        <div class="speaker-title">ARCI,Hyderabad</div>
+                        <div class="speaker-aff">Scientist-G</div>
+                        <span class="topic-badge">National</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-center mt-40" style="margin-top: 40px;">
+                <a href="speakers.html" class="btn btn-outline"
+                    style="border-color: var(--primary-red); color: var(--primary-red);">View All Speakers</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding timeline-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Important Dates</h2>
+                <p class="section-subtitle">Track your submission deadlines carefully.</p>
+            </div>
+
+            <div class="dates-grid">
+                <div class="date-card">
+                    <span class="date">May 31, 2026</span>
+                    <h3>Paper Submission</h3>
+                    <p>Submit your full length papers via the portal.</p>
+                </div>
+                <div class="date-card">
+                    <span class="date">June 15, 2026</span>
+                    <h3>Review Status</h3>
+                    <p>Notification of acceptance or rejection.</p>
+                </div>
+                <div class="date-card">
+                    <span class="date">June 30, 2026</span>
+                    <h3>Acceptance</h3>
+                    <p>Final letters issued for registration.</p>
+                </div>
+                <div class="date-card">
+                    <span class="date">July 25-26, 2026</span>
+                    <h3>Conference</h3>
+                    <p>Inauguration and Technical Presentations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+
+
+            <div class="ethics-box">
+                <div class="ethics-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Publication Ethics & Malpractice Statement
+                </div>
+                <p>
+                    The SITE-EMAR 2026 committee is committed to upholding the highest standards of publication ethics.
+                    All submitted papers undergo a rigorous double-blind peer-review process. Plagiarism in any form is
+                    strictly prohibited. Authors must ensure that their work is original and has not been published
+                    elsewhere.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section-padding bg-light">
+        <div class="container text-center">
+            <h2 class="section-title">Our Partners & Sponsors</h2>
+            <p class="section-subtitle">Supported by leading research organizations and industry partners.</p>
+            <div class="sponsors-grid">
+                <div class="sponsor-hex">
+                    <img src="ongc.png" alt="ONGC" class="sponsor-img">
+                </div>
+                <div class="sponsor-hex">
+                    <img src="barc.jpeg" alt="BARC" class="sponsor-img">
+                </div>
+                <div class="sponsor-hex">
+                    <img src="csir.png" alt="CSIR" class="sponsor-img">
+                </div>
+                <div class="sponsor-hex">
+                    <img src="drdo.png" alt="DRDO" class="sponsor-img">
+                </div>
+                <div class="sponsor-hex">
+                    <img src="relaiance.png" alt="Reliance" class="sponsor-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="padding-bottom: 0;">
+        <div class="venue-wrapper">
+            <div class="venue-card">
+                <div class="venue-info">
+                    <h4>Conference Venue</h4>
+                    <div class="venue-detail">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>Sasi Institute of Technology & Engineering, Tadepalligudem – 534101, Andhra Pradesh,
+                            India</span>
+                    </div>
+                    <div class="venue-detail">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>July 25-26, 2026</span>
+                    </div>
+                    <a href="venue.html" class="btn btn-primary"
+                        style="width: 100%; justify-content: center; margin-top: 10px;">Get Directions</a>
+                </div>
+            </div>
+            <iframe class="map-frame"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.783457177573!2d81.52028831486558!3d16.86428598839446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37b7c555555555%3A0x6f6b5b5b5b5b5b5b!2sSasi%20Institute%20of%20Technology%20%26%20Engineering!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section class="section-padding cta-section">
+        <div class="container">
+            <h2>Ready to Participate?</h2>
+            <p>Join 500+ researchers in Tadepalligudem for this premier international event.</p>
+            <div class="cta-buttons">
+                <a href="registration.html" class="btn" style="background: white; color: var(--primary-red);">Register
+                    Now</a>
+                <a href="contact-us.html" class="btn btn-outline">Contact Lead Editor</a>
+                <a href="#" class="btn btn-outline" onclick="alert('Brochure downloading...')">Download Brochure</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SITE-EMAR 2026</h2>
+                    <p class="footer-text">
+                        International Conference on Smart Innovative Techniques and Emerging Trends in Engineering
+                        Materials for Advanced Research.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/school/sasi-institute-of-technology-engineering/"
+                            class="social-icon" title="LinkedIn" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/sasiengineeringcollege" class="social-icon" title="Instagram"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/sasi.ac.in" class="social-icon" title="Facebook"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SasiInstituteofTechnology" class="social-icon" title="YouTube"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="schedule.html">Program Schedule</a></li>
+                        <li><a href="speakers.html">Keynote Speakers</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                        <li><a href="awards.html">Awards</a></li>
+                        <li><a href="organizing-committee.html">Committee</a></li>
+                        <li><a href="memories.html">Memories</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Sasi Institute of Technology & Engineering, Tadepalligudem - 534101
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            +91 9440576225
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+
+                            convener.siteemar2026@sasi.ac.in
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Mobile Menu Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                const bars = menuBtn.querySelectorAll('.bar');
+                if (navLinks.classList.contains('open')) {
+                    bars[0].style.transform = "rotate(-45deg) translate(-5px, 6px)";
+                    bars[1].style.opacity = "0";
+                    bars[2].style.transform = "rotate(45deg) translate(-5px, -6px)";
+                } else {
+                    bars[0].style.transform = "none";
+                    bars[1].style.opacity = "1";
+                    bars[2].style.transform = "none";
+                }
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    const bars = menuBtn.querySelectorAll('.bar');
+                    bars[0].style.transform = "none";
+                    bars[1].style.opacity = "1";
+                    bars[2].style.transform = "none";
+                });
+            });
+
+            // 2. Sticky Navbar with Shadow
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // 3. Animated Counters
+            const counters = document.querySelectorAll('.counter-number');
+            const speed = 200;
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target + "+";
+                        }
+                    };
+                    updateCount();
+                });
+            };
+
+            // Trigger counters when in view
+            let counterSection = document.querySelector('.counters-section');
+            let counterOptions = {
+                rootMargin: '0px',
+                threshold: 0.5
+            }
+
+            let counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, counterOptions);
+
+            counterObserver.observe(counterSection);
+
+            // 4. TESTIMONIAL SLIDER LOGIC (Manual only - no auto slide)
+            const images = document.querySelectorAll(".image-box img");
+            const quote = document.querySelector(".quote");
+            const nameEl = document.querySelector(".name");
+            const desEl = document.querySelector(".designation");
+
+            const data = [
+                {
+                    quote: "SITE-EMAR provides an unparalleled platform for discussing magnetic nanomaterials. The quality of research presented in previous editions has been instrumental in shaping my own work on spintronics.",
+                    name: "Dr. Rajesh Kumar",
+                    designation: "Senior Scientist, CSIR-NPL"
+                },
+                {
+                    quote: "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable for engineering research.",
+                    name: "Prof. Sarah Jenkins",
+                    designation: "University of Manchester, UK"
+                },
+                {
+                    quote: "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+                    name: "Amit Verma",
+                    designation: "PhD Scholar, IIT Bombay"
+                },
+                {
+                    quote: "Outstanding support and robust features. It's rare to find a conference that balances high-level physics with practical engineering.",
+                    name: "Dr. James Kim",
+                    designation: "Engineering Lead at DataPro"
+                },
+                {
+                    quote: "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+                    name: "Dr. Lisa Thompson",
+                    designation: "VP of Technology at FutureNet"
+                },
+            ];
+
+            let active = 0;
+
+            function changeSlide(next = true) {
+                images[active].classList.remove("active");
+                quote.classList.remove("active");
+
+                active = next ? (active + 1) % images.length : (active - 1 + images.length) % images.length;
+
+                images[active].classList.add("active");
+                quote.classList.add("active");
+
+                quote.innerText = data[active].quote;
+                nameEl.innerText = data[active].name;
+                desEl.innerText = data[active].designation;
+            }
+
+            document.getElementById("next").onclick = () => changeSlide(true);
+            document.getElementById("prev").onclick = () => changeSlide(false);
+
+            // 5. Scope Blocks Scroll Reveal Animation
+            const scopeBlocks = document.querySelectorAll('.scope-block');
+
+            const scopeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            scopeBlocks.forEach(block => {
+                scopeObserver.observe(block);
+            });
+
+            // 6. Timeline Cards Animation
+            const timelineCards = document.querySelectorAll('.timeline-card');
+
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            timelineCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+                timelineObserver.observe(card);
+            });
+
+            // 7. Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memories | SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES & THEME SETUP
+           ========================================= */
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFCDD2;
+            --accent-red: #FF5252;
+
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F5F5F5;
+            --border-gray: #E0E0E0;
+            --text-dark: #212121;
+            --text-gray: #616161;
+            --black: #000000;
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-red: 0 10px 20px rgba(211, 47, 47, 0.3);
+
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+
+            --transition-fast: 0.3s ease;
+            --radius: 12px;
+        }
+
+        /* =========================================
+           2. RESET & GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .bg-light {
+            background-color: var(--off-white);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            font-family: var(--font-body);
+        }
+
+        /* =========================================
+           3. NAVIGATION
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            width: 100%;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-red);
+        }
+
+        /* Menu Toggle (Hamburger) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* =========================================
+           4. HERO SECTION (MEMORIES THEME)
+           ========================================= */
+        .hero {
+            min-height: 70vh;
+            width: 100%;
+            background: linear-gradient(rgba(33, 33, 33, 0.9)),
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           5. GALLERY FILTERS
+           ========================================= */
+        .filter-section {
+            background: var(--white);
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-gray);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filters-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            margin-right: 10px;
+            align-self: center;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid var(--border-gray);
+            background: var(--off-white);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+        }
+
+        /* =========================================
+           6. GALLERY GRID
+           ========================================= */
+        .gallery-section {
+            padding: 40px 0 80px;
+            min-height: 80vh;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-tag {
+            background: var(--primary-red);
+            color: var(--white);
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .gallery-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .gallery-year {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .no-results {
+            text-align: center;
+            width: 100%;
+            padding: 50px;
+            color: var(--text-gray);
+            display: none;
+            grid-column: 1 / -1;
+        }
+
+        /* =========================================
+           7. HISTORY TIMELINE
+           ========================================= */
+        .history-section {
+            background: var(--off-white);
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-red);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-card {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--white);
+            border: 4px solid var(--primary-red);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--white);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--white);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--white);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--white) transparent transparent;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .content-box {
+            padding: 20px 30px;
+            background-color: var(--white);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .year-badge {
+            color: var(--white);
+            background: var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* =========================================
+           8. LIGHTBOX
+           ========================================= */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-img {
+            max-height: 85vh;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: var(--white);
+            text-align: center;
+            margin-top: 15px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-red);
+            transform: rotate(90deg);
+        }
+
+        /* =========================================
+           9. FOOTER
+           ========================================= */
+        .footer-7 {
+            background: #1a1a1a;
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #999;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            max-width: 300px;
+            font-size: 0.95rem;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-red);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           10. RESPONSIVE
+           ========================================= */
+        @media (max-width: 1024px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+
+            .timeline-card {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-card::after {
+                left: 21px;
+            }
+
+            .left::before,
+            .right::before {
+                left: 60px;
+                border: medium solid var(--white);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--white) transparent transparent;
+            }
+
+            .left::after,
+            .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* HIDE LOGO IMAGE ON MOBILE */
+            .logo-img {
+                display: none !important;
+            }
+
+            /* Adjust text size for mobile header */
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            /* MENU TOGGLE & NAVIGATION */
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 100px;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                gap: 20px;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            /* SHOW THE HAMBURGER MENU */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-heading::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI Logo" class="logo-img" onerror="this.style.display='none';">
+                SITE-EMAR <span>2026</span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="organizing-committee.html">Committee</a></li>
+                <li class="nav-item"><a href="registration.html">Registration</a></li>
+                <li class="nav-item"><a href="schedule.html">Schedule</a></li>
+                <li class="nav-item"><a href="speakers.html">Speakers</a></li>
+                <li class="nav-item"><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-item"><a href="venue.html">Venue</a></li>
+                <li class="nav-item active"><a href="memories.html">Memories</a></li>
+                <li class="nav-item"><a href="contact-us.html">Contact</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">A Decade of Excellence</h1>
+            <p class="hero-text">A glimpse of SASI-ITE 2025, where researchers, academicians, and industry experts
+                collaborate on AI for sustainability, innovation, and green technology.</p>
+        </div>
+    </section>
+
+    <section class="filter-section" id="gallery-start">
+        <div class="container filters-container">
+            <div class="filter-group">
+                <span class="filter-label">Year:</span>
+                <button class="filter-btn active" data-filter="year" data-value="all">All</button>
+                <button class="filter-btn" data-filter="year" data-value="2025">2025</button>
+                <button class="filter-btn" data-filter="year" data-value="2023">2023</button>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">Type:</span>
+                <button class="filter-btn active" data-filter="cat" data-value="all">All</button>
+                <button class="filter-btn" data-filter="cat" data-value="conference">Conference</button>
+                <button class="filter-btn" data-filter="cat" data-value="national-conference">National
+                    Conference</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section bg-light">
+        <div class="container">
+            <div class="gallery-grid" id="gallery-grid">
+
+
+                <div class="gallery-item" data-year="2023" data-cat="national-conference">
+                    <img src="memory6.jpeg" alt="SASI National Conference 2023">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">National Conference</span>
+                        <div class="gallery-title">First-2023</div>
+                        <div class="gallery-year">2023 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2023" data-cat="national-conference">
+                    <img src="memory7.jpeg" alt="SASI National Conference 2023">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">National Conference</span>
+                        <div class="gallery-title">First-2023</div>
+                        <div class="gallery-year">2023 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2023" data-cat="national-conference">
+                    <img src="memory8.jpeg" alt="SASI National Conference 2023">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">National Conference</span>
+                        <div class="gallery-title">First-2023</div>
+                        <div class="gallery-year">2023 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory1.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory2.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory3.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory4.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-year="2025" data-cat="conference">
+                    <img src="memory5.jpeg" alt="SASI-ITE 2025 Conference">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Conference</span>
+                        <div class="gallery-title">SASI-ITE 2025</div>
+                        <div class="gallery-year">2025 Edition</div>
+                    </div>
+                </div>
+
+                <div class="no-results" id="no-results">
+                    <h3>No photos found for this combination.</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding history-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Conference History</h2>
+                <p class="section-subtitle">A legacy of scientific contribution.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-card left">
+                    <div class="content-box">
+                        <span class="year-badge">2024</span>
+                        <h3>Record Breaking Edition</h3>
+                        <p>Over 400 papers submitted from 20 countries. Partnership established with Springer Nature for
+                            proceedings publication.</p>
+                    </div>
+                </div>
+                <div class="timeline-card right">
+                    <div class="content-box">
+                        <span class="year-badge">2022</span>
+                        <h3>Post-Pandemic Return</h3>
+                        <p>The first hybrid conference bringing researchers back to the SASI campus. Keynote speakers
+                            from BARC and DRDO.</p>
+                    </div>
+                </div>
+                <div class="timeline-card left">
+                    <div class="content-box">
+                        <span class="year-badge">2020</span>
+                        <h3>Virtual Innovation</h3>
+                        <p>Successfully conducted online during global challenges, connecting minds digitally across 3
+                            continents.</p>
+                    </div>
+                </div>
+                <div class="timeline-card right">
+                    <div class="content-box">
+                        <span class="year-badge">2018</span>
+                        <h3>Inception of SITE-EMAR</h3>
+                        <p>The journey began with a focus on Engineering Materials. 150 delegates attended the inaugural
+                            event.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SITE-EMAR 2026</h2>
+                    <p class="footer-text">
+                        International Conference on Smart Innovative Techniques and Emerging Trends in Engineering
+                        Materials for Advanced Research.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/school/sasi-institute-of-technology-engineering/"
+                            class="social-icon" title="LinkedIn" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/sasiengineeringcollege" class="social-icon" title="Instagram"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/sasi.ac.in" class="social-icon" title="Facebook"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SasiInstituteofTechnology" class="social-icon" title="YouTube"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="schedule.html">Program Schedule</a></li>
+                        <li><a href="speakers.html">Keynote Speakers</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                        <li><a href="awards.html">Awards</a></li>
+                        <li><a href="organizing-committee.html">Committee</a></li>
+                        <li><a href="memories.html">Memories</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Sasi Institute of Technology & Engineering, Tadepalligudem - 534101
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            +91 9440576225
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+
+                            convener.siteemar2026@sasi.ac.in
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Zoomed Image" class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Mobile Menu Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                const bars = menuBtn.querySelectorAll('.bar');
+                if (navLinks.classList.contains('open')) {
+                    bars[0].style.transform = "rotate(-45deg) translate(-5px, 6px)";
+                    bars[1].style.opacity = "0";
+                    bars[2].style.transform = "rotate(45deg) translate(-5px, -6px)";
+                } else {
+                    bars[0].style.transform = "none";
+                    bars[1].style.opacity = "1";
+                    bars[2].style.transform = "none";
+                }
+            });
+
+            // 2. Sticky Navbar
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // 3. Gallery Filtering Logic
+            const yearBtns = document.querySelectorAll('[data-filter="year"]');
+            const catBtns = document.querySelectorAll('[data-filter="cat"]');
+            const items = document.querySelectorAll('.gallery-item');
+            const noResults = document.getElementById('no-results');
+
+            let activeYear = 'all';
+            let activeCat = 'all';
+
+            function filterItems() {
+                let hasResults = false;
+
+                items.forEach(item => {
+                    const itemYear = item.getAttribute('data-year');
+                    const itemCat = item.getAttribute('data-cat');
+
+                    const matchYear = activeYear === 'all' || activeYear === itemYear;
+                    const matchCat = activeCat === 'all' || activeCat === itemCat;
+
+                    if (matchYear && matchCat) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeUp 0.5s ease forwards';
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                noResults.style.display = hasResults ? 'none' : 'block';
+            }
+
+            yearBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    yearBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeYear = btn.getAttribute('data-value');
+                    filterItems();
+                });
+            });
+
+            catBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    catBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeCat = btn.getAttribute('data-value');
+                    filterItems();
+                });
+            });
+
+            // 4. Lightbox Logic
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCap = document.getElementById('lightbox-caption');
+            const closeBtn = document.getElementById('lightbox-close');
+
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    const title = item.querySelector('.gallery-title').innerText;
+
+                    lightboxImg.src = img.src;
+                    lightboxCap.innerText = title;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Stop scrolling
+                });
+            });
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            };
+
+            closeBtn.addEventListener('click', closeLightbox);
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            });
+
+            // 5. Timeline Animation
+            const timelineCards = document.querySelectorAll('.timeline-card');
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            timelineCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+                timelineObserver.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

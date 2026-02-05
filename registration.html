@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration | SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <!-- Razorpay Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES (RED & WHITE THEME)
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFEBEE;
+            --hover-red: #FFCDD2;
+            --accent-red: #FF5252;
+
+            /* Neutrals */
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --light-gray: #EEEEEE;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #757575;
+            --text-dark: #212121;
+            --text-gray: #616161;
+            --success-green: #2E7D32;
+            --error-red: #C62828;
+
+            /* Shadows & Effects */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-red: 0 8px 16px rgba(211, 47, 47, 0.25);
+            --glass: rgba(255, 255, 255, 0.95);
+
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+
+            /* Transitions */
+            --trans-fast: 0.2s ease;
+            --trans-med: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* =========================================
+           2. RESET & GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--trans-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-red {
+            color: var(--primary-red);
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        /* =========================================
+           3. ANIMATIONS
+           ========================================= */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================================
+           4. NAVIGATION
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--trans-fast);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary-red);
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            width: 100%;
+        }
+
+        .nav-item.active {
+            color: var(--primary-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        /* =========================================
+           5. PAGE HERO
+           ========================================= */
+        .page-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           6. REGISTRATION LAYOUT
+           ========================================= */
+        .reg-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* LEFT COLUMN - FORM */
+        .reg-form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            border-top: 5px solid var(--primary-red);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .step-indicator {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .form-section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-section-title svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--primary-red);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--trans-fast);
+            background: var(--off-white);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-red);
+            background: var(--white);
+            box-shadow: 0 0 0 4px var(--light-red);
+        }
+
+        .form-control::placeholder {
+            color: var(--dark-gray);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Radio Card Selection */
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .radio-card {
+            position: relative;
+        }
+
+        .radio-card input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-card-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: var(--off-white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--trans-med);
+            height: 100%;
+            text-align: center;
+        }
+
+        .radio-card input:checked+.radio-card-label {
+            border-color: var(--primary-red);
+            background: var(--light-red);
+            color: var(--primary-red);
+        }
+
+        .radio-card input:checked+.radio-card-label .icon-wrapper {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        .icon-wrapper {
+            width: 40px;
+            height: 40px;
+            background: var(--medium-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            transition: var(--trans-med);
+        }
+
+        /* Designation Radio Grid */
+        .designation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            position: relative;
+        }
+
+        .radio-option input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-option-label {
+            display: block;
+            padding: 12px 15px;
+            background: var(--off-white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--trans-fast);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .radio-option input:checked+.radio-option-label {
+            border-color: var(--primary-red);
+            background: var(--light-red);
+            color: var(--primary-red);
+            font-weight: 600;
+        }
+
+        .radio-option-label:hover {
+            border-color: var(--primary-red);
+        }
+
+        /* File Upload Zone */
+        .upload-zone {
+            border: 2px dashed var(--medium-gray);
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--trans-fast);
+            background: var(--off-white);
+            position: relative;
+        }
+
+        .upload-zone:hover,
+        .upload-zone.dragover {
+            border-color: var(--primary-red);
+            background: var(--light-red);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .file-preview {
+            display: none;
+            align-items: center;
+            gap: 15px;
+            background: var(--white);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--medium-gray);
+        }
+
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--error-red);
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .file-icon.img-icon {
+            background: var(--success-green);
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        .file-size {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .remove-file {
+            color: var(--error-red);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Total Calculation */
+        .total-box {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .total-label {
+            font-size: 1.1rem;
+        }
+
+        .total-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-red);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--trans-med);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-red);
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            background: var(--medium-gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Password wrapper for eye icon */
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-wrapper .form-control {
+            padding-right: 45px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-red);
+        }
+
+        .pay-btn {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            box-shadow: 0 8px 16px rgba(46, 125, 50, 0.25);
+        }
+
+        .pay-btn:hover {
+            background: linear-gradient(135deg, #1B5E20, #0D3A0D);
+        }
+
+        /* RIGHT COLUMN - INFO */
+        .info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light-red);
+            padding-bottom: 10px;
+        }
+
+        /* Fee Table */
+        .fee-table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .fee-table th {
+            text-align: left;
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 12px 10px;
+            border-bottom: none;
+            white-space: nowrap;
+        }
+
+        .fee-table td {
+            text-align: left;
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--light-red);
+            vertical-align: middle;
+            color: var(--text-dark);
+            background: var(--white);
+        }
+
+        .fee-table tr:nth-child(even) td {
+            background: var(--off-white);
+        }
+
+        .fee-table tr:hover td {
+            background-color: var(--light-red);
+        }
+
+        .fee-amount {
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .fee-status {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: var(--light-gray);
+            display: inline-block;
+        }
+
+        .currency-toggle {
+            display: flex;
+            background: var(--light-gray);
+            border-radius: 20px;
+            padding: 4px;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .curr-btn {
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--trans-fast);
+        }
+
+        .curr-btn.active {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        /* QR Code */
+        .qr-container {
+            text-align: center;
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--medium-gray);
+        }
+
+        .qr-img {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 10px;
+            border: 5px solid var(--white);
+        }
+
+        /* Help Box */
+        .help-box {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: var(--white);
+        }
+
+        .help-box .info-title {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .help-link {
+            display: block;
+            color: var(--white);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .help-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Checkbox styling */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: var(--text-gray);
+        }
+
+        .checkbox-wrapper input {
+            margin-top: 4px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-red);
+        }
+
+        /* Payment Status Box */
+        .payment-status {
+            background: var(--light-red);
+            border: 2px solid var(--primary-red);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .payment-status.success {
+            background: #E8F5E9;
+            border-color: var(--success-green);
+        }
+
+        .payment-status h4 {
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-status.success h4 {
+            color: var(--success-green);
+        }
+
+        /* =========================================
+           7. MODAL & CONFETTI
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .success-modal {
+            background: var(--white);
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success-green);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2001;
+            display: none;
+        }
+
+        /* =========================================
+           8. RESPONSIVE
+           ========================================= */
+        @media (max-width: 1024px) {
+            .reg-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .info-sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .info-card {
+                flex: 1;
+                min-width: 280px;
+            }
+
+            .form-row-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .designation-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero {
+                height: 40vh;
+            }
+
+            .navbar {
+                padding: 0 15px;
+                height: 70px;
+            }
+
+            .page-hero {
+                margin-top: 70px;
+            }
+
+            /* Hide logo image on mobile */
+            .logo-img {
+                display: none !important;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                height: calc(100vh - 70px);
+                width: 70%;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                overflow-y: auto;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .reg-form-container {
+                padding: 25px 20px;
+            }
+
+            .form-title {
+                font-size: 1.4rem;
+            }
+
+            .total-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .designation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-sidebar {
+                flex-direction: column;
+            }
+
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo span {
+                display: none;
+            }
+        }
+
+        /* Infinite Scroller Styles */
+        .marquee-container {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            overflow: hidden;
+            white-space: nowrap;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 12px 0;
+            margin-bottom: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 2;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll 10s linear infinite;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .marquee-content span {
+            display: inline-block;
+            padding-right: 50px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="confetti" class="confetti-canvas"></canvas>
+
+    <header id="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI Logo" class="logo-img" onerror="this.style.display='none';">
+                SITE-EMAR <span>2026</span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="organizing-committee.html">Committee</a></li>
+                <li class="nav-item active" onclick="window.scrollTo(0,0)">Registration</li>
+                <li class="nav-item"><a href="schedule.html">Schedule</a></li>
+                <li class="nav-item"><a href="speakers.html">Speakers</a></li>
+                <li class="nav-item"><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-item"><a href="venue.html">Venue</a></li>
+                <li class="nav-item"><a href="awards.html">Awards</a></li>
+                <li class="nav-item"><a href="contact-us.html">Contact</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <!-- Infinite Scroller -->
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span>💐 Accepted manuscripts will be published in Scopus indexed proceedings.
+                        &nbsp;&nbsp;💐&nbsp;&nbsp; Accepted manuscripts will be published in Scopus indexed proceedings.
+                        &nbsp;&nbsp;💐&nbsp;&nbsp; Accepted manuscripts will be published in Scopus indexed proceedings.
+                        &nbsp;&nbsp;💐&nbsp;&nbsp;</span>
+                </div>
+            </div>
+            <h1>Register & Submit Paper</h1>
+            <p>Join the global scientific community at SITE-EMAR 2026</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="reg-layout">
+
+            <div class="reg-form-container">
+                <div class="form-title">
+                    <span>Registration Form</span>
+                    <span class="step-indicator">SITE-EMAR Registration Form</span>
+                </div>
+
+                <!-- Login Link (Moved High & Highlighted) -->
+                <div
+                    style="text-align: center; margin-bottom: 25px; padding: 15px; background: var(--light-red); border: 2px dashed var(--primary-red); border-radius: 12px; transition: transform 0.3s ease;">
+                    <p style="color: var(--text-dark); margin-bottom: 8px; font-weight: 500;">Already registered for
+                        SITE-EMAR 2026?</p>
+                    <a href="login.html"
+                        style="display: inline-block; background: var(--primary-red); color: white; padding: 10px 25px; border-radius: 25px; font-weight: 700; text-decoration: none; font-size: 1rem; box-shadow: var(--shadow-red); transition: all 0.3s ease;"
+                        onmouseover="this.style.transform='scale(1.05)'; this.style.backgroundColor='var(--dark-red)';"
+                        onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='var(--primary-red)';">
+                        Login to Submit Paper &nbsp; →
+                    </a>
+                </div>
+
+                <!-- Mandatory Fee Notice -->
+                <div
+                    style="background: var(--light-red); border: 2px solid var(--primary-red); border-radius: 10px; padding: 20px; margin-bottom: 30px; border-left: 8px solid var(--primary-red);">
+                    <h4
+                        style="color: var(--dark-red); margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        Mandatory Base Registration Fee: ₹500
+                    </h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5;">
+                        A mandatory base fee of <strong>₹500</strong> applies to all participants. This fee covers
+                        <strong>Registration ONLY</strong>.
+                    </p>
+                    <ul
+                        style="font-size: 0.9rem; color: var(--text-gray); margin-top: 10px; list-style: disc; padding-left: 20px;">
+                        <li>NO Conference Kit</li>
+                        <li>NO Lunch</li>
+                        <li>NO Certificate</li>
+                        <li>NO Paper Submission (unless publication fee is paid later)</li>
+                    </ul>
+                </div>
+
+
+                <form id="regForm">
+
+                    <!-- SECTION: Personal Information -->
+                    <div class="form-section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Personal Information
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Title / Prefix <span class="required">*</span></label>
+                        <div class="designation-grid">
+                            <div class="radio-option">
+                                <input type="radio" name="title" value="Prof." id="title_prof" required>
+                                <label class="radio-option-label" for="title_prof">Prof.</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="title" value="Dr." id="title_dr">
+                                <label class="radio-option-label" for="title_dr">Dr.</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="title" value="Mr." id="title_mr">
+                                <label class="radio-option-label" for="title_mr">Mr.</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="title" value="Mrs." id="title_mrs">
+                                <label class="radio-option-label" for="title_mrs">Mrs.</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="title" value="Miss" id="title_miss">
+                                <label class="radio-option-label" for="title_miss">Miss</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="title" value="Other" id="title_other">
+                                <label class="radio-option-label" for="title_other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Full Name <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="fullName" name="fullName"
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number <span class="required">*</span></label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91 9876543210"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- Password Fields -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Password <span class="required">*</span></label>
+                            <div class="password-wrapper">
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Enter password" required>
+                                <span class="password-toggle" onclick="togglePassword('password', 'eye1')">
+                                    <svg id="eye1" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password <span class="required">*</span></label>
+                            <div class="password-wrapper">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                                    placeholder="Confirm password" required>
+                                <span class="password-toggle" onclick="togglePassword('confirmPassword', 'eye2')">
+                                    <svg id="eye2" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION: Professional Details -->
+                    <div class="form-section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        Professional Details
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Affiliation / Institute <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="affiliation" name="affiliation"
+                            placeholder="University or Organization Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Designation <span class="required">*</span></label>
+                        <div class="designation-grid">
+                            <div class="radio-option">
+                                <input type="radio" name="designation" value="Professor" id="des_prof" required>
+                                <label class="radio-option-label" for="des_prof">Professor</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="designation" value="Associate Professor" id="des_assoc">
+                                <label class="radio-option-label" for="des_assoc">Associate Professor</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="designation" value="Assistant Professor" id="des_asst">
+                                <label class="radio-option-label" for="des_asst">Assistant Professor</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="designation" value="Scientist" id="des_sci">
+                                <label class="radio-option-label" for="des_sci">Scientist</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="designation" value="Post Doctorate Fellow" id="des_postdoc">
+                                <label class="radio-option-label" for="des_postdoc">Post Doctorate Fellow</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="designation" value="PhD Student" id="des_phd">
+                                <label class="radio-option-label" for="des_phd">PhD Student</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="designation" value="Other" id="des_other">
+                                <label class="radio-option-label" for="des_other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Address <span class="required">*</span></label>
+                        <textarea class="form-control" id="address" name="address"
+                            placeholder="Enter your complete address" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Country <span class="required">*</span></label>
+                            <select class="form-control" id="country" name="country" required>
+                                <option value="" disabled selected>Select Country</option>
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Japan">Japan</option>
+                                <option value="China">China</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Canada">Canada</option>
+                                <option value="France">France</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="Your City">
+                        </div>
+                    </div>
+
+                    <div id="submission-tools" style="display: none;">
+                        <div class="form-group"
+                            style="margin-top: 15px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+                            <button type="button" class="submit-btn"
+                                style="background: linear-gradient(135deg, #1976D2, #0D47A1); width: auto; padding: 12px 24px;"
+                                onclick="downloadTemplate()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download Abstract Template (SITE-EMAR 2026)
+                            </button>
+
+                            <button type="button" class="submit-btn"
+                                style="background: linear-gradient(135deg, #2E7D32, #1B5E20); width: auto; padding: 12px 24px;"
+                                onclick="downloadManuscriptTemplate()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download Manuscript Template (SITE-EMAR 2026)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SECTION: Registration Category -->
+                    <div class="form-section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                            <line x1="12" y1="4" x2="12" y2="20"></line>
+                        </svg>
+                        Registration Category
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Select Your Category <span class="required">*</span></label>
+                        <div class="category-grid">
+                            <div class="radio-card">
+                                <input type="radio" name="category" value="listener_basic" id="cat_listener_basic"
+                                    onchange="updateTotal()" required>
+                                <label class="radio-card-label" for="cat_listener_basic">
+                                    <div class="icon-wrapper">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z">
+                                            </path>
+                                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                        </svg>
+                                    </div>
+                                    <span style="font-weight: 700;">Listener (Basic)</span>
+                                    <span style="font-size: 0.75rem; color: #666;">Registration ONLY</span>
+                                    <span style="font-weight: 700; color: var(--primary-red); margin-top: 8px;">₹500
+                                        /
+                                        $6</span>
+                                </label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" name="category" value="listener_cert" id="cat_listener_cert"
+                                    onchange="updateTotal()">
+                                <label class="radio-card-label" for="cat_listener_cert">
+                                    <div class="icon-wrapper">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z">
+                                            </path>
+                                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                            <circle cx="12" cy="12" r="10" stroke-dasharray="2 2"></circle>
+                                        </svg>
+                                    </div>
+                                    <span style="font-weight: 700;">Listener (Plus)</span>
+                                    <span style="font-size: 0.75rem; color: #666;">With Certificate</span>
+                                    <span style="font-weight: 700; color: var(--primary-red); margin-top: 8px;">₹1500
+                                        /
+                                        $20</span>
+                                </label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" name="category" value="scholar" id="cat_scholar"
+                                    onchange="updateTotal()">
+                                <label class="radio-card-label" for="cat_scholar">
+                                    <div class="icon-wrapper">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                        </svg>
+                                    </div>
+                                    <span style="font-weight: 700;">Research Scholar</span>
+                                    <span style="font-size: 0.75rem; color: #666;">(Post-Reg Submission)</span>
+                                    <span style="font-weight: 700; color: var(--primary-red); margin-top: 8px;">₹500
+                                        /
+                                        $6</span>
+                                </label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" name="category" value="faculty" id="cat_faculty"
+                                    onchange="updateTotal()">
+                                <label class="radio-card-label" for="cat_faculty">
+                                    <div class="icon-wrapper">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <span style="font-weight: 700;">Faculty Member</span>
+                                    <span style="font-size: 0.75rem; color: #666;">(Post-Reg Submission)</span>
+                                    <span style="font-weight: 700; color: var(--primary-red); margin-top: 8px;">₹500
+                                        /
+                                        $6</span>
+                                </label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" name="category" value="expert" id="cat_expert"
+                                    onchange="updateTotal()">
+                                <label class="radio-card-label" for="cat_expert">
+                                    <div class="icon-wrapper">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                        </svg>
+                                    </div>
+                                    <span style="font-weight: 700;">Scientist / Expert</span>
+                                    <span style="font-size: 0.75rem; color: #666;">(Post-Reg Submission)</span>
+                                    <span style="font-weight: 700; color: var(--primary-red); margin-top: 8px;">₹500
+                                        /
+                                        $6</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION: Payment -->
+                    <div class="form-section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                        Payment Details
+                    </div>
+
+                    <div class="total-box">
+                        <span class="total-label">Registration Fee:</span>
+                        <span class="total-amount" id="total-display">₹0</span>
+                    </div>
+
+                    <!-- Razorpay Payment Button -->
+                    <button type="button" class="submit-btn pay-btn" id="payBtn" onclick="initiatePayment()" disabled>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                        Pay with Razorpay
+                    </button>
+
+
+
+                    <div class="payment-status" id="paymentStatus">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                            Payment Status
+                        </h4>
+                        <p id="paymentStatusText">Awaiting payment confirmation...</p>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 30px;">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" required id="terms">
+                            <label for="terms">I agree to the <a href="#"
+                                    style="color: var(--primary-red); text-decoration: underline;">Terms &
+                                    Conditions</a> and certify that this work is original.</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="newsletter">
+                            <label for="newsletter">Subscribe to conference updates and newsletters</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        Submit Registration
+                    </button>
+                </form>
+            </div>
+
+            <div class="info-sidebar">
+
+                <div class="info-card">
+                    <div class="info-title">Abstract Guidelines</div>
+                    <p style="font-size: 0.9rem; color: var(--text-gray); line-height: 1.6; margin-bottom: 15px;">
+                        The conference invites original contributions of current or completed unpublished research work
+                        in the form of abstracts and full length papers for oral and poster presentations from esteemed
+                        Scientists, faculty from colleges, research scholars and research organizations.
+                    </p>
+                    <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 15px;">
+                        The contributors are requested to send a soft copy of one page abstract in MS word format to
+                        <strong style="color: var(--primary-red);">convener.siteemar2026@sasi.ac.in</strong> with the
+                        following
+                        specifications:
+                    </p>
+                    <ul style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.8; padding-left: 20px;">
+                        <li><strong>Title:</strong> Capital letters</li>
+                        <li><strong>Font style and size:</strong> Times New Roman and 12</li>
+                        <li><strong>Authors:</strong> Font size 12 in Italic</li>
+                        <li><strong>Affiliations:</strong> Font size 12 in italic</li>
+                        <li><strong>Maximum no. of words in abstract:</strong> 250</li>
+                        <li><strong>Poster dimensions:</strong> 80 cm x 120 cm in vertical position</li>
+                    </ul>
+
+                    <!-- Copyright Consent Form Section -->
+                    <p
+                        style="font-size: 0.9rem; color: var(--text-gray); line-height: 1.6; margin-top: 20px; margin-bottom: 10px;">
+                        All authors must submit a signed Copyright Consent Form along with their paper submission.
+                        Please download the form below, fill in the required details, sign it, and upload it during
+                        submission.
+                    </p>
+                    <button type="button" class="submit-btn"
+                        style="margin-top: 10px; background: linear-gradient(135deg, #D32F2F, #B71C1C); width: 100%; padding: 12px 20px; font-size: 0.9rem;"
+                        onclick="downloadCopyrightForm()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" style="margin-right: 8px;">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Copyright Consent Form
+                    </button>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-title">Accommodation info</div>
+                    <p style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.6; margin-bottom: 10px;">
+                        Accommodation is <strong>optional</strong> and is subject to availability.
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.6; margin-bottom: 15px;">
+                        Charges are <strong>EXTRA</strong> and separate from the registration fees. Please note that
+                        there is <strong>NO guarantee</strong> of accommodation availability.
+                    </p>
+                    <a href="venue.html" style="color: var(--primary-red); font-size: 0.85rem; font-weight: 600;">View
+                        Nearby Hotels →</a>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-title">Submission Guidelines</div>
+
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 1rem; color: var(--text-dark); margin-bottom: 5px;">Format Requirements
+                        </h4>
+                        <p style="font-size: 0.85rem; color: var(--text-gray);">
+                            Papers must be submitted in PDF format only (max 10MB). Please adhere to the IEEE
+                            double-column format.
+                            Length: 4 pages (no page numbers).
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 1rem; color: var(--text-dark); margin-bottom: 5px;">Plagiarism Policy</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-gray);">
+                            Zero-tolerance policy. Checked via Turnitin. Similarity index must be less than 20%. No
+                            self-plagiarism. </p>
+                    </div>
+
+                    <div>
+                        <h4 style="font-size: 1rem; color: var(--text-dark); margin-bottom: 5px;">Review Process</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-gray);">
+                            Double-blind peer review by at least two independent reviewers. Criteria: originality,
+                            quality, relevance, and clarity.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-title">Registration Fees Structure</div>
+
+                    <div class="currency-toggle">
+                        <div class="curr-btn active" onclick="setCurrency('INR')">INR (₹)</div>
+                        <div class="curr-btn" onclick="setCurrency('USD')">USD ($)</div>
+                    </div>
+
+                    <div class="fee-table-container">
+                        <table class="fee-table">
+                            <thead>
+                                <tr>
+                                    <th>Participation Type</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fee-body">
+                                <!-- Generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 0.82rem; margin-top: 15px; color: var(--text-gray); line-height: 1.5;">
+                        * <strong>Base Registration Fee (₹500 / $6)</strong> is mandatory for all categories.
+                        <br>* <strong>Certificate Fee:</strong> An additional fee of ₹1000 ($12) is required for a
+                        certificate if the paper is <strong>not selected</strong> for publication or for "Participation
+                        Only" category (Total ₹1500 / $20).
+                        <br>* <strong>Publication fees</strong> (collected separately after selection):<br>*
+                        <strong>For Research Students: </strong> ₹4000 / $45
+                        <br>* <strong>For Faculty Members:</strong> ₹4500 / $50
+                        <br>* <strong>For Industry Experts:</strong> ₹5000 / $55
+
+                        <br><strong style="color: var(--primary-red);">Note: All registration fees are
+                            non-refundable.</strong>
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-title">Payment Info</div>
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=sasi@upi&pn=SITE-EMAR2026&mc=8220&tid=123456&tr=123456&tn=ConferenceFee&am=0&cu=INR"
+                            alt="Payment QR" class="qr-img">
+                        <p style="font-size: 0.9rem; font-weight: 600;">Scan to Pay via UPI</p>
+                    </div>
+                    <div style="margin-top: 20px; font-size: 0.9rem;">
+                        <p><strong>Bank Name:</strong> State Bank of India</p>
+                        <p><strong>Account Name:</strong> SITE EMAR 2026</p>
+                        <p><strong>Acc No:</strong> 35467890123</p>
+                        <p><strong>IFSC:</strong> SBIN0001234</p>
+                    </div>
+                </div>
+
+                <div class="info-card help-box">
+                    <div class="info-title">Need Help?</div>
+                    <a href="tel:+919440576225" class="help-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        +91 94405 76225
+                    </a>
+                    <a href="mailto:drsrinivas@sasi.ac.in" class="help-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        convener.siteemar2026@sasi.ac.in
+                    </a>
+                    <a href="#" class="help-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        Join Telegram Group
+                    </a>
+                    <div style="margin-top: 15px;">
+                        <a href="#"
+                            style="background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Download
+                            Brochure</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SITE-EMAR 2026</h2>
+                    <p class="footer-text">
+                        International Conference on Smart Innovative Techniques and Emerging Trends in Engineering
+                        Materials for Advanced Research.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/school/sasi-institute-of-technology-engineering/"
+                            class="social-icon" title="LinkedIn" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/sasiengineeringcollege" class="social-icon" title="Instagram"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/sasi.ac.in" class="social-icon" title="Facebook"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SasiInstituteofTechnology" class="social-icon" title="YouTube"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="schedule.html">Program Schedule</a></li>
+                        <li><a href="speakers.html">Keynote Speakers</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                        <li><a href="awards.html">Awards</a></li>
+                        <li><a href="organizing-committee.html">Committee</a></li>
+                        <li><a href="memories.html">Memories</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Sasi Institute of Technology & Engineering, Tadepalligudem - 534101
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            +91 9440576225
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            convener.siteemar2026@sasi.ac.in
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="successModal">
+        <div class="success-modal">
+            <div class="success-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2 style="color: var(--text-dark); margin-bottom: 10px;">Registration Successful!</h2>
+            <p style="color: var(--text-gray); margin-bottom: 30px;">
+                Thank you for registering for SITE-EMAR 2026. A confirmation email with your Ticket ID has been sent to
+                your registered email address.
+            </p>
+            <p style="background: var(--light-gray); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <strong>Registration ID:</strong> <span id="regId">SITE2026-XXXX</span>
+            </p>
+            <button class="submit-btn" onclick="closeModal()">Close & Return Home</button>
+        </div>
+    </div>
+
+    <script>
+        // =========================================
+        // DATA & CONFIGURATION
+        // =========================================
+        const fees = {
+            INR: {
+                listener_basic: 500,
+                listener_cert: 1500,
+                scholar: 500,
+                faculty: 500,
+                expert: 500,
+                fullList: [
+                    { id: "1A", type: "Listener (Basic Registration)", details: "Registration ONLY. No kit, No lunch, No certificate.", amount: 500, status: "Mandatory" },
+                    { id: "1B", type: "Listener (With Certificate)", details: "Registration + Participation Certificate.", amount: 1500, status: "Optional" },
+                    { id: "2", type: "Author Base Registration", details: "Mandatory base fee for all other categories.", amount: 500, status: "Mandatory" },
+                    { id: "3", type: "Refused Paper Certificate", details: "Fee for certificate if paper is rejected.", amount: 1000, status: "Optional" },
+                    { id: "4A", type: "Publication Fee (Students)", details: "For Research Scholars / Students.", amount: 4000, status: "Post-Approval" },
+                    { id: "4B", type: "Publication Fee (Faculty)", details: "For Faculty Members.", amount: 4500, status: "Post-Approval" },
+                    { id: "4C", type: "Publication Fee (Expert)", details: "For Industry / Scientific Experts.", amount: 5000, status: "Post-Approval" }
+                ],
+                symbol: '₹'
+            },
+            USD: {
+                listener_basic: 6,
+                listener_cert: 20,
+                scholar: 6,
+                faculty: 6,
+                expert: 6,
+                fullList: [
+                    { id: "1A", type: "Listener (Basic Registration)", details: "Registration ONLY.", amount: 6, status: "Mandatory" },
+                    { id: "1B", type: "Listener (With Certificate)", details: "Registration + Certificate.", amount: 20, status: "Optional" },
+                    { id: "2", type: "Author Base Registration", details: "Mandatory base fee.", amount: 6, status: "Mandatory" },
+                    { id: "4A", type: "Publication Fee (Students)", details: "For Research Scholars / Students.", amount: 45, status: "Post-Approval" },
+                    { id: "4B", type: "Publication Fee (Faculty)", details: "For Faculty Members.", amount: 50, status: "Post-Approval" },
+                    { id: "4C", type: "Publication Fee (Expert)", details: "For Industry / Scientific Experts.", amount: 55, status: "Post-Approval" }
+                ],
+                symbol: '$'
+            }
+        };
+
+        let currentCurrency = 'INR';
+        let paymentCompleted = false;
+        let selectedAmount = 0;
+
+        // =========================================
+        // 1. MOBILE MENU
+        // =========================================
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                navLinks.classList.remove('open');
+            }
+        });
+
+        // Close menu when clicking a nav item
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // =========================================
+        // 2. PASSWORD TOGGLE FUNCTIONALITY
+        // =========================================
+        function togglePassword(inputId, eyeId) {
+            const input = document.getElementById(inputId);
+            const eye = document.getElementById(eyeId);
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                eye.innerHTML = `
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                `;
+            } else {
+                input.type = 'password';
+                eye.innerHTML = `
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                `;
+            }
+        }
+
+        // =========================================
+        // 3. CURRENCY & FEE CALCULATION
+        // =========================================
+        function setCurrency(curr) {
+            currentCurrency = curr;
+            document.querySelectorAll('.curr-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderFeeTable();
+            updateTotal();
+        }
+
+        function renderFeeTable() {
+            const tbody = document.getElementById('fee-body');
+            const data = fees[currentCurrency];
+            tbody.innerHTML = data.fullList.map(item => `
+                <tr>
+                    <td>
+                        <div style="font-weight:700;">${item.type}</div>
+                        <div style="font-size:0.75rem; color:#666;">${item.details}</div>
+                    </td>
+                    <td class="fee-amount">${data.symbol}${item.amount}</td>
+                </tr>
+            `).join('');
+        }
+
+        function updateTotal() {
+            const selected = document.querySelector('input[name="category"]:checked');
+            const totalDisplay = document.getElementById('total-display');
+            const payBtn = document.getElementById('payBtn');
+            const subTools = document.getElementById('submission-tools');
+
+            if (selected) {
+                const val = selected.value;
+                const cost = fees[currentCurrency][val];
+                selectedAmount = cost;
+                totalDisplay.innerText = fees[currentCurrency].symbol + cost;
+                payBtn.disabled = false;
+
+                // Toggle submission tools based on category
+                if (val.startsWith('listener')) {
+                    subTools.style.display = 'none';
+                } else {
+                    subTools.style.display = 'block';
+                }
+            } else {
+                payBtn.disabled = true;
+                subTools.style.display = 'none';
+            }
+        }
+
+        // Initialize Table
+        renderFeeTable();
+
+        // =========================================
+        // 2B. DOWNLOAD TEMPLATE
+        // =========================================
+        function downloadTemplate() {
+            const link = document.createElement('a');
+            link.href = 'SITE-EMAR 2026 Abstract Template.doc';
+            link.download = 'SITE-EMAR 2026 Abstract Template.doc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadManuscriptTemplate() {
+            const link = document.createElement('a');
+            link.href = 'site_emar_2026_manuscript-template.doc';
+            link.download = 'site_emar_2026_manuscript-template.doc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+
+        // =========================================
+        // 2C. DOWNLOAD COPYRIGHT CONSENT FORM
+        // =========================================
+        function downloadCopyrightForm() {
+            const link = document.createElement('a');
+            link.href = 'Copyright_Consent_Form.doc';
+            link.download = 'Copyright_Consent_Form_-_SITE-EMAR_2026.doc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+
+        // =========================================
+        // 3. FILE UPLOAD - PAPER
+        // =========================================
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const filePreview = document.getElementById('file-preview');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFile(e.dataTransfer.files);
+        });
+
+        function handleFile(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type === "application/pdf") {
+                    if (file.size > 10 * 1024 * 1024) {
+                        alert("File size exceeds 10MB limit.");
+                        return;
+                    }
+                    document.getElementById('preview-name').innerText = file.name;
+                    document.getElementById('preview-size').innerText = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+                    dropZone.style.display = 'none';
+                    filePreview.style.display = 'flex';
+                } else {
+                    alert("Only PDF files are allowed for paper submission.");
+                }
+            }
+        }
+
+        function removeFile() {
+            fileInput.value = '';
+            dropZone.style.display = 'block';
+            filePreview.style.display = 'none';
+        }
+
+        // =========================================
+        // 4. FILE UPLOAD - PAYMENT PROOF
+        // =========================================
+        const paymentDropZone = document.getElementById('payment-drop-zone');
+        const paymentFileInput = document.getElementById('payment-file-input');
+        const paymentFilePreview = document.getElementById('payment-file-preview');
+
+        if (paymentDropZone) {
+            paymentDropZone.addEventListener('click', () => paymentFileInput.click());
+
+            paymentDropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                paymentDropZone.classList.add('dragover');
+            });
+
+            paymentDropZone.addEventListener('dragleave', () => {
+                paymentDropZone.classList.remove('dragover');
+            });
+
+            paymentDropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                paymentDropZone.classList.remove('dragover');
+                handlePaymentFile(e.dataTransfer.files);
+            });
+        }
+
+        function handlePaymentFile(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                const validTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+
+                if (validTypes.includes(file.type)) {
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert("File size exceeds 5MB limit.");
+                        return;
+                    }
+                    document.getElementById('payment-preview-name').innerText = file.name;
+                    document.getElementById('payment-preview-size').innerText = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+                    document.getElementById('payment-drop-zone').style.display = 'none';
+                    document.getElementById('payment-file-preview').style.display = 'flex';
+                } else {
+                    alert("Only PDF, JPG, and PNG files are allowed for payment proof.");
+                }
+            }
+        }
+
+        function removePaymentFile() {
+            if (paymentFileInput) paymentFileInput.value = '';
+            document.getElementById('payment-drop-zone').style.display = 'block';
+            document.getElementById('payment-file-preview').style.display = 'none';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            if (modal) modal.style.display = 'none';
+            window.location.href = 'index.html';
+        }
+
+        // =========================================
+        // 6. FORM INITIALIZATION (HANDLED BY registration.js)
+        // =========================================
+        console.log('📄 Registration page logic loaded');
+    </script>
+
+    </script>
+
+    <!-- ============================================= -->
+    <!-- Supabase Backend Integration -->
+    <!-- ============================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="utils.js"></script>
+    <script src="auth.js"></script>
+    <script src="registration.js"></script>
+
+</body>
+
+</html>

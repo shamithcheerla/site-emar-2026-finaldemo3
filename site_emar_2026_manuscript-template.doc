@@ -1,0 +1,273 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <meta charset="utf-8">
+    <title>SITE-EMAR 2026 Manuscript Template</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>100</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+        @page {
+            margin: 1in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 11pt;
+            line-height: 1.25;
+            margin: 0;
+            padding: 0;
+        }
+        .branding-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14pt;
+            color: #D32F2F;
+            margin-bottom: 20pt;
+            border-bottom: 2px solid #D32F2F;
+            padding-bottom: 5pt;
+        }
+        .paper-title {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 12pt;
+        }
+        .style-note {
+            text-align: center;
+            font-size: 9pt;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 12pt;
+        }
+        .author-name {
+            font-size: 12pt;
+            text-align: center;
+            margin-bottom: 4pt;
+        }
+        .affiliation {
+            font-size: 10pt;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 12pt;
+            line-height:1.4;
+        }
+        .email {
+            font-size: 10pt;
+            text-align: center;
+            margin-bottom: 20pt;
+        }
+        .abstract-container {
+            margin: 0 0.5in;
+            text-align: justify;
+        }
+        .abstract-heading {
+            font-weight: bold;
+            font-size: 9pt;
+        }
+        .abstract-text {
+            font-size: 9pt;
+        }
+        .red-rule {
+            color: red;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 12pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 24pt;
+            margin-bottom: 12pt;
+        }
+        h2 {
+            font-size: 11pt;
+            font-weight: bold;
+            margin-top: 18pt;
+            margin-bottom: 8pt;
+            text-align: center;
+        }
+        h3 {
+            font-size: 11pt;
+            font-style: italic;
+            margin-top: 14pt;
+            margin-bottom: 6pt;
+            text-align: center;
+        }
+        p {
+            margin-bottom: 10pt;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 10pt;
+            margin-left: 0.5in;
+        }
+        li {
+            margin-bottom: 5pt;
+        }
+        .equation {
+            text-align: center;
+            margin: 15pt 0;
+            font-family: "Cambria Math", "Times New Roman", serif;
+        }
+        .figure-container {
+            text-align: center;
+            margin: 20pt 0;
+        }
+        .figure-box {
+            border: 1px dashed #999;
+            background: #f9f9f9;
+            padding: 30pt;
+            display: inline-block;
+            margin-bottom: 10pt;
+        }
+        .figure-caption {
+            font-size: 9pt;
+            margin-top: 5pt;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15pt 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8pt;
+            text-align: center;
+            font-size: 10pt;
+        }
+        th {
+            background-color: #eee;
+        }
+        .reference-item {
+            font-size: 10pt;
+            margin-bottom: 6pt;
+            padding-left: 20pt;
+            text-indent: -20pt;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="branding-header">SITE-EMAR SASI CLG</div>
+
+    <div class="paper-title">The Title Goes Here with Each Initial Letter Capitalized</div>
+    <div class="style-note">(Use the Microsoft Word template style: Paper Title)</div>
+
+    <div class="author-name">Author’s Name<sup>1, a)</sup> and Author’s Name<sup>2, 3</sup></div>
+    <div class="style-note">(Use the Microsoft Word template style: Paper Author)</div>
+
+    <div class="affiliation">
+        <sup>1</sup>Replace this text with an author’s affiliation (use complete addresses). Note the use of superscript “a)” to indicate the author’s e-mail address below. Use b), c), etc. to indicate e-mail addresses for more than 1 author. <br>
+        <sup>2</sup>Additional affiliations should be indicated by superscript numbers 2, 3, etc. as shown above. <br>
+        <sup>3</sup>You would list an author’s second affiliation here.
+    </div>
+    <div class="style-note">(Use the Microsoft Word template style: Author Affiliation)</div>
+
+    <div class="email"><sup>a)</sup>Corresponding author: your@emailaddress.xxx</div>
+    <div class="style-note">(Use the Microsoft Word template style: Author Email)</div>
+
+    <div class="abstract-container">
+        <span class="abstract-heading">Abstract.</span>
+        <span class="abstract-text">The AIP Proceedings article template has many predefined paragraph styles for you to use/apply as you write your paper. To format your abstract, use the Microsoft Word template style: Abstract. Each paper must include an abstract. Begin the abstract with the word “Abstract” followed by a period in bold font, and then continue with a normal 9 point font. <span class="red-rule">Page limit for contributory paper is 3 page. For YAA page limit: 4 page. Paper size: Letter with margin: left = right = top =2.54cm, bottom =3.0 cm.</span></span>
+    </div>
+
+    <h1>POINTS TO CONSIDER WHEN PREPARING YOUR PAPER</h1>
+    <div class="style-note">(USE THE MICROSOFT WORD TEMPLATE STYLE: HEADING 1)</div>
+
+    <p>Well prepared papers enable rapid publication and reduce unnecessary work for your proceedings editor(s). The following points summarize the key issues you need to comply with when preparing your paper for AIP Proceedings.</p>
+    <ul>
+        <li><span class="red-rule">Check your article PDF file!</span> It is not uncommon for errors to appear in PDFs generated from Microsoft Word – corrupted math, figures reflowing, etc.</li>
+        <li><span class="red-rule">Do not add page numbers or headers/footers.</span> Our article templates deliberately do not include these, so please do not add them.</li>
+        <li><span class="red-rule">Do not alter the margins of our templates.</span> They are carefully designed for AIP’s production process.</li>
+        <li><span class="red-rule">Prepare and format references with care.</span> Please prepare and format your references in accordance with the examples supplied with the author templates and documentation.</li>
+        <li><span class="red-rule">Use clear, legible graphics and diagrams.</span> Readers of your paper will be grateful. If they cannot read it, they are unlikely to cite it.</li>
+        <li><span class="red-rule">Do not use copyrighted material without permission.</span> Papers using copyrighted material without appropriate permission and acknowledgment will be excluded from the proceedings.</li>
+        <li><span class="red-rule">No 2-page papers please.</span> 2-page, abstract-only contributions are not acceptable and will be excluded from the proceedings.</li>
+    </ul>
+
+    <h1>MATHEMATICS (FIRST LEVEL HEADING)</h1>
+    <div class="style-note">(Use the Microsoft Word template style: Heading 1)</div>
+    <p>Here we provide some basic advice for formatting your mathematics, but we do not attempt to define detailed styles or specifications for mathematical typesetting. You should use the standard styles, symbols, and conventions for the field/discipline you are writing about.</p>
+
+    <h2>A Note on Microsoft Word’s Equation Editors (Second Level Heading)</h2>
+    <div class="style-note">(Use the Microsoft Word template style: Heading 2)</div>
+    <p>From Word 2007 onwards, Microsoft Word provides two “Equation Editors,” which, for ease of reference, we’ll call “Old Style Equations” and “New Style Equations.”</p>
+    <ul>
+        <li><strong>“New Style Equations” (Word 2007 onwards):</strong> With Word 2007 Microsoft introduced a powerful new built-in Equation Editor that enables input of sophisticated mathematics typeset (usually) in the Cambria Math font. You access it from the Insert menu.</li>
+        <li><strong>“Old Style Equations” (Word 97–Word 2003):</strong> For versions of Microsoft Word between Word 97 and Word 2003, mathematical input was created by an add-in: Inserting and editing a “Microsoft Equation 3.0 object,” typically by Insert Object and selecting “Microsoft Equation 3.0.”</li>
+    </ul>
+
+    <h2>Formatting and Inserting Equations (Second Level Heading)</h2>
+    <div class="style-note">(Use the Microsoft Word template style: Heading 2)</div>
+    <p>Equations should be centered with equation numbers on the right-hand side (flush right). Achieving a pleasing layout of equations can be tricky in Microsoft Word, so here are some tips. You can either:</p>
+    <ol>
+        <li>Copy, paste, and edit the sample equation provided (recommended), or</li>
+        <li>Manually insert an equation and equation number</li>
+    </ol>
+
+    <div class="equation">
+        d[F<sub>1</sub>]/d&omega;<sub>2</sub> = SAM<sub>2</sub> cos &omega; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d[F<sub>1</sub>]/d&omega;<sub>3</sub> = SAM<sub>2</sub> cos &omega; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1)
+    </div>
+
+    <h2>Figures (Second Level Heading)</h2>
+    <div class="style-note">(Use the Microsoft Word template style: Heading 2)</div>
+    <p>Figures, tables, and equations must be inserted in the text and may not be grouped at the end of the paper. If you need to arrange a number of figures, a good tip is to place them in a table, which gives you additional control of the layout. Leave a line space between your figure and any text above it.</p>
+
+    <div class="figure-container">
+        <div class="figure-box">
+            <span style="color: #ccc; font-style: italic;">[ FIGURE PLACEHOLDER ]</span>
+        </div>
+        <div class="figure-caption"><strong>FIGURE 1.</strong> To format a figure caption use the Microsoft Word template style: Figure Caption. The text “FIGURE 1,” which labels the caption, should be bold and in upper case.</div>
+    </div>
+
+    <h2>Tables (Second Level Heading)</h2>
+    <div class="style-note">(Use the Microsoft Word template style: Heading 2)</div>
+    <p>Due to the wide range and complexity of tables, we simply offer an example for guidance. Please follow the style for table (and figure) captions.</p>
+    
+    <div style="text-align: center; font-weight: bold; font-size: 10pt; margin-bottom: 5pt; text-transform: uppercase;">TABLE 1. To format a table caption, use the Microsoft Word template style: Table Caption.</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Column Header Goes Here</th>
+                <th>Column Header Goes Here</th>
+                <th>Column Header Goes Here</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row Name Here</td>
+                <td>x</td>
+                <td>x</td>
+            </tr>
+            <tr>
+                <td>Row Name Here</td>
+                <td>x</td>
+                <td>x</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>ACKNOWLEDGMENTS</h1>
+    <div class="style-note">(Use the Microsoft Word template style: Heading 1)</div>
+    <p>The reference section will follow the “Acknowledgment” section. References should be numbered using Arabic numerals followed by a period (.) as shown below, and should follow the format in the below examples.</p>
+
+    <h1>REFERENCES</h1>
+    <div class="style-note">(Use the Microsoft Word template style: Heading 1)</div>
+    <div class="reference-item">1. M. P. Brown and K. Austin, <i>The New Physique</i> (Publisher Name, Publisher City, 2005), pp. 25–30.</div>
+    <div class="reference-item">2. M. P. Brown and K. Austin, Appl. Phys. Letters 85, 2503–2504 (2004).</div>
+    <div class="reference-item">3. R. T. Wang, “Title of Chapter,” in <i>Classic Physiques</i>, edited by R. B. Hamil (Publisher Name, Publisher City, 1999), pp. 212–213.</div>
+    <div class="reference-item">4. C. D. Smith and E. F. Jones, “Load-cycling in cubic press,” in <i>Shock Compression of Condensed Matter-2001</i>, AIP Conference Proceedings 620, edited by M. D. Furnish et al. (American Institute of Physics, Melville, NY, 2002), pp. 651–654.</div>
+    <div class="reference-item">5. B. R. Jackson and T. Pitman, U.S. Patent No. 6,345,224 (8 July 2004)</div>
+    <div class="reference-item">6. D. L. Davids, “Recovery effects in binary aluminum alloys,” Ph.D. thesis, Harvard University, 1998.</div>
+    <div class="reference-item">7. R. C. Mikkelson (private communication).</div>
+
+</body>
+</html>

@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES (MATCHING REGISTRATION.HTML)
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --light-red: #FFEBEE;
+            --hover-red: #FFCDD2;
+            --accent-red: #FF5252;
+
+            /* Neutrals */
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --light-gray: #EEEEEE;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #757575;
+            --text-dark: #212121;
+            --text-gray: #616161;
+            --success-green: #2E7D32;
+            --error-red: #C62828;
+            --warning-orange: #F57C00;
+            --warning-bg: #FFF3E0;
+
+            /* Shadows & Effects */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --shadow-red: 0 8px 16px rgba(211, 47, 47, 0.25);
+
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+
+            /* Transitions */
+            --trans-fast: 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .btn-logout {
+            padding: 10px 20px;
+            background: var(--light-red);
+            color: var(--primary-red);
+            border: 1px solid var(--primary-red);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: var(--trans-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-excel {
+            background: #2E7D32;
+            color: white;
+            border: 1px solid #2E7D32;
+        }
+
+        .btn-excel:hover {
+            background: #1B5E20;
+        }
+
+        .btn-clear {
+            background: var(--warning-orange);
+            color: white;
+            border: 1px solid var(--warning-orange);
+        }
+
+        .btn-clear:hover {
+            background: #E65100;
+        }
+
+        .btn-logout:hover {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-red);
+        }
+
+        /* Statistics Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--medium-gray);
+            transition: var(--trans-fast);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Stat Colors */
+        .stat-card.total {
+            border-color: var(--text-dark);
+        }
+
+        .stat-card.pending {
+            border-color: var(--warning-orange);
+        }
+
+        .stat-card.accepted {
+            border-color: var(--success-green);
+        }
+
+        .stat-card.rejected {
+            border-color: var(--error-red);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-card.total .stat-icon {
+            background: var(--light-gray);
+            color: var(--text-dark);
+        }
+
+        .stat-card.pending .stat-icon {
+            background: var(--warning-bg);
+            color: var(--warning-orange);
+        }
+
+        .stat-card.accepted .stat-icon {
+            background: #E8F5E9;
+            color: var(--success-green);
+        }
+
+        .stat-card.rejected .stat-icon {
+            background: var(--light-red);
+            color: var(--error-red);
+        }
+
+        .stat-details h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-details p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Controls */
+        .controls {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            border: 1px solid var(--medium-gray);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--trans-fast);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 4px var(--light-red);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            background: var(--off-white);
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            color: var(--text-gray);
+            transition: var(--trans-fast);
+        }
+
+        .filter-tab:hover {
+            color: var(--primary-red);
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-tab.active {
+            background: var(--white);
+            color: var(--primary-red);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Submissions Grid */
+        .submissions-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .submission-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            transition: var(--trans-fast);
+            border: 1px solid transparent;
+        }
+
+        .submission-card:hover {
+            border-color: var(--medium-gray);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--light-red);
+            color: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .user-info h3 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .user-info .email {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-badge.pending {
+            background: var(--warning-bg);
+            color: var(--warning-orange);
+        }
+
+        .status-badge.accepted {
+            background: #E8F5E9;
+            color: var(--success-green);
+        }
+
+        .status-badge.rejected {
+            background: var(--light-red);
+            color: var(--error-red);
+        }
+
+        .submission-body {
+            margin-bottom: 20px;
+        }
+
+        .abstract-box {
+            background: var(--off-white);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .file-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            background: var(--white);
+        }
+
+        .pdf-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--error-red);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .submission-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            cursor: pointer;
+            transition: var(--trans-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-download {
+            background: var(--text-dark);
+            color: var(--white);
+        }
+
+        .btn-download:hover {
+            background: #000;
+        }
+
+        .btn-accept {
+            background: var(--success-green);
+            color: var(--white);
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+        }
+
+        .btn-accept:hover {
+            transform: translateY(-2px);
+            background: #1B5E20;
+        }
+
+        .btn-reject {
+            background: var(--white);
+            color: var(--error-red);
+            border: 1px solid var(--error-red);
+        }
+
+        .btn-reject:hover {
+            background: var(--light-red);
+        }
+
+        .btn:disabled {
+            background: var(--medium-gray);
+            color: var(--text-gray);
+            border-color: transparent;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .no-submissions {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-gray);
+            background: var(--white);
+            border-radius: 12px;
+            border: 2px dashed var(--medium-gray);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .filter-tabs {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .submission-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .submission-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: var(--shadow-lg);
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-red);
+            outline: none;
+        }
+
+        .status-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .status-option input {
+            display: none;
+        }
+
+        .status-box {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid var(--medium-gray);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .status-option input:checked+.status-box.accepted {
+            background: #E8F5E9;
+            border-color: var(--success-green);
+            color: var(--success-green);
+        }
+
+        .status-option input:checked+.status-box.rejected {
+            background: var(--light-red);
+            border-color: var(--error-red);
+            color: var(--error-red);
+        }
+
+        .status-option input:checked+.status-box.pending {
+            background: var(--warning-bg);
+            border-color: var(--warning-orange);
+            color: var(--warning-orange);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-red);
+        }
+
+        .btn-secondary {
+            background: var(--medium-gray);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: #bdbdbd;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI" height="40" onerror="this.style.display='none'">
+                SITE-EMAR <span>2026 Admin</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-logout btn-excel" onclick="exportToExcel()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    Download Excel
+                </button>
+                <button class="btn-logout btn-clear" onclick="clearDashboard()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear All
+                </button>
+                <button class="btn-logout" onclick="logout()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">Paper Submission Dashboard</h2>
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <div class="stat-icon">📄</div>
+                <div class="stat-details">
+                    <h3 id="totalCount">0</h3>
+                    <p>Total Submissions</p>
+                </div>
+            </div>
+            <div class="stat-card pending">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-details">
+                    <h3 id="pendingCount">0</h3>
+                    <p>Pending Review</p>
+                </div>
+            </div>
+            <div class="stat-card accepted">
+                <div class="stat-icon">✓</div>
+                <div class="stat-details">
+                    <h3 id="acceptedCount">0</h3>
+                    <p>Papers Accepted</p>
+                </div>
+            </div>
+            <div class="stat-card rejected">
+                <div class="stat-icon">✕</div>
+                <div class="stat-details">
+                    <h3 id="rejectedCount">0</h3>
+                    <p>Papers Rejected</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <div class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" placeholder="Search by author name or email..."
+                    oninput="filterSubmissions()">
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all" onclick="setFilter('all')">All Papers</button>
+                <button class="filter-tab" data-filter="pending" onclick="setFilter('pending')">Pending</button>
+                <button class="filter-tab" data-filter="accepted" onclick="setFilter('accepted')">Accepted</button>
+                <button class="filter-tab" data-filter="rejected" onclick="setFilter('rejected')">Rejected</button>
+            </div>
+        </div>
+
+        <div class="submissions-grid" id="submissionsGrid">
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Update Paper Status</h3>
+                <button class="close-modal" onclick="closeReviewModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="modalSubmissionId">
+                <div class="form-group">
+                    <label class="form-label">Review Decision</label>
+                    <div class="status-options">
+                        <label class="status-option">
+                            <input type="radio" name="reviewStatus" value="accepted" checked>
+                            <span class="status-box accepted">Accept Paper</span>
+                        </label>
+                        <label class="status-option">
+                            <input type="radio" name="reviewStatus" value="rejected">
+                            <span class="status-box rejected">Reject Paper</span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Update Message (Sent to User Dashboard)</label>
+                    <textarea id="modalComment" class="form-control" rows="5"
+                        placeholder="Enter detailed comments, feedback, or instructions for the author..."></textarea>
+                    <small style="color: var(--text-gray); margin-top: 5px; display: block;">This message will be
+                        visible to the user on their dashboard.</small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeReviewModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitReview()">Send Update</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allSubmissions = [];
+        let currentFilter = 'all';
+
+        // Check authentication on page load
+        window.addEventListener('load', async function () {
+            console.log('🔄 Checking admin dashboard access...');
+            try {
+                // Use the Auth module to check if user is admin
+                const isUserAdmin = await window.auth.requireAdmin();
+
+                if (!isUserAdmin) {
+                    console.warn('⚠️ Admin access denied, redirecting to login.html');
+                    // requireAdmin handles redirect, but we return to be safe
+                    return;
+                }
+
+                console.log('✅ Admin authenticated successfully');
+                await loadSubmissions();
+            } catch (error) {
+                console.error('❌ Critical error during admin auth check:', error);
+                alert('Authentication failed. Please log in again.');
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Load all submissions from Supabase
+        async function loadSubmissions() {
+            try {
+                const papers = await window.adminPanel.getAllPapers();
+                allSubmissions = papers;
+                updateStatistics();
+                displaySubmissions();
+            } catch (error) {
+                console.error('❌ Error loading submissions:', error);
+            }
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            const total = allSubmissions.length;
+            const pending = allSubmissions.filter(s => s.status === 'pending').length;
+            const accepted = allSubmissions.filter(s => s.status === 'accepted').length;
+            const rejected = allSubmissions.filter(s => s.status === 'rejected').length;
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('acceptedCount').textContent = accepted;
+            document.getElementById('rejectedCount').textContent = rejected;
+        }
+
+        // Display submissions
+        function displaySubmissions() {
+            const grid = document.getElementById('submissionsGrid');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            let filtered = allSubmissions;
+
+            // Filter by status
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(s => s.status === currentFilter);
+            }
+
+            // Filter by search
+            if (searchTerm) {
+                filtered = filtered.filter(s =>
+                    (s.userName && s.userName.toLowerCase().includes(searchTerm)) ||
+                    (s.userEmail && s.userEmail.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-submissions">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:var(--text-gray); margin-bottom:15px;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <h3>No submissions found</h3>
+                        <p>There are no paper submissions matching your criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(submission => `
+                <div class="submission-card" data-id="${submission.id}">
+                    <div class="submission-header">
+                        <div class="user-profile">
+                            <div class="avatar">${submission.user_name ? submission.user_name.charAt(0).toUpperCase() : 'U'}</div>
+                            <div class="user-info">
+                                <h3>${submission.user_name || 'Unknown User'}</h3>
+                                <div class="email">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                    ${submission.user_email || 'N/A'}
+                                </div>
+                            </div>
+                        </div>
+                        <span class="status-badge ${submission.status}">
+                            ${getStatusIcon(submission.status)}
+                            ${submission.status.charAt(0).toUpperCase() + submission.status.slice(1)}
+                        </span>
+                    </div>
+
+                    <div class="submission-body">
+                        <h4 style="margin-bottom: 10px; color: var(--text-dark);">${submission.paper_title || 'Untitled Paper'}</h4>
+                        <div class="abstract-box">
+                             <strong>Abstract:</strong> ${submission.abstract ? (submission.abstract.substring(0, 300) + '...') : 'No abstract provided'}
+                        </div>
+
+                        ${submission.review_comments && submission.status !== 'pending' ? `
+                            <div class="abstract-box" style="background: ${submission.status === 'accepted' ? '#E8F5E9' : 'var(--light-red)'}; border-left: 3px solid ${submission.status === 'accepted' ? 'var(--success-green)' : 'var(--error-red)'};">
+                                <strong style="color: ${submission.status === 'accepted' ? 'var(--success-green)' : 'var(--error-red)'};">Admin Comments:</strong> ${submission.review_comments}
+                                <div style="font-size: 0.75rem; color: var(--text-gray); margin-top: 8px;">
+                                    Reviewed by: ${submission.reviewer_name || 'Admin'} on ${submission.review_date ? new Date(submission.review_date).toLocaleString() : 'N/A'}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <div class="file-row">
+                            <div class="pdf-icon">PDF</div>
+                            <div style="flex:1">
+                                <div style="font-weight:600; font-size:0.95rem;">${submission.file_name}</div>
+                                <div style="color:var(--text-gray); font-size:0.8rem;">Submitted: ${new Date(submission.created_at || submission.submission_date).toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="submission-actions">
+                        <button class="btn btn-download" onclick="downloadPaper('${submission.id}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download PDF
+                        </button>
+                        <button class="btn btn-accept" onclick="openReviewModal('${submission.id}')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            Review / Update Status
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getStatusIcon(status) {
+            if (status === 'accepted') return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            if (status === 'rejected') return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+            return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>';
+        }
+
+        // Set filter
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.filter === filter) {
+                    tab.classList.add('active');
+                }
+            });
+            displaySubmissions();
+        }
+
+        // Filter submissions by search
+        function filterSubmissions() {
+            displaySubmissions();
+        }
+
+        // Modal Functions
+        function openReviewModal(submissionId) {
+            const submission = allSubmissions.find(s => s.id === submissionId);
+            if (!submission) return;
+
+            // Set hidden ID
+            document.getElementById('modalSubmissionId').value = submissionId;
+
+            // Pre-fill comment depending on logic, or clear it
+            document.getElementById('modalComment').value = submission.review_comments || '';
+
+            // Select status if possible
+            const statusRadios = document.getElementsByName('reviewStatus');
+            for (const radio of statusRadios) {
+                if (radio.value === submission.status) {
+                    radio.checked = true;
+                }
+            }
+
+            // If status is still pending, maybe default to accepted or leave as is
+            if (submission.status === 'pending') {
+                // default to accepted
+                document.querySelector('input[name="reviewStatus"][value="accepted"]').checked = true;
+                document.getElementById('modalComment').value = "Your paper has been accepted for presentation at SITE-EMAR 2026.";
+            }
+
+            document.getElementById('reviewModal').classList.add('active');
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.remove('active');
+        }
+
+        async function submitReview() {
+            const submissionId = document.getElementById('modalSubmissionId').value;
+            const newStatus = document.querySelector('input[name="reviewStatus"]:checked').value;
+            const comment = document.getElementById('modalComment').value;
+
+            if (!comment) {
+                if (!confirm("Are you sure you want to send this update without any message?")) {
+                    return;
+                }
+            }
+
+            // Show loading state
+            const submitBtn = document.querySelector('#reviewModal .btn-primary');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Updating...';
+
+            try {
+                const result = await window.adminPanel.updatePaperStatus(submissionId, newStatus, comment);
+
+                if (result.success) {
+                    alert(`Status updated successfully!`);
+                    closeReviewModal();
+                    await loadSubmissions(); // Refresh from DB
+                } else {
+                    alert('Error updating status: ' + result.error);
+                }
+            } catch (error) {
+                console.error('❌ Status update error:', error);
+                alert('An unexpected error occurred.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        }
+
+        // Download paper
+        // Download paper from Supabase Storage
+        async function downloadPaper(submissionId) {
+            const submission = allSubmissions.find(s => s.id === submissionId);
+            if (!submission || !submission.file_url) {
+                alert('File not found.');
+                return;
+            }
+
+            try {
+                const { data, error } = await window.supabaseClient.storage
+                    .from('papers')
+                    .download(submission.file_url);
+
+                if (error) throw error;
+
+                const url = window.URL.createObjectURL(data);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = submission.file_name || 'paper.pdf';
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('❌ Download error:', error);
+                alert('Failed to download paper.');
+            }
+        }
+
+        // Clear Dashboard (Frontend only)
+        async function clearDashboard() {
+            if (confirm("⚠️ WARNING: This will PERMANENTLY DELETE ALL paper submissions and files from the database.\n\nAre you sure you want to proceed?")) {
+                if (confirm("Double Check: This action cannot be undone. Delete all data?")) {
+                    // Call admin.js function
+                    const result = await window.adminPanel.deleteAllPapers();
+                    if (result.success) {
+                        alert('All submissions cleared successfully.');
+                        allSubmissions = [];
+                        updateStatistics();
+                        displaySubmissions();
+                    } else {
+                        alert('Failed to clear data: ' + result.error);
+                    }
+                }
+            }
+        }
+
+        // Export to Excel
+        function exportToExcel() {
+            if (!allSubmissions || allSubmissions.length === 0) {
+                alert("No data to export");
+                return;
+            }
+
+            // Define headers
+            const headers = [
+                "Submission ID",
+                "User Name",
+                "Email",
+                "Paper Title",
+                "Status",
+                "Submission Date",
+                "Reviewer",
+                "Comments"
+            ];
+
+            // Convert data to CSV format
+            const csvRows = [];
+
+            // Add headers row
+            csvRows.push(headers.join(","));
+
+            // Add data rows
+            allSubmissions.forEach(sub => {
+                const row = [
+                    `"${sub.id}"`,
+                    `"${sub.user_name || 'N/A'}"`,
+                    `"${sub.user_email || 'N/A'}"`,
+                    `"${(sub.paper_title || 'Untitled').replace(/"/g, '""')}"`, // Escape quotes
+                    `"${sub.status}"`,
+                    `"${new Date(sub.created_at || sub.submission_date).toLocaleDateString()}"`,
+                    `"${sub.reviewer_name || ''}"`,
+                    `"${(sub.review_comments || '').replace(/"/g, '""')}"`
+                ];
+                csvRows.push(row.join(","));
+            });
+
+            // Create CSV string
+            const csvString = csvRows.join("\n");
+
+            // Create download link
+            const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `site_emar_submissions_${new Date().toISOString().slice(0, 10)}.csv`);
+            link.style.visibility = 'hidden';
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Logout from Supabase
+        async function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                await window.auth.logout();
+            }
+        }
+    </script>
+
+    <!-- ============================================= -->
+    <!-- Supabase Backend Integration -->
+    <!-- ============================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="utils.js"></script>
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

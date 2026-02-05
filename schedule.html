@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flexible Schedule | SITE-EMAR 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES (RED & WHITE THEME)
+           ========================================= */
+        :root {
+            /* Palette */
+            --red-primary: #D32F2F;
+            --red-dark: #B71C1C;
+            --red-light: #FFEBEE;
+            --red-accent: #FF1744;
+
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-text: #616161;
+            --dark-text: #212121;
+
+            /* Track Colors */
+            --track-main: #D32F2F;
+            --track-tech-a: #1976D2;
+            --track-tech-b: #388E3C;
+            --track-personal: #9C27B0;
+
+            /* Dimensions */
+            --time-col-width: 80px;
+            --slot-height: 100px;
+            /* 1 hour height */
+
+            /* Shadows */
+            --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-float: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+            /* Typography */
+            --font-head: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+        }
+
+        /* =========================================
+           2. GLOBAL RESET
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-head);
+            background-color: var(--off-white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* Utility */
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-between {
+            justify-content: space-between;
+        }
+
+        .flex-center {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* =========================================
+           3. NAVIGATION
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--red-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .ff {
+            color: #212121;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item {
+            font-weight: 500;
+            color: var(--dark-text);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-item.active {
+            color: var(--red-primary);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red-primary);
+            transition: 0.3s;
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--dark-text);
+        }
+
+        /* =========================================
+           4. DASHBOARD HEADER
+           ========================================= */
+        .schedule-header {
+            margin-top: 80px;
+            min-height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+                url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1600&auto=format&fit=crop');
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .schedule-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .schedule-header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           5. CONTROL BAR
+           ========================================= */
+        .controls-bar {
+            background: var(--white);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray-300);
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+            box-shadow: var(--shadow-card);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* View Switcher */
+        .view-switch {
+            display: flex;
+            background: var(--gray-200);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .view-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            font-weight: 600;
+            color: var(--gray-text);
+            transition: 0.3s;
+        }
+
+        .view-btn.active {
+            background: var(--white);
+            color: var(--red-primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Date Navigation */
+        .date-navigator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-arrow {
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-arrow:hover {
+            border-color: var(--red-primary);
+            color: var(--red-primary);
+        }
+
+        .date-display {
+            position: relative;
+        }
+
+        .date-input-hidden {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .current-date-label {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark-text);
+            padding: 5px 15px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-date-label:hover {
+            background: var(--gray-100);
+            border-color: var(--gray-300);
+        }
+
+        /* Actions */
+        .action-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-action {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-export {
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            color: var(--dark-text);
+        }
+
+        .btn-export:hover {
+            border-color: var(--dark-text);
+        }
+
+        .btn-add {
+            background: var(--red-primary);
+            color: var(--white);
+        }
+
+        .btn-add:hover {
+            background: var(--red-dark);
+        }
+
+        /* =========================================
+           6. TIMELINE & CALENDAR VIEWS
+           ========================================= */
+        .view-timeline {
+            display: none;
+            padding: 40px 0;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 50vh;
+        }
+
+        .view-timeline.active {
+            display: block;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            margin-bottom: 25px;
+            position: relative;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 100px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gray-300);
+        }
+
+        .timeline-time {
+            text-align: right;
+            padding-right: 25px;
+            font-weight: 700;
+            color: var(--gray-text);
+        }
+
+        .timeline-content {
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            border: 3px solid var(--red-primary);
+            border-radius: 50%;
+        }
+
+        .timeline-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--gray-200);
+            transition: 0.3s;
+            border-left: 5px solid transparent;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: var(--gray-text);
+        }
+
+        .empty-state svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        /* Calendar Grid */
+        .view-calendar {
+            display: none;
+            padding: 20px 0;
+            overflow-x: auto;
+        }
+
+        .view-calendar.active {
+            display: block;
+        }
+
+        .calendar-wrapper {
+            min-width: 800px;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--gray-300);
+            position: relative;
+        }
+
+        .calendar-header {
+            display: grid;
+            grid-template-columns: 80px repeat(3, 1fr);
+            border-bottom: 1px solid var(--gray-300);
+            background: var(--gray-100);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .header-cell {
+            padding: 15px;
+            font-weight: 700;
+            text-align: center;
+            border-right: 1px solid var(--gray-300);
+        }
+
+        .header-cell:last-child {
+            border-right: none;
+        }
+
+        .calendar-body {
+            position: relative;
+            height: 1000px;
+            background: repeating-linear-gradient(to bottom, transparent 0px, transparent 99px, var(--gray-200) 100px);
+        }
+
+        .time-markers {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 100%;
+            border-right: 1px solid var(--gray-300);
+            background: var(--white);
+            z-index: 2;
+        }
+
+        .time-marker {
+            height: 100px;
+            padding: 5px 10px;
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            border-bottom: 1px solid transparent;
+        }
+
+        .event-block {
+            position: absolute;
+            width: calc((100% - 80px) / 3 - 10px);
+            background: var(--white);
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--red-primary);
+            overflow: hidden;
+            transition: 0.2s;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .event-block:hover {
+            z-index: 10;
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .event-block.track-1 {
+            left: calc(80px + 5px);
+            background: #FFEBEE;
+            border-color: var(--red-primary);
+        }
+
+        .event-block.track-2 {
+            left: calc(80px + (100% - 80px)/3 + 5px);
+            background: #E3F2FD;
+            border-color: #1976D2;
+        }
+
+        .event-block.track-3 {
+            left: calc(80px + 2*(100% - 80px)/3 + 5px);
+            background: #F3E5F5;
+            border-color: #9C27B0;
+        }
+
+        /* =========================================
+           7. MODALS & EXTRAS
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+        }
+
+        .cal-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-google {
+            background: #4285F4;
+            color: white;
+            flex: 1;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .btn-ics {
+            background: #333;
+            color: white;
+            flex: 1;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-text);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-float);
+            z-index: 3000;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        /* =========================================
+           8. RESPONSIVE (MOBILE) STYLES
+           ========================================= */
+        @media (max-width: 768px) {
+
+            /* 1. Hide Logo Image */
+            .logo-img {
+                display: none;
+            }
+
+            /* 2. Show Hamburger */
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            /* 3. Transform Navbar to Mobile Menu */
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .nav-item::after {
+                display: none;
+            }
+
+            /* Remove underline effect on mobile */
+
+            /* Existing Responsive Fixes */
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-wrapper {
+                overflow-x: scroll;
+            }
+
+            .calendar-header,
+            .calendar-body {
+                min-width: 600px;
+            }
+
+            .date-navigator {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar container">
+            <div class="logo">
+                <img src="sasi.png" alt="SASI Logo" class="logo-img" onerror="this.style.display='none';">
+                SITE-EMAR <span class="ff">2026</span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="organizing-committee.html">Committee</a></li>
+                <li class="nav-item"><a href="registration.html">Registration</a></li>
+                <li class="nav-item active"><a href="schedule.html">Schedule</a></li>
+                <li class="nav-item"><a href="speakers.html">Speakers</a></li>
+                <li class="nav-item"><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-item"><a href="venue.html">Venue</a></li>
+                <li class="nav-item"><a href="awards.html">Awards</a></li>
+                <li class="nav-item"><a href="contact-us.html">Contact</a></li>
+            </ul>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <div id="agenda" class="schedule-header">
+        <div class="container">
+            <h1>Conference Agenda</h1>
+            <p>Plan your experience. Use the date picker to manage your personal itinerary.</p>
+        </div>
+    </div>
+
+    <div class="controls-bar">
+        <div class="container controls-grid">
+
+            <div class="view-switch">
+                <button class="view-btn active" onclick="switchView('timeline')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin-right:5px;">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    List
+                </button>
+                <button class="view-btn" onclick="switchView('calendar')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin-right:5px;">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Grid
+                </button>
+            </div>
+
+            <div class="date-navigator">
+                <div class="nav-arrow" onclick="changeDateRelative(-1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </div>
+                <div class="date-display">
+                    <div class="current-date-label">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span id="dateLabel">July 24, 2026</span>
+                    </div>
+                    <input type="date" id="datePicker" class="date-input-hidden" onchange="handleDatePick(this.value)">
+                </div>
+                <div class="nav-arrow" onclick="changeDateRelative(1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="action-group">
+                <button class="btn-action btn-add" onclick="openAddModal()">
+                    <span>+</span> Add Event
+                </button>
+                <button class="btn-action btn-export" onclick="exportFullSchedule()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Export
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-timeline" class="view-timeline active">
+        <div class="container" id="timelineContainer">
+        </div>
+        <div id="timelineEmpty" class="empty-state hidden">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <h3>No events for this date.</h3>
+            <p>Click "+ Add Event" to plan your day.</p>
+        </div>
+    </div>
+
+    <div id="view-calendar" class="view-calendar">
+        <div class="container">
+            <div class="calendar-wrapper">
+                <div class="calendar-header">
+                    <div class="header-cell">Time</div>
+                    <div class="header-cell">Main Hall A<br><small
+                            style="font-weight:400; font-size:0.8rem;">Keynotes</small></div>
+                    <div class="header-cell">Hall B<br><small style="font-weight:400; font-size:0.8rem;">Tech Track
+                            1</small></div>
+                    <div class="header-cell">My Agenda<br><small
+                            style="font-weight:400; font-size:0.8rem;">Personal</small></div>
+                </div>
+
+                <div class="calendar-body" id="calendarBody">
+                    <div class="time-markers">
+                        <div class="time-marker">09:00</div>
+                        <div class="time-marker">10:00</div>
+                        <div class="time-marker">11:00</div>
+                        <div class="time-marker">12:00</div>
+                        <div class="time-marker">13:00</div>
+                        <div class="time-marker">14:00</div>
+                        <div class="time-marker">15:00</div>
+                        <div class="time-marker">16:00</div>
+                        <div class="time-marker">17:00</div>
+                    </div>
+
+                    <div id="gridEvents">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="addModal">
+        <div class="modal">
+            <span class="close-btn" onclick="closeAddModal()">&times;</span>
+            <h2 style="color: var(--red-primary); margin-bottom: 20px;">Add Personal Event</h2>
+            <form onsubmit="savePersonalEvent(event)">
+                <div class="form-group">
+                    <label class="form-label">Event Title</label>
+                    <input type="text" id="pTitle" class="form-control" placeholder="e.g. Flight Arrival" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Date</label>
+                    <input type="date" id="pDate" class="form-control" required>
+                </div>
+                <div class="flex" style="gap:15px;">
+                    <div class="form-group" style="flex:1;">
+                        <label class="form-label">Start Time</label>
+                        <input type="time" id="pStart" class="form-control" value="09:00" required>
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label class="form-label">Duration (Hrs)</label>
+                        <input type="number" id="pDur" class="form-control" value="1" min="1" max="8">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Location / Note</label>
+                    <input type="text" id="pLoc" class="form-control" placeholder="e.g. Airport">
+                </div>
+                <button type="submit" class="btn-add"
+                    style="width:100%; padding:12px; border:none; border-radius:6px; font-weight:700;">Add to
+                    Schedule</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal">
+            <span class="close-btn" onclick="document.getElementById('detailModal').style.display='none'">&times;</span>
+            <h2 id="dTitle" style="margin-bottom:10px;">Event Title</h2>
+            <p id="dTime" style="color:var(--gray-text); margin-bottom:20px;">Time Info</p>
+            <p id="dDesc">Description goes here...</p>
+
+            <div class="cal-btn-group">
+                <button class="btn-google" onclick="addToGoogleCal()">Add to Google Cal</button>
+                <button class="btn-ics" onclick="downloadICS()">Download .ICS</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Action Successful!</div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>SITE-EMAR 2026</h2>
+                    <p class="footer-text">
+                        International Conference on Smart Innovative Techniques and Emerging Trends in Engineering
+                        Materials for Advanced Research.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/school/sasi-institute-of-technology-engineering/"
+                            class="social-icon" title="LinkedIn" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/sasiengineeringcollege" class="social-icon" title="Instagram"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/sasi.ac.in" class="social-icon" title="Facebook"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SasiInstituteofTechnology" class="social-icon" title="YouTube"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="schedule.html">Program Schedule</a></li>
+                        <li><a href="speakers.html">Keynote Speakers</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="sponsors.html">Sponsors</a></li>
+                        <li><a href="awards.html">Awards</a></li>
+                        <li><a href="organizing-committee.html">Committee</a></li>
+                        <li><a href="memories.html">Memories</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: flex-start; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2" style="flex-shrink: 0; margin-top: 3px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Sasi Institute of Technology & Engineering, Tadepalligudem - 534101
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            +91 9440576225
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: #999;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D32F2F"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            drsrinivas@sasi.ac.in
+                            convener.siteemar2026@sasi.ac.in
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <script>
+        // --- MOBILE MENU LOGIC ---
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+
+        // --- SCHEDULE LOGIC ---
+        const CONFERENCE_START = '2026-07-24';
+        const CONFERENCE_END = '2026-07-25';
+
+        let currentDate = CONFERENCE_START; // Default to Day 1
+        let currentView = 'timeline';
+
+        // Official Events (ISO Date format used)
+        const officialEvents = [
+            { id: 1, title: 'Inaugural Ceremony', date: '2026-07-24', start: '09:00', duration: 1, track: 1, desc: 'Welcome address by Chief Guest.', type: 'keynote' },
+            { id: 2, title: 'KN-01: Nanomaterials', date: '2026-07-24', start: '10:00', duration: 1, track: 1, desc: 'Keynote on advanced nano-fabrication.', type: 'keynote' },
+            { id: 3, title: 'TS-01: Paper Presentations', date: '2026-07-24', start: '11:00', duration: 2, track: 2, desc: 'Technical Track A: Material Physics.', type: 'tech' },
+            { id: 4, title: 'Lunch Break', date: '2026-07-24', start: '13:00', duration: 1, track: 1, desc: 'Networking Lunch at Cafeteria.', type: 'break' },
+
+            { id: 6, title: 'KN-02: AI in Materials', date: '2026-07-25', start: '09:00', duration: 1, track: 1, desc: 'Machine Learning applications.', type: 'keynote' },
+            { id: 7, title: 'TS-02: Smart Sensors', date: '2026-07-25', start: '10:00', duration: 2, track: 2, desc: 'Technical Track B: Sensors.', type: 'tech' }
+        ];
+
+        // Load Personal Events from LocalStorage
+        let personalEvents = JSON.parse(localStorage.getItem('myEvents') || '[]');
+
+        // --- CORE FUNCTIONS ---
+
+        function updateDateDisplay() {
+            const dateObj = new Date(currentDate);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('dateLabel').innerText = dateObj.toLocaleDateString('en-US', options);
+            document.getElementById('datePicker').value = currentDate;
+        }
+
+        function handleDatePick(val) {
+            currentDate = val;
+            updateDateDisplay();
+            renderAll();
+        }
+
+        function changeDateRelative(days) {
+            const date = new Date(currentDate);
+            date.setDate(date.getDate() + days);
+            currentDate = date.toISOString().split('T')[0];
+            updateDateDisplay();
+            renderAll();
+        }
+
+        // --- RENDER FUNCTIONS ---
+
+        function renderAll() {
+            // Filter events for the currently selected date
+            const daysEvents = [
+                ...officialEvents.filter(e => e.date === currentDate),
+                ...personalEvents.filter(e => e.date === currentDate)
+            ];
+
+            // Sort by time
+            daysEvents.sort((a, b) => parseInt(a.start.replace(':', '')) - parseInt(b.start.replace(':', '')));
+
+            renderTimeline(daysEvents);
+            renderCalendar(daysEvents);
+        }
+
+        function renderTimeline(events) {
+            const container = document.getElementById('timelineContainer');
+            const emptyState = document.getElementById('timelineEmpty');
+            container.innerHTML = '';
+
+            if (events.length === 0) {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            container.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            events.forEach(ev => {
+                const isPersonal = ev.type === 'personal';
+                const borderClass = isPersonal ? 'border-left: 5px solid #9C27B0; border-style: dashed;' : `border-left: 5px solid ${ev.type === 'break' ? '#F57C00' : '#D32F2F'};`;
+                const dotColor = isPersonal ? '#9C27B0' : '#D32F2F';
+
+                const html = `
+                    <div class="timeline-item">
+                        <div class="timeline-time">${ev.start}</div>
+                        <div class="timeline-content">
+                            <div class="timeline-dot" style="border-color: ${dotColor}"></div>
+                            <div class="timeline-card" style="${borderClass}" onclick="showDetails(${ev.id}, ${isPersonal})">
+                                <h3 style="font-size:1.1rem; margin-bottom:5px;">${ev.title}</h3>
+                                <p style="font-size:0.9rem; color:#666;">${ev.desc}</p>
+                                ${isPersonal ? `<button onclick="deleteEvent(event, ${ev.id})" style="margin-top:10px; color:red; background:none; border:none; text-decoration:underline; font-size:0.8rem;">Remove</button>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function renderCalendar(events) {
+            const container = document.getElementById('gridEvents');
+            container.innerHTML = '';
+
+            events.forEach(ev => {
+                const startHour = parseInt(ev.start.split(':')[0]);
+                const startMin = parseInt(ev.start.split(':')[1]);
+
+                // Map 09:00 to 0px. Scale: 100px per hour.
+                let top = (startHour - 9) * 100 + (startMin / 60) * 100;
+
+                if (top < 0) top = 0;
+
+                const height = ev.duration * 100;
+
+                // Track Logic: 1=Main, 2=Tech, 3=Personal
+                const trackClass = ev.track === 1 ? 'track-1' : (ev.track === 2 ? 'track-2' : 'track-3');
+
+                const el = document.createElement('div');
+                el.className = `event-block ${trackClass}`;
+                el.style.top = `${top}px`;
+                el.style.height = `${height}px`;
+                el.innerHTML = `<strong>${ev.title}</strong><br>${ev.start}`;
+                el.onclick = () => showDetails(ev.id, ev.type === 'personal');
+                container.appendChild(el);
+            });
+        }
+
+        // --- INTERACTION LOGIC ---
+
+        function switchView(view) {
+            currentView = view;
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+            event.target.closest('button').classList.add('active');
+
+            if (view === 'timeline') {
+                document.getElementById('view-timeline').classList.add('active');
+                document.getElementById('view-calendar').classList.remove('active');
+            } else {
+                document.getElementById('view-timeline').classList.remove('active');
+                document.getElementById('view-calendar').classList.add('active');
+            }
+        }
+
+        // --- ADD PERSONAL EVENT ---
+
+        function openAddModal() {
+            document.getElementById('pDate').value = currentDate; // Default to current view
+            document.getElementById('addModal').style.display = 'flex';
+        }
+        function closeAddModal() {
+            document.getElementById('addModal').style.display = 'none';
+        }
+
+        function savePersonalEvent(e) {
+            e.preventDefault();
+            const title = document.getElementById('pTitle').value;
+            const date = document.getElementById('pDate').value;
+            const start = document.getElementById('pStart').value;
+            const duration = parseFloat(document.getElementById('pDur').value);
+            const loc = document.getElementById('pLoc').value;
+
+            // Conflict Check on specific date
+            const conflict = personalEvents.some(ev => ev.date === date && ev.start === start);
+            if (conflict) {
+                alert("Conflict detected: You already have an event at this time!");
+                return;
+            }
+
+            const newEvent = {
+                id: Date.now(),
+                title, date, start, duration,
+                track: 3, // Personal Track
+                desc: `Personal Agenda at ${loc}`,
+                type: 'personal'
+            };
+
+            personalEvents.push(newEvent);
+            localStorage.setItem('myEvents', JSON.stringify(personalEvents));
+
+            showToast("Event Added Successfully!");
+            closeAddModal();
+
+            // If we added event to a different date, switch to that date
+            if (date !== currentDate) {
+                handleDatePick(date);
+            } else {
+                renderAll();
+            }
+        }
+
+        function deleteEvent(e, id) {
+            e.stopPropagation();
+            if (confirm("Delete this event?")) {
+                personalEvents = personalEvents.filter(ev => ev.id !== id);
+                localStorage.setItem('myEvents', JSON.stringify(personalEvents));
+                renderAll();
+                showToast("Event Deleted");
+            }
+        }
+
+        // --- EXPORT LOGIC ---
+
+        let selectedEvent = null;
+
+        function showDetails(id, isPersonal) {
+            const list = isPersonal ? personalEvents : officialEvents;
+            selectedEvent = list.find(e => e.id === id);
+
+            if (selectedEvent) {
+                document.getElementById('dTitle').innerText = selectedEvent.title;
+                document.getElementById('dTime').innerText = `${selectedEvent.date} | ${selectedEvent.start}`;
+                document.getElementById('dDesc').innerText = selectedEvent.desc;
+                document.getElementById('detailModal').style.display = 'flex';
+            }
+        }
+
+        function addToGoogleCal() {
+            if (!selectedEvent) return;
+            const text = encodeURIComponent(selectedEvent.title);
+            const details = encodeURIComponent(selectedEvent.desc);
+            // Format date for Google Cal: YYYYMMDDTHHmmSS
+            const d = selectedEvent.date.replace(/-/g, '');
+            const t = selectedEvent.start.replace(':', '');
+            const startTime = `${d}T${t}00`;
+
+            // Calculate end time roughly (adding hour)
+            let endH = parseInt(selectedEvent.start.split(':')[0]) + Math.floor(selectedEvent.duration);
+            const endTime = `${d}T${endH < 10 ? '0' + endH : endH}0000`;
+
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&details=${details}&dates=${startTime}/${endTime}`;
+            window.open(url, '_blank');
+        }
+
+        function downloadICS() {
+            if (!selectedEvent) return;
+            const icsContent = `
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${selectedEvent.title}
+DESCRIPTION:${selectedEvent.desc}
+DTSTART:${selectedEvent.date.replace(/-/g, '')}T${selectedEvent.start.replace(':', '')}00
+END:VEVENT
+END:VCALENDAR`;
+
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'event.ics';
+            link.click();
+        }
+
+        function exportFullSchedule() {
+            alert("Exporting full agenda for " + currentDate + " (PDF simulation)");
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 3000);
+        }
+
+        // Init
+        updateDateDisplay();
+        renderAll();
+
+    </script>
+</body>
+
+</html>

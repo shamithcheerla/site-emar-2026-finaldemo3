@@ -1,0 +1,95 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>Abstract Template</title>
+<style>
+@page {
+    mso-page-orientation: portrait;
+    size: 21cm 29.7cm;
+    margin: 2.54cm 2.54cm 2.54cm 2.54cm;
+}
+body {
+    font-family: 'Times New Roman', serif;
+}
+p.Title {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12pt;
+    margin-top: 0;
+}
+p.Authors {
+    font-size: 12pt;
+    text-align: center;
+    margin-bottom: 6pt;
+    margin-top: 0;
+}
+p.Affiliations {
+    font-size: 10pt;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 3pt;
+    margin-top: 0;
+}
+p.Email {
+    font-size: 10pt;
+    text-align: center;
+    margin-bottom: 12pt;
+    margin-top: 0;
+}
+p.AbstractTitle {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-bottom: 6pt;
+    margin-top: 0;
+}
+p.AbstractBody {
+    font-size: 11pt;
+    text-align: justify;
+    margin-bottom: 12pt;
+    line-height: 1.15;
+    margin-top: 0;
+}
+p.Keywords {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-bottom: 12pt;
+    margin-top: 0;
+}
+p.ReferencesTitle {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-bottom: 3pt;
+    margin-top: 0;
+}
+p.ReferenceItem {
+    font-size: 11pt;
+    margin-bottom: 3pt;
+    margin-left: 18pt;
+    text-indent: -18pt;
+    margin-top: 0;
+}
+</style>
+</head>
+<body>
+<p class="Title">Title (Times new roman, font size 14)</p>
+<p class="Authors">First Author1, Second Author2, Third Author1,* (Times new roman, font size 12)</p>
+<p class="Affiliations">1Department, Organisation, Address, City, Country (Italic, Times new roman, font size 10)</p>
+<p class="Affiliations">2Department, Organisation, Address, City, Country (Italic, Times new roman, font size 10)</p>
+<p class="Email">*Corresponding Author E-mail: (Times new roman, font size 10) (only one)</p>
+
+<p class="AbstractTitle">Abstract (Times new roman, font size 11) (Max. 500 words)</p>
+<p class="AbstractBody">
+You are invited to submit your abstract (maximum 500 words). The abstract should be in English and within one-page limit. Please follow the format and style described in this template. References should be indicated in the text in brackets and listed at the end of the paper (11 points). Figures and tables should be placed preceding the references list. Authors whose abstracts are selected will be invited to submit a full paper for peer review. The topics of the Conference include a few symposia such as Electronic and Photonic Materials, Quantum materials, Energy and Sustainable Materials, Applied Soft and Biomaterials, Advanced methods in materials, Alloys and Composites, Critical and Strategic Materials, and Materials Modelling and Simulation. For online technical program consistency, this Abstract Template must be used for abstract submission. Abstracts of a maximum of 500 words must be submitted online by January 20, 2026. Authors will be notified of abstract acceptance by February 15, 2026. The submission of your abstract in Microsoft Word should be submitted via the online portal. Each paper accepted for presentation and included in the proceedings must be accompanied by a full registration fee and must be registered by March 2, 2026.
+</p>
+
+<p class="Keywords">Keywords: Keyword1; Keyword2; Keyword3; Keyword4; (Maximum 4).</p>
+
+<p class="ReferencesTitle">References</p>
+<p class="ReferenceItem">1. Author, B.: Article title. Journal 2(5), 99–110 (2026).</p>
+<p class="ReferenceItem">2. Author, C., Author, S.: Title of a proceedings paper. In: Editor, F., Editor, S. (eds.) CONFERENCE 2025, ICAS, vol. 9999, pp. 1–13. Springer, Heidelberg (2025).</p>
+<p class="ReferenceItem">3. Author, L., Author, V., Author, H.: Book title. 2nd edn. Publisher, Location (2025).</p>
+<p class="ReferenceItem">4. Author, T.: Contribution title. In: 9th International Proceedings on Proceedings, pp. 1–2. Publisher, Location (2026).</p>
+<p class="ReferenceItem">5. AVK Homepage, http://www.springer.com/avk, last accessed 2025/11/22.</p>
+</body>
+</html>

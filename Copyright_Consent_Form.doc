@@ -1,0 +1,84 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>Copyright Consent Form - SITE-EMAR 2026</title>
+<style>
+@page {
+    mso-page-orientation: portrait;
+    size: 21cm 29.7cm;
+    margin: 2.54cm 2.54cm 2.54cm 2.54cm;
+}
+body {
+    font-family: 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.8;
+}
+h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30pt;
+    margin-top: 0;
+    text-decoration: underline;
+}
+p {
+    font-size: 12pt;
+    margin-bottom: 15pt;
+    margin-top: 0;
+    text-align: justify;
+}
+p.field-line {
+    margin-bottom: 20pt;
+}
+.underline {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    min-width: 400px;
+}
+.sig-section {
+    margin-top: 80pt;
+}
+.sig-line {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    width: 250px;
+    margin-left: 20px;
+}
+strong {
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h1>Copyright Consent Form</h1>
+
+<p class="field-line"><strong>Title of the Research Article:</strong> <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+
+<p class="field-line"><strong>Name of the Author/s:</strong> <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+
+<br>
+
+<p><strong>1.</strong> The Author/s hereby transfer the copyright for the research article titled <span style="text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> to the Publisher thereby according to exclusive right without any restrictions to reproduce, publish and distribute the article in print and electronic form, as well as reprints, translations or any other format of reproduction.</p>
+
+<p><strong>2.</strong> The Author/s retain the right to be identified as the author/s of the published article as well as the patent and trademark rights related to a product or process detailed in the article.</p>
+
+<p><strong>3.</strong> The Author/s assure that the research article is an original piece of work that has not been published elsewhere and is also not under review by another publication.</p>
+
+<p><strong>4.</strong> The Author/s guarantee that due permissions have been obtained in order to reuse any copyrighted material that has been sourced from any platform.</p>
+
+<p><strong>5.</strong> The Author/s confirm that the research article does not violate any existing copyright or any proprietary right; neither invades privacy or is defamatory in any form. The Author/s will indemnify the publisher from any claims arising due to breach of this guarantee.</p>
+
+<p><strong>6.</strong> The Author affirms and takes responsibility for copyright transfer and the above declaration for the research article on behalf of the co-author/s, if any.</p>
+
+<div class="sig-section">
+<p><strong>Name:</strong> <span class="sig-line">&nbsp;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Date:</strong> <span class="sig-line" style="width: 180px;">&nbsp;</span></p>
+
+<p><strong>Signature:</strong> <span class="sig-line">&nbsp;</span></p>
+</div>
+
+<br><br>
+<p style="font-size: 10pt; color: #666; text-align: center; margin-top: 40pt;">
+SITE-EMAR 2026 - International Conference on Smart Innovative Techniques and Emerging Trends in Engineering Materials for Advanced Research
+</p>
+</body>
+</html>
